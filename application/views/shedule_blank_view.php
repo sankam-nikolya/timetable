@@ -3,7 +3,7 @@
     <table class="table table-bordered">
         <tr>
             <td rowspan="3">Группа</td>
-            <td colspan="7" style="text-align: center; font-weight: bold;"><?=$days[0]['date']?></td>
+            <td colspan="7" style="text-align: center; font-weight: bold;"><?=$day_for_now['date']?></td>
         </tr>
         <tr>
             <?foreach($pars_timing as $item_num):?>

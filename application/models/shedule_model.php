@@ -13,7 +13,7 @@ lt.`num`,
 s.`name` AS 'subject',
 s.idsubects,
 c.`name` AS 'cabinet',
-binding.`overall`,
+binding.`type`,
 t.first_name,
 t.patronymic
 FROM
@@ -26,7 +26,7 @@ INNER JOIN subjects AS s ON binding.idsubjects = s.idsubects
 INNER JOIN teachers AS t ON s.idteacher = t.idteacher
 WHERE
 d.date = '$day' AND g.idgroups = '$group'
-ORDER BY num,  binding.`overall` ASC
+ORDER BY num,  binding.`type` ASC
 ");
         return $query->result_array();
     }

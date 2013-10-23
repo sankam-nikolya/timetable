@@ -29,52 +29,14 @@ class Shedule extends CI_Controller {
             $this->load->model('shedule_model');
 
             $data['days'] = $this->shedule_model->get_days($_GET['filter']);
-            //$data['hw'] = $this->shedule_model->get_hw();
             $data['pars_timing'] = $this->shedule_model->get_time();
             $data['groups'] = $this->shedule_model->get_groups();
 
             $data['subjects'] = array();
-            $temp_array_names_pars = array();
-            $temp_array_ids_pars = array();
-            $temp_array_types_pars = array();
-
-            /*foreach ($data['days'] as $q_days)
-            {
-                $data['day_for_now'] = $q_days;
-                foreach ($data['groups'] as $q_groups)
-                {
-                    $data['pars'] = $this->shedule_model->get_pars($q_days['date'], $q_groups['idgroups']);
-
-                    for ($j = 0; $j < count($data['pars_timing']); $j++)
-                    {
-                        array_push($temp_array_names_pars, array('name' => '&nbsp;', 'id' => 0));
-                        array_push($temp_array_ids_pars, 0);
-                        array_push($temp_array_types_pars, 0);
-
-                    }
-                    for ($j = 0; $j < count($data['pars_timing']); $j++)
-                    {
-                        foreach($data['pars'] as $item)
-                        {
-                            $temp_array_names_pars[$item['num']-1] = array('name' => $item['subject'], 'id' => $item['idsubects'], 'type' => $item['overall']);
-                        }
-                    }
-
-                    array_push($data['subjects'], array('group_name' => $q_groups['name'], array('pars' => $temp_array_names_pars, 'type' => $temp_array_types_pars)));
-                    $temp_array_names_pars = array();
-                    $temp_array_ids_pars = array();
-                    $temp_array_types_pars = array();
-
-
-                }
-                //$this->load->view('shedule_view', $data);
-                print_r($data['subjects']);
-                $data['subjects'] = array();
-            }*/
-
-            $this->load->view('shedule_blank_view', $data);
             foreach ($data['days'] as $day)
             {
+                $data['day_for_now'] = $day;
+                $this->load->view('shedule_blank_view', $data);
                 foreach ($data['groups'] as $group)
                 {
                     $data['group_for_now'] = $group['name'];
@@ -86,17 +48,17 @@ class Shedule extends CI_Controller {
                         $data['pars_rendered'][$i] = '<td class="cell">';
                         foreach ($data['pars'] as $pars)
                         {
-                            if ($pars['num']-1 == $i && $pars['overall'] == 0)
+                            if ($pars['num']-1 == $i && $pars['type'] == 0)
                             {
                                 $data['pars_rendered'][$i] .= $pars['subject'].' <span class="clr">'. $pars['cabinet'] .'</span>';
                             }
-                            if ($pars['num']-1 == $i && ($pars['overall'] == 1 || $pars['overall'] == 2))
+                            if ($pars['num']-1 == $i && ($pars['type'] == 1 || $pars['type'] == 2))
                             {
-                                if ($pars['overall'] == 1)
+                                if ($pars['type'] == 1)
                                 {
                                     $data['pars_rendered'][$i] .= '<span class="wordup">'. $pars['subject'] .'</span> <span class="clr_for_small">'. $pars['cabinet'] .'</span>';
                                 }
-                                if ($pars['overall'] == 2)
+                                if ($pars['type'] == 2)
                                 {
                                     $data['pars_rendered'][$i] .= '<br><span class="wordbottom">'. $pars['subject'] .'</span> <span class="clr_for_small">'. $pars['cabinet'] .'</span>';
                                 }

@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://dc32.bget.ru/test';
+$config['base_url']	= 'http://nrasp.ru/';
 
 /*
 |--------------------------------------------------------------------------

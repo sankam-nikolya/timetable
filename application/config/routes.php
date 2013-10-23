@@ -39,6 +39,11 @@
 */
 
 $route['default_controller'] = "shedule";
+$route['admin'] = "admin_shedule";
+$route['admin/shedule'] = "admin_shedule";
+$route['admin/add'] = "admin_shedule/add";
+$route['admin/edit'] = "admin_shedule/edit";
+$route['admin/statistics'] = "admin_shedule/statistics";
 //$route['404_override'] = '';
 
 
