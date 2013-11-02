@@ -15,10 +15,11 @@
             <fieldset>
                 <div class="control-group">
                     <label class="control-label" for="reservation">Выберите дату:</label>
-                    <div class="input-group" style="width: 300px">
-                        <input type="text" class="form-control" name="datepick" <?if (isset($_GET['datepick'])):?>value="<?=$_GET['datepick']?>"<?endif?> id="reservation" />
+                    <div class="input-group" style="width: 350px">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        <input type="text" class="form-control" name="datepick" <?if (isset($_POST['datepick'])):?>value="<?=$_POST['datepick']?>"<?endif?> id="reservation" />
                         <div class="input-group-btn">
-                            <input type="submit" class="btn btn-default" name="insert_day">
+                            <input type="submit" class="btn btn-default">
                         </div><!-- /btn-group -->
                     </div><!-- /input-group -->
                 </div>

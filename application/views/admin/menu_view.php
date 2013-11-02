@@ -13,8 +13,8 @@
                 <li <?if ($this->uri->segment(2) == "shedule" || $this->uri->rsegment(2) == "add" || $this->uri->rsegment(2) == "edit"):?>class="active"<?endif?>>
                     <a href="<?base_url()?>/admin/shedule">Расписание</a>
                 </li>
-                <li>
-                    <a href="#">Объявления</a>
+                <li <?if ($this->uri->rsegment(2) == "announcements"):?>class="active"<?endif?>>
+                    <a href="<?base_url()?>/admin/announcements">Объявления</a>
                 </li>
                 <li>
                     <a href="#">Преподаватели</a>
