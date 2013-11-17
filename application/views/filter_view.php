@@ -4,7 +4,7 @@
             Фильтр:
             <select name="filter">
                 <option disabled>Выберите нужный фильтр</option>
-                <option <? if ($_GET['filter'] == 'last7days'):?> selected <?endif?> value="last7days">Актуальное</option>
+                <option <? if ($_GET['filter'] == 'currently'):?> selected <?endif?> value="currently">Актуальное</option>
                 <option <? if ($_GET['filter'] == 'all_day'):?> selected <?endif?> value="all_day">Все дни</option>
                 <option <? if ($_GET['filter'] == 'ftoday'):?> selected <?endif?> value="ftoday">На сегодня</option>
                 <option <? if ($_GET['filter'] == 'ftomorrow'):?> selected <?endif?> value="ftomorrow">На завтра</option>

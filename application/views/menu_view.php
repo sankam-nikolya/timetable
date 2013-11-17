@@ -6,6 +6,7 @@
                 <li class="active"><a href="<?base_url()?>">Расписание</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">
+                <?if ($this->tank_auth->get_user_id())?>
                 <li><a href="<?base_url()?>admin" target="_blank">Админ</a></li>
             </ul>
         </div>

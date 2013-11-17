@@ -4,14 +4,14 @@
  Source Server         : localhost
  Source Server Type    : MySQL
  Source Server Version : 50533
- Source Host           : 127.0.0.1
+ Source Host           : localhost
  Source Database       : nrasp
 
  Target Server Type    : MySQL
  Target Server Version : 50533
  File Encoding         : utf-8
 
- Date: 11/02/2013 21:40:48 PM
+ Date: 11/17/2013 18:37:58 PM
 */
 
 SET NAMES utf8;
@@ -81,7 +81,7 @@ CREATE TABLE `binding` (
 --  Records of `binding`
 -- ----------------------------
 BEGIN;
-INSERT INTO `binding` VALUES ('1', '1', '1', '1', '1', '2', '0'), ('2', '1', '1', '2', '1', '2', '1'), ('3', '1', '1', '2', '1', '2', '2'), ('4', '1', '1', '4', '1', '2', '0'), ('7', '1', '2', '2', '2', '3', '0'), ('8', '1', '2', '5', '2', '3', '0'), ('9', '1', '2', '4', '2', '3', '0'), ('11', '1', '3', '7', '1', '2', '0'), ('12', '1', '1', '5', '1', '2', '2'), ('13', '1', '1', '5', '2', '2', '1'), ('14', '1', '1', '6', '1', '2', '2'), ('15', '3', '1', '1', '1', '2', '0'), ('16', null, null, null, null, null, '0');
+INSERT INTO `binding` VALUES ('1', '1', '1', '1', '1', '2', '0'), ('2', '1', '1', '2', '1', '2', '1'), ('3', '1', '1', '2', '1', '2', '2'), ('4', '1', '1', '4', '1', '2', '0'), ('7', '1', '2', '2', '2', '3', '0'), ('8', '1', '2', '5', '2', '3', '0'), ('9', '1', '2', '4', '2', '3', '0'), ('11', '1', '3', '7', '1', '2', '0'), ('12', '1', '1', '5', '1', '2', '2'), ('13', '1', '1', '5', '2', '2', '1'), ('14', '1', '1', '6', '1', '2', '2'), ('15', '3', '1', '1', '1', '2', '0');
 COMMIT;
 
 -- ----------------------------
@@ -100,6 +100,26 @@ CREATE TABLE `cabinets` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `cabinets` VALUES ('2', '102', '1'), ('3', '104', '1'), ('4', '110', '1'), ('5', '114', '1'), ('6', '201', '1'), ('7', '205', '1'), ('8', '206', '1'), ('9', '207', '1'), ('10', '210', '1');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `ci_sessions`
+-- ----------------------------
+DROP TABLE IF EXISTS `ci_sessions`;
+CREATE TABLE `ci_sessions` (
+  `session_id` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '0',
+  `ip_address` varchar(16) COLLATE utf8_bin NOT NULL DEFAULT '0',
+  `user_agent` varchar(150) COLLATE utf8_bin NOT NULL,
+  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_data` text COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`session_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+--  Records of `ci_sessions`
+-- ----------------------------
+BEGIN;
+INSERT INTO `ci_sessions` VALUES ('1021ab352563a8c660f282e14f58e417', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36', '1383489507', 0x613a343a7b733a393a22757365725f64617461223b733a303a22223b733a373a22757365725f6964223b733a313a2231223b733a383a22757365726e616d65223b733a353a224b6f646469223b733a363a22737461747573223b733a313a2231223b7d), ('39ef9682722d71d90f30ef1bda17a43d', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36', '1383486519', ''), ('70f1a7677d6d0d9191ebfe1ba0c13df9', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36', '1383486513', ''), ('7fd3fce425e7270aba5b3ef838749055', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36', '1384689887', 0x613a343a7b733a393a22757365725f64617461223b733a303a22223b733a373a22757365725f6964223b733a313a2231223b733a383a22757365726e616d65223b733a353a224b6f646469223b733a363a22737461747573223b733a313a2231223b7d), ('8cf836e02eddb4ef4070ef7d011f6141', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36', '1383486511', ''), ('cddaff2abea9fbda0c300b78d4358cf8', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36', '1383486508', ''), ('e0b7629f94abf48f679b141061e8f0e5', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36', '1383486519', '');
 COMMIT;
 
 -- ----------------------------
@@ -159,6 +179,18 @@ INSERT INTO `lessons_time` VALUES ('1', '1', '08:20:00', '09:50:00', '1'), ('2',
 COMMIT;
 
 -- ----------------------------
+--  Table structure for `login_attempts`
+-- ----------------------------
+DROP TABLE IF EXISTS `login_attempts`;
+CREATE TABLE `login_attempts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ip_address` varchar(40) COLLATE utf8_bin NOT NULL,
+  `login` varchar(50) COLLATE utf8_bin NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
 --  Table structure for `subjects`
 -- ----------------------------
 DROP TABLE IF EXISTS `subjects`;
@@ -200,6 +232,76 @@ CREATE TABLE `teachers` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `teachers` VALUES ('1', 'Роман', 'Прохоров', 'Гавриилович', '1'), ('2', 'Вячеслав', 'Николаев', 'Максимович', '1');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `user_autologin`
+-- ----------------------------
+DROP TABLE IF EXISTS `user_autologin`;
+CREATE TABLE `user_autologin` (
+  `key_id` char(32) COLLATE utf8_bin NOT NULL,
+  `user_id` int(11) NOT NULL DEFAULT '0',
+  `user_agent` varchar(150) COLLATE utf8_bin NOT NULL,
+  `last_ip` varchar(40) COLLATE utf8_bin NOT NULL,
+  `last_login` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`key_id`,`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+--  Records of `user_autologin`
+-- ----------------------------
+BEGIN;
+INSERT INTO `user_autologin` VALUES ('c01ad28609f94f4c774512f2274d7fd8', '1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36', '127.0.0.1', '2013-11-03 20:03:31');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `user_profiles`
+-- ----------------------------
+DROP TABLE IF EXISTS `user_profiles`;
+CREATE TABLE `user_profiles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `country` varchar(20) COLLATE utf8_bin DEFAULT NULL,
+  `website` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+--  Records of `user_profiles`
+-- ----------------------------
+BEGIN;
+INSERT INTO `user_profiles` VALUES ('1', '1', null, null), ('2', '2', null, null);
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `users`
+-- ----------------------------
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) COLLATE utf8_bin NOT NULL,
+  `password` varchar(255) COLLATE utf8_bin NOT NULL,
+  `email` varchar(100) COLLATE utf8_bin NOT NULL,
+  `activated` tinyint(1) NOT NULL DEFAULT '1',
+  `banned` tinyint(1) NOT NULL DEFAULT '0',
+  `ban_reason` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `new_password_key` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `new_password_requested` datetime DEFAULT NULL,
+  `new_email` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `new_email_key` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `last_ip` varchar(40) COLLATE utf8_bin NOT NULL,
+  `last_login` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `admin` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+--  Records of `users`
+-- ----------------------------
+BEGIN;
+INSERT INTO `users` VALUES ('1', 'Koddi', '$2a$08$HVU5DMIgpFYknqnE9o1GJeTN8elu00pkd892DhJwti.PJRc3CbbCu', 'nazgardo@ya.ru', '1', '0', null, null, null, null, null, '127.0.0.1', '2013-11-17 17:49:26', '2013-11-03 19:18:09', '2013-11-17 17:49:26', '1'), ('2', 'test', '$2a$08$mArV63A80FmZq0pvGt8Uy.esLJv1CoglA/lzWZU.nWfLIjEYpYv5O', 'test@test.ru', '1', '0', null, null, null, null, null, '127.0.0.1', '2013-11-03 19:54:24', '2013-11-03 19:54:19', '2013-11-03 19:54:24', null);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

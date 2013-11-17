@@ -9,7 +9,7 @@
 </script>
 
 <div class="container">
-    <form action="" method="post" name="data">
+    <form action="" method="post">
         <?foreach ($days as $day):?>
         <table class="table table-bordered">
             <tbody>

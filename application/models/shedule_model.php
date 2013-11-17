@@ -33,19 +33,20 @@ ORDER BY num,  binding.`type` ASC
 
     public function get_days($filter)
     {
+        $this->db->query("SET lc_time_names = 'ru_RU'");
         switch ($filter)
         {
-            case 'last7days' :
+            case 'currently' :
             {
                 $from = date("Y-m-d", time() - (1 * 24 * 60 * 60));
-                $to = date("Y-m-d", time() + (5 * 24 * 60 * 60));
-                $query = $this->db->query("SELECT DISTINCT date FROM days WHERE date BETWEEN '". $from ."' AND '". $to ."'");
+                $to = date("Y-m-d", time() + (7 * 24 * 60 * 60));
+                $query = $this->db->query("SELECT DISTINCT DATE_FORMAT (date, '%W %d.%m.%Y') AS 'formated_date', date FROM days WHERE date BETWEEN '". $from ."' AND '". $to ."'");
 
                 return $query->result_array();
             }
             case 'all_day' :
             {
-                $query = $this->db->query("SELECT DISTINCT date FROM days ORDER BY date DESC");
+                $query = $this->db->query("SELECT DISTINCT  DATE_FORMAT (date, '%W %d.%m.%Y') AS 'formated_date', date as 'date' FROM days ORDER BY date DESC");
                 return $query->result_array();
             }
             break;

@@ -39,6 +39,7 @@
 */
 
 $route['default_controller'] = "shedule";
+$route['auth'] = "auth";
 $route['admin'] = "admin_shedule";
 $route['admin/shedule'] = "admin_shedule";
 $route['admin/add'] = "admin_shedule/add";

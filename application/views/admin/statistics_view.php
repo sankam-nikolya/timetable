@@ -14,7 +14,7 @@
         });
 
         // Build the chart
-        $('#container').highcharts({
+        $('#teachers').highcharts({
             chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
@@ -24,7 +24,7 @@
                 text: 'Доля уроков у преподавателей'
             },
             tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                pointFormat: '{series.name}: <b>{point.y}</b>'
             },
             plotOptions: {
                 pie: {
@@ -42,10 +42,47 @@
             },
             series: [{
                 type: 'pie',
-                name: 'Browser share',
+                name: 'Всего уроков',
                 data: [
-                    <?foreach ($teachers as $teacher):?>
-                        ['<?=$teacher["first_name"]; echo ' '.$teacher['last_name']; echo ' '.$teacher['patronymic']?>', <?=$teacher['idteacher']?>],
+                    <?foreach ($num_pars as $item):?>
+                        ['<?=$item['first_name']; echo ' '.$item['last_name']?>', <?=$item['pars']?>],
+                    <?endforeach?>
+                ]
+            }]
+        });
+        // Build the chart
+        $('#groups').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Доля уроков у групп'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.y}</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Всего уроков',
+                data: [
+                    <?foreach ($group_num_pars as $item):?>
+                        ['<?=$item['name']?>', <?=$item['pars']?>],
                     <?endforeach?>
                 ]
             }]
@@ -57,6 +94,10 @@
 <script src="<?=base_url()?>js/charts/highcharts.js"></script>
 <script src="<?=base_url()?>js/charts/modules/exporting.js"></script>
 
+
 <div class="container">
-    <div id="container"></div>
+    <a name="teachers"></a>
+    <div id="teachers"></div>
+    <a name="groups"></a>
+    <div id="groups"></div>
 </div>
