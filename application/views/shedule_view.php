@@ -6,21 +6,21 @@
             <td colspan="7" style="text-align: center; font-weight: bold;"><?=$day_for_now?></td>
         </tr>
         <tr>
-            <?foreach($pars_timing as $item_num):?>
+            <?php foreach($pars_timing as $item_num):?>
                 <td><?=$item_num['num']?></td>
-            <?endforeach?>
+            <?php endforeach?>
         </tr>
         <tr>
-            <?foreach($pars_timing as $item_timing):?>
+            <?php foreach($pars_timing as $item_timing):?>
                 <td><?=$item_timing['start_time']?> - <?=$item_timing['end_time']?></td>
-            <?endforeach?>
+            <?php endforeach?>
         </tr>
 
         <tr class="rowdown">
             <td class="anouncegroup"><?=$group_for_now?></td>
-            <?foreach ($pars_rendered as $item):?>
+            <?php foreach ($pars_rendered as $item):?>
                 <?=$item?>
-            <?endforeach?>
+            <?php endforeach?>
         </tr>
     </table>
 

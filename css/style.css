@@ -1,0 +1,25 @@
+.menu {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.table {
+    text-align: center;
+}
+
+.table .rowdown td {
+    height: 60px;
+    vertical-align: middle;
+}
+
+.table .wordup {
+    color: blue;
+}
+
+.table .wordbottom {
+    color: red;
+}
+
+.table .clr {
+    color: #808080;
+}

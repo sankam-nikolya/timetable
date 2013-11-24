@@ -18,7 +18,7 @@ t.first_name,
 t.patronymic
 FROM
 binding
-INNER JOIN cabinets AS c ON binding.idcabinets = c.idcabinets
+LEFT JOIN cabinets AS c ON binding.idcabinets = c.idcabinets
 INNER JOIN days AS d ON binding.iddays = d.iddays
 INNER JOIN groups AS g ON binding.idgroups = g.idgroups
 INNER JOIN lessons_time AS lt ON binding.idlessons_time = lt.idlessons_time

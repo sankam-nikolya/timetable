@@ -22,6 +22,7 @@ class Admin_model extends CI_Model {
     }
     function get_bindingSubjectGroup($id_group)
     {
+        //TODO reformat to AR
         $this->db->query("SET lc_time_names = 'ru_RU'");
         $query = $this->db->query("
         SELECT groups.`idgroups`,
@@ -55,5 +56,16 @@ class Admin_model extends CI_Model {
     function insert_days($array_date)
     {
         $this->db->insert('days', $array_date);
+    }
+
+    function insert_binding($data)
+    {
+        $this->db->insert('binding', $data);
+    }
+
+    function get_binding_info($from, $to)
+    {
+        $this->db->where("iddays BETWEEN ".(int)$from ." AND ". (int)$to);
+        return $this->db->get("binding")->result_array();
     }
 }

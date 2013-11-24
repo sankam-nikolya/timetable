@@ -11,7 +11,7 @@
 
 <div class="container">
     <div class="well">
-        <form class="form-horizontal" method="post">
+        <form class="form-horizontal" method="post" action="<?=base_url()?>index.php/admin_shedule/add_shedule_view">
             <fieldset>
                 <div class="control-group">
                     <label class="control-label" for="reservation">Выберите дату:</label>

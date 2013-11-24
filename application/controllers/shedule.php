@@ -15,7 +15,7 @@ class Shedule extends CI_Controller {
         {
             $_GET['view'] = 'vcolumn';
         }
-        
+
         if (isset($_GET['s']))
         {
             $this->subject_info();
@@ -24,11 +24,11 @@ class Shedule extends CI_Controller {
         {
             $this->load->view('header_view');
             $this->load->view('menu_view');
-            $this->load->view('filter_view');
+            $this->load->view('time_view');
 
             $this->load->model('shedule_model');
 
-            $data['days'] = $this->shedule_model->get_days($_GET['filter']);
+            $data['days'] = $this->shedule_model->get_days($this->input->get('filter'));
             $data['pars_timing'] = $this->shedule_model->get_time();
             $data['groups'] = $this->shedule_model->get_groups();
 
@@ -50,17 +50,17 @@ class Shedule extends CI_Controller {
                         {
                             if ($pars['num']-1 == $i && $pars['type'] == 0)
                             {
-                                $data['pars_rendered'][$i] .= '<span title="Общая пара. Преподаватель '. $pars['first_name'] .' '. $pars['patronymic'] .'">'.$pars['subject'].'</span> <span class="clr">'. $pars['cabinet'] .'</span>';
+                                $data['pars_rendered'][$i] .= '<p><span title="Общая пара. Преподаватель '. $pars['first_name'] .' '. $pars['patronymic'] .'">'.$pars['subject'].'</span> <span class="clr">'. $pars['cabinet'] .'</span></p>';
                             }
                             if ($pars['num']-1 == $i && ($pars['type'] == 1 || $pars['type'] == 2))
                             {
                                 if ($pars['type'] == 1)
                                 {
-                                    $data['pars_rendered'][$i] .= '<span class="wordup" title="Верхняя подгруппа. Преподаватель '. $pars['first_name'] .' '. $pars['patronymic'] .'">'. $pars['subject'] .'</span> <span class="clr_for_small">'. $pars['cabinet'] .'</span>';
+                                    $data['pars_rendered'][$i] .= '<p><span class="wordup" title="Верхняя подгруппа. Преподаватель '. $pars['first_name'] .' '. $pars['patronymic'] .'">'. $pars['subject'] .'</span> <span class="clr">'. $pars['cabinet'] .'</span></p>';
                                 }
                                 if ($pars['type'] == 2)
                                 {
-                                    $data['pars_rendered'][$i] .= '<br><span class="wordbottom" title="Нижняя подгруппа. Преподаватель '. $pars['first_name'] .' '. $pars['patronymic'] .'">'. $pars['subject'] .'</span> <span class="clr_for_small">'. $pars['cabinet'] .'</span>';
+                                    $data['pars_rendered'][$i] .= '<p><span class="wordbottom" title="Нижняя подгруппа. Преподаватель '. $pars['first_name'] .' '. $pars['patronymic'] .'">'. $pars['subject'] .'</span> <span class="clr">'. $pars['cabinet'] .'</span></p>';
                                 }
                             }
                         }
