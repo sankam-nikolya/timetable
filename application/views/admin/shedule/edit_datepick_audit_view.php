@@ -19,13 +19,13 @@
         <?php endif?>
     <?php endif?>
     <div class="well">
-        <form class="form-horizontal" method="post" action="<?=base_url()?>index.php/admin_shedule/edit_shedule_view">
+        <form class="form-horizontal" method="post" action="<?=base_url()?>index.php/admin_shedule/edit_audit_view">
             <fieldset>
                 <div class="control-group">
                     <label class="control-label" for="reservation">Выберите дату:</label>
                     <div class="input-group" style="width: 350px">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                        <input type="text" class="form-control" name="datepick" <?php if (isset($_POST['datepick'])):?>value="<?=$_POST['datepick']?>"<?php endif?> id="reservation" />
+                        <input type="text" class="form-control" name="datepick" <?if (isset($_POST['datepick'])):?>value="<?=$_POST['datepick']?>"<?endif?> id="reservation" />
                         <div class="input-group-btn">
                             <input type="submit" class="btn btn-default">
                         </div><!-- /btn-group -->

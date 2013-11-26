@@ -14,7 +14,7 @@
                     <div class="col-6 col-sm-6 col-lg-4">
                         <h2>Нагрузка групп</h2>
                         <?php foreach ($short_group_num_pars as $item):?>
-                            <p><?=$item['name']?> - <?if ($item['pars'] < 36):?><span style="color: red"><?=$item['pars']?> пар (<?=$item['pars']*2?> часов)</span><?else:?><span style="color: green"><?=$item['pars']?> пар (<?=$item['pars']*2?> часов)</span><?endif?></p>
+                            <p><?=$item['name']?> - <?php if ($item['pars'] < 36):?><span style="color: red"><?=$item['pars']?> пар (<?=$item['pars']*2?> часов)</span><?php else:?><span style="color: green"><?=$item['pars']?> пар (<?=$item['pars']*2?> часов)</span><?php endif?></p>
                         <?php endforeach?>
                         <p><a class="btn btn-default" href="<?=base_url()?>admin/statistics#groups">Подробнее &rarr;</a></p>
                     </div>

@@ -50,17 +50,17 @@ class Shedule extends CI_Controller {
                         {
                             if ($pars['num']-1 == $i && $pars['type'] == 0)
                             {
-                                $data['pars_rendered'][$i] .= '<p><span title="Общая пара. Преподаватель '. $pars['first_name'] .' '. $pars['patronymic'] .'">'.$pars['subject'].'</span> <span class="clr">'. $pars['cabinet'] .'</span></p>';
+                                $data['pars_rendered'][$i] .= '<p><span title="Общая пара.">'.$pars['subject'].'</span> <span class="clr">'. $pars['cabinet'] .'</span></p>';
                             }
                             if ($pars['num']-1 == $i && ($pars['type'] == 1 || $pars['type'] == 2))
                             {
                                 if ($pars['type'] == 1)
                                 {
-                                    $data['pars_rendered'][$i] .= '<p><span class="wordup" title="Верхняя подгруппа. Преподаватель '. $pars['first_name'] .' '. $pars['patronymic'] .'">'. $pars['subject'] .'</span> <span class="clr">'. $pars['cabinet'] .'</span></p>';
+                                    $data['pars_rendered'][$i] .= '<p><span class="wordup" title="Верхняя подгруппа.">'. $pars['subject'] .'</span> <span class="clr">'. $pars['cabinet'] .'</span></p>';
                                 }
                                 if ($pars['type'] == 2)
                                 {
-                                    $data['pars_rendered'][$i] .= '<p><span class="wordbottom" title="Нижняя подгруппа. Преподаватель '. $pars['first_name'] .' '. $pars['patronymic'] .'">'. $pars['subject'] .'</span> <span class="clr">'. $pars['cabinet'] .'</span></p>';
+                                    $data['pars_rendered'][$i] .= '<p><span class="wordbottom" title="Нижняя подгруппа.">'. $pars['subject'] .'</span> <span class="clr">'. $pars['cabinet'] .'</span></p>';
                                 }
                             }
                         }

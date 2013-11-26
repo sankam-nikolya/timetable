@@ -10,7 +10,8 @@ class Statistics_model extends CI_Model {
         COUNT(subjects.idteacher) as 'pars',
         subjects.idteacher,
         teachers.first_name,
-        teachers.last_name
+        teachers.last_name,
+        teachers.patronymic
         FROM
         binding
         INNER JOIN subjects ON subjects.idsubects = binding.idsubjects
@@ -21,23 +22,7 @@ class Statistics_model extends CI_Model {
 
     function get_short_num_pars()
     {
-        $this->db->query("SET lc_time_names = 'ru_RU'");
-        $query = $this->db->query("
-        SELECT
-        Count(subjects.idteacher) AS pars,
-        subjects.idteacher,
-        teachers.first_name,
-        teachers.last_name,
-        teachers.patronymic
-        FROM
-        binding
-        INNER JOIN subjects ON subjects.idsubects = binding.idsubjects
-        INNER JOIN teachers ON teachers.idteacher = subjects.idteacher
-        INNER JOIN days ON days.iddays = binding.iddays
-        WHERE
-        days.date BETWEEN '2013-11-03' AND '2013-11-20'
-        GROUP BY teachers.idteacher");
-        return $query->result_array();
+
     }
 
     function get_group_num_pars()

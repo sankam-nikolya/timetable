@@ -13,9 +13,7 @@ lt.`num`,
 s.`name` AS 'subject',
 s.idsubects,
 c.`name` AS 'cabinet',
-binding.`type`,
-t.first_name,
-t.patronymic
+binding.`type`
 FROM
 binding
 LEFT JOIN cabinets AS c ON binding.idcabinets = c.idcabinets
@@ -23,7 +21,6 @@ INNER JOIN days AS d ON binding.iddays = d.iddays
 INNER JOIN groups AS g ON binding.idgroups = g.idgroups
 INNER JOIN lessons_time AS lt ON binding.idlessons_time = lt.idlessons_time
 INNER JOIN subjects AS s ON binding.idsubjects = s.idsubects
-INNER JOIN teachers AS t ON s.idteacher = t.idteacher
 WHERE
 d.date = '$day' AND g.idgroups = '$group'
 ORDER BY num,  binding.`type` ASC

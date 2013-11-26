@@ -4,29 +4,18 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-            $('.selectpicker').selectpicker('mobile');
-        }
-        else
-            $('.selectpicker').selectpicker({
-                width: '150'
-            })
+        $('.selectpicker').selectpicker()
     })
 </script>
-<style>
-    .table {
-        text-align: left;
-    }
-</style>
 
 <div class="container">
-    <form action="<?=base_url()?>index.php/admin_shedule/update_db_binding" method="post">
+    <form action="<?=base_url()?>index.php/admin_shedule/update_db_binding_audit" method="post">
         <?php foreach ($days as $day):?>
             <table class="table table-bordered">
                 <tbody>
                 <tr>
                     <td rowspan="3" style="vertical-align: middle">Группа</td>
-                    <td colspan="7" style="text-align: center; font-weight: bold;"><?=$day['formated_date']?></td>
+                    <td colspan="7" style="text-align: center; font-weight: bold;"><?=$day['date']?></td>
                 </tr>
                 <tr>
                     <?php foreach($timing as $item_num):?>
@@ -44,7 +33,7 @@
                         <?php foreach($timing as $item_timing):?>
                             <td>
                                 <select class="selectpicker" data-live-search="true" multiple name="binding_select[]">
-                                    <optgroup label="Общие пары">
+                                    <optgroup id="1" label="Общие пары">
                                         <?php foreach($bindingSubjectGroup as $item):?>
                                             <?php foreach ($item as $item1):?>
                                                 <?php if ($item1['idgroups'] == $group['idgroups']):?>
@@ -59,7 +48,7 @@
                                             <?php endforeach?>
                                         <?php endforeach?>
                                     </optgroup>
-                                    <optgroup label="1 подгруппа">
+                                    <optgroup id="2" label="1 подгруппа">
                                         <?php foreach($bindingSubjectGroup as $item):?>
                                             <?php foreach ($item as $item1):?>
                                                 <?php if ($item1['idgroups'] == $group['idgroups']):?>
@@ -74,7 +63,7 @@
                                             <?php endforeach?>
                                         <?php endforeach?>
                                     </optgroup>
-                                    <optgroup label="2 подгруппа">
+                                    <optgroup id="3" label="2 подгруппа">
                                         <?php foreach($bindingSubjectGroup as $item):?>
                                             <?php foreach ($item as $item1):?>
                                                 <?php if ($item1['idgroups'] == $group['idgroups']):?>
@@ -88,26 +77,6 @@
                                                 <?php endif?>
                                             <?php endforeach?>
                                         <?php endforeach?>
-                                    </optgroup>
-                                </select>
-                                <select class="selectpicker" name="binding_audit_select">
-                                    <optgroup label="Общие пары">
-                                        <option>123</option>
-                                        <option>123</option>
-                                        <option>123</option>
-                                        <option>123</option>
-                                    </optgroup>
-                                    <optgroup label="1 подгруппа">
-                                        <option>123</option>
-                                        <option>123</option>
-                                        <option>123</option>
-                                        <option>123</option>
-                                    </optgroup>
-                                    <optgroup label="2 подгруппа">
-                                        <option>123</option>
-                                        <option>123</option>
-                                        <option>123</option>
-                                        <option>123</option>
                                     </optgroup>
                                 </select>
                             </td>

@@ -44,9 +44,9 @@
                 type: 'pie',
                 name: 'Всего уроков',
                 data: [
-                    <?foreach ($num_pars as $item):?>
-                        ['<?=$item['first_name']; echo ' '.$item['last_name']?>', <?=$item['pars']?>],
-                    <?endforeach?>
+                    <?php foreach ($num_pars as $item):?>
+                        ['<?=$item['first_name']; echo ' '.$item['patronymic']?>', <?=$item['pars']?>],
+                    <?php endforeach?>
                 ]
             }]
         });

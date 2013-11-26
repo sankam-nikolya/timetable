@@ -44,8 +44,11 @@ $route['admin'] = "admin_shedule";
 $route['admin/shedule'] = "admin_shedule";
 $route['admin/shedule/add'] = "admin_shedule/add_datepick_view";
 $route['admin/shedule/edit'] = "admin_shedule/edit_datepick_view";
+$route['admin/audit/edit'] = "admin_shedule/edit_datepick_audit_view";
+$route['admin/teachers'] = "admin_shedule/teachers_list_view";
+$route['admin/subjects'] = "admin_shedule/subjects_list_view";
 $route['admin/announcements'] = "admin_shedule/announcements";
-$route['admin/statistics'] = "admin_shedule/statistics";
+$route['admin/statistics'] = "admin_statistics/statistics";
 //$route['404_override'] = '';
 
 
