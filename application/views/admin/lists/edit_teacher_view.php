@@ -42,9 +42,15 @@
         </div>
         <div class="input-group" style="padding-bottom: 20px">
             <span class="input-group-addon">Предметы</span>
-            <select class="form-control selectpicker" multiple name="subjects[]">
+            <select class="form-control selectpicker" multiple data-live-search="true" name="subjects[]">
                 <?php foreach ($subjects as $subject):?>
-                    <option value="<?=$subject['idsubects']?>"><?=$subject['name']?></option>
+                    <option
+                        <?php foreach ($bindingTeacherSubject as $bts):?>
+                            <?php if ($subject['idsubects'] == $bts['idSubject']):?>
+                                selected
+                            <?php endif?>
+                        <?php endforeach?>
+                        value="<?=$subject['idsubects']?>"><?=$subject['full_name']?></option>
                 <?php endforeach?>
             </select>
         </div>

@@ -4,7 +4,6 @@ class Admin_model extends CI_Model {
 
     function get_teachers()
     {
-        $this->db->query("SET lc_time_names = 'ru_RU'");
         $this->db->order_by('teachers.last_name');
         $this->db->order_by('teachers.first_name');
         $this->db->order_by('teachers.patronymic');
@@ -29,22 +28,23 @@ class Admin_model extends CI_Model {
 
     function get_groups()
     {
-        $this->db->query("SET lc_time_names = 'ru_RU'");
+        $this->db->order_by('order');
         $query = $this->db->get("groups");
         return $query->result_array();
     }
     function get_subjects()
     {
         $this->db->query("SET lc_time_names = 'ru_RU'");
+        $this->db->order_by('full_name');
         $query = $this->db->get("subjects");
         return $query->result_array();
     }
     function get_bindingSubjectGroup($id_group)
     {
         //TODO reformat to AR
-        $this->db->query("SET lc_time_names = 'ru_RU'");
         $query = $this->db->query("
         SELECT
+            DISTINCT
             groups.idgroups,
             groups.`name` AS `group`,
             subjects.idsubects AS idsubjects,
@@ -64,6 +64,7 @@ class Admin_model extends CI_Model {
     function get($from, $to)
     {
         $this->db->query("SET lc_time_names = 'ru_RU'");
+        $this->db->distinct();
         $this->db->select("
             iddays,
             date,
@@ -71,6 +72,7 @@ class Admin_model extends CI_Model {
             visibility
         ", FALSE);
         $this->db->where("date BETWEEN '$from' AND '$to'");
+        $this->db->order_by('date');
         $query = $this->db->get("days");
         return $query->result_array();
     }
@@ -102,6 +104,18 @@ class Admin_model extends CI_Model {
         return $this->db->get("binding")->result_array();
     }
 
+    function get_binding_TeacherSubject($idTeacher)
+    {
+        $this->db->where('idTeacher', $idTeacher);
+        return $this->db->get('BindingTeacherSubjects')->result_array();
+    }
+
+    function get_binding_SubjectGroup($idSubject)
+    {
+        $this->db->where('idSubject', $idSubject);
+        return $this->db->get('BindingSubjectGroup')->result_array();
+    }
+
     function delete_iddays_from_bidning($id)
     {
         $this->db->where('iddays', $id);
@@ -123,6 +137,32 @@ class Admin_model extends CI_Model {
     function insert_teacher($data)
     {
         $this->db->insert('teachers', $data);
+    }
+
+    function insert_binding_TeacherSubject($idTeacher, $idSubject)
+    {
+        $this->db->set('idTeacher', $idTeacher);
+        $this->db->set('idSubject', $idSubject);
+        $this->db->insert('BindingTeacherSubjects');
+    }
+
+    function insert_binding_SubjectGroup($idSubject, $idGroup)
+    {
+        $this->db->set('idSubject', $idSubject);
+        $this->db->set('idGroup', $idGroup);
+        $this->db->insert('BindingSubjectGroup');
+    }
+
+    function delete_binding_TeacherSubject($id_teacher)
+    {
+        $this->db->where('idTeacher', $id_teacher);
+        $this->db->delete('BindingTeacherSubjects');
+    }
+
+    function delete_binding_SubjectGroup($idSubject)
+    {
+        $this->db->where('idSubject', $idSubject);
+        $this->db->delete('BindingSubjectGroup');
     }
 
     function insert_subject($data)

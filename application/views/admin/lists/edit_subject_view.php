@@ -38,7 +38,13 @@
             <span class="input-group-addon">Группы</span>
             <select class="form-control selectpicker" multiple name="groups[]">
                 <?php foreach ($groups as $group):?>
-                    <option value="<?=$group['idgroups']?>"><?=$group['name']?></option>
+                    <option
+                        <?php foreach ($BindingSubjectGroup as $bsg):?>
+                            <?php if ($group['idgroups'] == $bsg['idGroup']):?>
+                                selected
+                            <?php endif?>
+                        <?php endforeach?>
+                        value="<?=$group['idgroups']?>"><?=$group['name']?></option>
                 <?php endforeach?>
             </select>
         </div>

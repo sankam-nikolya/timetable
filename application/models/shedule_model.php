@@ -76,6 +76,7 @@ ORDER BY num,  binding.`type` ASC
     {
         //TODO выводить группы в расписание из binding, а не из общего пула групп
         $this->db->where('active', 1);
+        $this->db->order_by('order');
         $query = $this ->db->get('groups');
         return $query->result_array();
     }

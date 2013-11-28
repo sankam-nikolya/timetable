@@ -1,18 +1,6 @@
-
 <script type="text/javascript" src="<?=base_url()?>js/bootstrap-select.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?=base_url()?>css/bootstrap-select.min.css">
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-            $('.selectpicker').selectpicker('mobile');
-        }
-        else
-            $('.selectpicker').selectpicker({
-                width: '150'
-            })
-    })
-</script>
 <style>
     .table {
         text-align: left;
@@ -90,26 +78,6 @@
                                         <?php endforeach?>
                                     </optgroup>
                                 </select>
-                                <select class="selectpicker" name="binding_audit_select">
-                                    <optgroup label="Общие пары">
-                                        <option>123</option>
-                                        <option>123</option>
-                                        <option>123</option>
-                                        <option>123</option>
-                                    </optgroup>
-                                    <optgroup label="1 подгруппа">
-                                        <option>123</option>
-                                        <option>123</option>
-                                        <option>123</option>
-                                        <option>123</option>
-                                    </optgroup>
-                                    <optgroup label="2 подгруппа">
-                                        <option>123</option>
-                                        <option>123</option>
-                                        <option>123</option>
-                                        <option>123</option>
-                                    </optgroup>
-                                </select>
                             </td>
                         <?php endforeach?>
                     </tr>
@@ -117,6 +85,17 @@
                 </tbody>
             </table>
         <?php endforeach?>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+                    $('.selectpicker').selectpicker('mobile');
+                }
+                else
+                    $('.selectpicker').selectpicker({
+                        width: '80'
+                    })
+            })
+        </script>
         <p><input type="submit" value="Обновить" class="btn btn-default"></p>
     </form>
 </div>

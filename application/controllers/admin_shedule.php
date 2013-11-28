@@ -4,29 +4,25 @@ class Admin_shedule extends CI_Controller {
 
     public function index()
     {
-        if ($this->tank_auth->get_user_id() == 1)
-        {
-            $this->load->model('statistics_model');
-            $data['short_num_pars'] = $this->statistics_model->get_short_num_pars();
-            $data['short_group_num_pars'] = $this->statistics_model->get_short_group_num_pars();
+        $this->load->model('statistics_model');
+        $data['short_num_pars'] = $this->statistics_model->get_short_num_pars();
+        $data['short_group_num_pars'] = $this->statistics_model->get_short_group_num_pars();
 
-            $this->load->view('admin/header_view');
-            $this->load->view('admin/menu_view');
-            $this->load->view('admin/shedule/index_view', $data);
+        $this->load->view('admin/header_view');
+        $this->load->view('admin/menu_view');
+        $this->load->view('admin/shedule/index_view', $data);
 
-            $this->load->view('footer_view');
-        }
+        $this->load->view('footer_view');
+
     }
 
     public function add_datepick_view()
     {
-        if ($this->tank_auth->get_user_id() == 1)
-        {
-            $this->load->view('admin/header_view');
-            $this->load->view('admin/menu_view');
-            $this->load->view('admin/shedule/add_datepick_view');
-            $this->load->view('footer_view');
-        }
+        $this->load->view('admin/header_view');
+        $this->load->view('admin/menu_view');
+        $this->load->view('admin/shedule/add_datepick_view');
+        $this->load->view('footer_view');
+
     }
 
     function add_shedule_view()
@@ -64,13 +60,18 @@ class Admin_shedule extends CI_Controller {
 
     function edit_datepick_view()
     {
-        if ($this->tank_auth->get_user_id() == 1)
-        {
-            $this->load->view('admin/header_view');
-            $this->load->view('admin/menu_view');
-            $this->load->view('admin/shedule/edit_datepick_view');
-            $this->load->view('footer_view');
-        }
+        $this->load->view('admin/header_view');
+        $this->load->view('admin/menu_view');
+        $this->load->view('admin/shedule/edit_datepick_view');
+        $this->load->view('footer_view');
+
+    }
+
+    public function test()
+    {
+        $this->load->view('admin/header_view');
+        $this->load->view('admin/menu_view');
+        echo '123';
     }
 
     function edit_shedule_view()
@@ -166,6 +167,7 @@ class Admin_shedule extends CI_Controller {
         $this->load->model('admin_model');
         $data['info'] = $this->admin_model->get_teacher_info($this->input->get('id'));
         $data['subjects'] = $this->admin_model->get_subjects();
+        $data['bindingTeacherSubject'] = $this->admin_model->get_binding_TeacherSubject($this->input->get('id'));
 
         $this->load->view('admin/header_view');
         $this->load->view('admin/menu_view');
@@ -197,6 +199,7 @@ class Admin_shedule extends CI_Controller {
         $this->load->model('admin_model');
         $data['info'] = $this->admin_model->get_subject_info($this->input->get('id'));
         $data['groups'] = $this->admin_model->get_groups();
+        $data['BindingSubjectGroup'] = $this->admin_model->get_binding_SubjectGroup($this->input->get('id'));
 
         $this->load->view('admin/header_view');
         $this->load->view('admin/menu_view');
@@ -226,6 +229,15 @@ class Admin_shedule extends CI_Controller {
             'active'    => $this->input->post('active')
         );
         $this->admin_model->update_subject($this->input->get('id'), $data);
+
+        $this->admin_model->delete_binding_SubjectGroup($this->input->get('id'));
+        if (isset($_POST['groups']))
+        {
+            foreach ($_POST['groups'] as $group)
+            {
+                $this->admin_model->insert_binding_SubjectGroup($this->input->get('id'), $group);
+            }
+        }
         header("Location: ".base_url().'admin/subjects/?response=success');
     }
 
@@ -260,6 +272,15 @@ class Admin_shedule extends CI_Controller {
             'visibility' => $this->input->post('visibility'),
         );
         $this->admin_model->update_teacher($this->input->get('id'), $data);
+
+        $this->admin_model->delete_binding_TeacherSubject($this->input->get('id'));
+        if (isset($_POST['subjects']))
+        {
+            foreach ($_POST['subjects'] as $subject)
+            {
+                $this->admin_model->insert_binding_TeacherSubject($this->input->get('id'), $subject);
+            }
+        }
         header("Location: ".base_url().'admin/teachers/?response=success');
     }
 
@@ -273,6 +294,7 @@ class Admin_shedule extends CI_Controller {
             'patronymic' => $this->input->post('patronymic'),
             'visibility' => $this->input->post('visibility'),
         );
+
         $this->admin_model->insert_teacher($data);
         header("Location: ".base_url().'admin/teachers/?response=success');
     }

@@ -23,19 +23,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="admin_shedule.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="admin_shedule.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/controllers/admin_shedule.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="283" column="54" selection-start="9812" selection-end="9812" vertical-scroll-proportion="-176.875" vertical-offset="0" max-vertical-offset="4515">
+            <state line="83" column="0" selection-start="2781" selection-end="2781" vertical-scroll-proportion="0.55641425" vertical-offset="885" max-vertical-offset="4845">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index_view.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/views/admin/shedule/index_view.php">
+      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="47" selection-start="655" selection-end="655" vertical-scroll-proportion="0.21293375" vertical-offset="75" max-vertical-offset="810">
+            <state line="29" column="0" selection-start="892" selection-end="892" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="3150">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header_view.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/admin/header_view.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="0" selection-start="390" selection-end="390" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="915">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit_view.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/admin/shedule/edit_view.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="97" column="17" selection-start="6753" selection-end="6753" vertical-scroll-proportion="0.0" vertical-offset="851" max-vertical-offset="1590">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="subjects_list_view.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/admin/lists/subjects_list_view.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="25" selection-start="928" selection-end="928" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="600">
               <folding />
             </state>
           </provider>
@@ -44,7 +71,7 @@
       <file leaf-file-name="edit_subject_view.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/admin/lists/edit_subject_view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="143" selection-start="600" selection-end="739" vertical-scroll-proportion="-4.8333335" vertical-offset="94" max-vertical-offset="780">
+            <state line="39" column="52" selection-start="2280" selection-end="2280" vertical-scroll-proportion="0.0" vertical-offset="223" max-vertical-offset="870">
               <folding />
             </state>
           </provider>
@@ -53,16 +80,7 @@
       <file leaf-file-name="admin_model.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/models/admin_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="140" column="43" selection-start="4146" selection-end="4146" vertical-scroll-proportion="-23.916666" vertical-offset="1526" max-vertical-offset="2235">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="edit_teacher_view.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/admin/lists/edit_teacher_view.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="58" selection-start="992" selection-end="992" vertical-scroll-proportion="-11.083333" vertical-offset="4" max-vertical-offset="870">
+            <state line="47" column="12" selection-start="1296" selection-end="1296" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="2835">
               <folding />
             </state>
           </provider>
@@ -78,29 +96,29 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/application/views/admin/lists/teachers_list_view.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/statistics_view.php" />
-        <option value="$PROJECT_DIR$/application/controllers/admin_statistics.php" />
-        <option value="$PROJECT_DIR$/application/config/routes.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/lists/subjects_list_view.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/menu_view.php" />
         <option value="$PROJECT_DIR$/application/views/admin/lists/add_subject_view.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/shedule/edit_view.php" />
+        <option value="$PROJECT_DIR$/application/models/statistics_model.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/shedule/index_view.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/lists/edit_subject_view.php" />
         <option value="$PROJECT_DIR$/application/controllers/shedule.php" />
         <option value="$PROJECT_DIR$/application/models/shedule_model.php" />
-        <option value="$PROJECT_DIR$/application/models/statistics_model.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/lists/edit_subject_view.php" />
-        <option value="$PROJECT_DIR$/application/controllers/admin_shedule.php" />
-        <option value="$PROJECT_DIR$/application/models/admin_model.php" />
         <option value="$PROJECT_DIR$/application/views/admin/lists/edit_teacher_view.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/shedule/index_view.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/lists/subjects_list_view.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/header_view.php" />
+        <option value="$PROJECT_DIR$/application/views/admin/shedule/edit_view.php" />
+        <option value="$PROJECT_DIR$/application/models/admin_model.php" />
+        <option value="$PROJECT_DIR$/.htaccess" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/application/config/config.php" />
+        <option value="$PROJECT_DIR$/application/config/database.php" />
+        <option value="$PROJECT_DIR$/application/controllers/admin_shedule.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="460" />
-    <option name="y" value="157" />
+    <option name="x" value="360" />
+    <option name="y" value="114" />
     <option name="width" value="1440" />
     <option name="height" value="817" />
   </component>
@@ -146,48 +164,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="nrasp.ru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nrasp.ru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nrasp.ru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nrasp.ru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nrasp.ru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fonts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nrasp.ru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nrasp.ru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -333,6 +309,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nrasp.ru" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nrasp.ru" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -342,14 +336,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="preferences.general" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/js" />
       <recent name="$PROJECT_DIR$/css" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/js" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/application/views/admin/shedule" />
@@ -381,15 +375,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="460" y="157" width="1440" height="817" extended-state="0" />
-    <editor active="true" />
+    <frame x="360" y="114" width="1440" height="817" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20659971" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21162124" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -416,119 +410,96 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/views/admin/lists/add_teacher_view.php">
+    <entry file="file://$PROJECT_DIR$/application/views/admin/shedule/index_view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="71" selection-start="0" selection-end="2174" vertical-scroll-proportion="0.84615386" vertical-offset="87" max-vertical-offset="735">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/lists/add_subject_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="14" selection-start="1633" selection-end="1633" vertical-scroll-proportion="-18.75" vertical-offset="0" max-vertical-offset="705">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#form#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/shedule/edit_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="26" selection-start="486" selection-end="486" vertical-scroll-proportion="0.26025236" vertical-offset="0" max-vertical-offset="1905">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/config/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="60" selection-start="1865" selection-end="1865" vertical-scroll-proportion="0.7588872" vertical-offset="229" max-vertical-offset="915">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/lists/subjects_list_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="83" selection-start="608" selection-end="608" vertical-scroll-proportion="0.3548896" vertical-offset="0" max-vertical-offset="634">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/shedule.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="33" selection-start="2831" selection-end="2831" vertical-scroll-proportion="-25.0" vertical-offset="345" max-vertical-offset="1320">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/statistics_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="8" selection-start="723" selection-end="723" vertical-scroll-proportion="0.16228747" vertical-offset="255" max-vertical-offset="975">
-          <folding />
-        </state>
+        <state line="14" column="47" selection-start="655" selection-end="655" vertical-scroll-proportion="0.21293375" vertical-offset="75" max-vertical-offset="810" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/shedule_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="14" selection-start="383" selection-end="383" vertical-scroll-proportion="0.23659305" vertical-offset="75" max-vertical-offset="1305">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/admin_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="43" selection-start="4146" selection-end="4146" vertical-scroll-proportion="-23.916666" vertical-offset="1526" max-vertical-offset="2235">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/lists/edit_subject_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="143" selection-start="600" selection-end="739" vertical-scroll-proportion="-4.8333335" vertical-offset="94" max-vertical-offset="780">
-          <folding />
-        </state>
+        <state line="78" column="37" selection-start="2554" selection-end="2554" vertical-scroll-proportion="0.7870662" vertical-offset="671" max-vertical-offset="1320" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/lists/edit_teacher_view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="58" selection-start="992" selection-end="992" vertical-scroll-proportion="-11.083333" vertical-offset="4" max-vertical-offset="870">
+        <state line="47" column="72" selection-start="2742" selection-end="2742" vertical-scroll-proportion="0.6282051" vertical-offset="313" max-vertical-offset="960" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/shedule.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="33" selection-start="2502" selection-end="2502" vertical-scroll-proportion="0.4258675" vertical-offset="615" max-vertical-offset="1320" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/autoload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.625966" vertical-offset="405" max-vertical-offset="1815" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="30" selection-start="88" selection-end="88" vertical-scroll-proportion="0.067064084" vertical-offset="0" max-vertical-offset="671" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/email.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="648" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="313" column="44" selection-start="11257" selection-end="11257" vertical-scroll-proportion="-0.3221154" vertical-offset="4896" max-vertical-offset="5520" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="34" selection-start="2883" selection-end="2883" vertical-scroll-proportion="0.59134614" vertical-offset="486" max-vertical-offset="1110" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/admin_shedule.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="0" selection-start="2781" selection-end="2781" vertical-scroll-proportion="0.55641425" vertical-offset="885" max-vertical-offset="4845">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="0" selection-start="892" selection-end="892" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="3150">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/header_view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="390" selection-end="390" vertical-scroll-proportion="-0.1829653" vertical-offset="281" max-vertical-offset="915">
+        <state line="11" column="0" selection-start="390" selection-end="390" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="915">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/menu_view.php">
+    <entry file="file://$PROJECT_DIR$/application/views/admin/shedule/edit_view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="22" selection-start="485" selection-end="487" vertical-scroll-proportion="-0.073891625" vertical-offset="180" max-vertical-offset="960">
+        <state line="97" column="17" selection-start="6753" selection-end="6753" vertical-scroll-proportion="0.0" vertical-offset="851" max-vertical-offset="1590">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/admin_shedule.php">
+    <entry file="file://$PROJECT_DIR$/application/views/admin/lists/subjects_list_view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="283" column="54" selection-start="9812" selection-end="9812" vertical-scroll-proportion="-176.875" vertical-offset="0" max-vertical-offset="4515">
+        <state line="19" column="25" selection-start="928" selection-end="928" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="600">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/statistics_view.php">
+    <entry file="file://$PROJECT_DIR$/application/views/admin/lists/edit_subject_view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1635">
+        <state line="39" column="52" selection-start="2280" selection-end="2280" vertical-scroll-proportion="0.0" vertical-offset="223" max-vertical-offset="870">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/shedule/index_view.php">
+    <entry file="file://$PROJECT_DIR$/application/models/admin_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="47" selection-start="655" selection-end="655" vertical-scroll-proportion="0.21293375" vertical-offset="75" max-vertical-offset="810">
+        <state line="47" column="12" selection-start="1296" selection-end="1296" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="2835">
           <folding />
         </state>
       </provider>
