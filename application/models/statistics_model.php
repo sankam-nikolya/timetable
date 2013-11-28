@@ -4,25 +4,44 @@ class Statistics_model extends CI_Model {
 
     function get_num_pars()
     {
-        $this->db->query("SET lc_time_names = 'ru_RU'");
-        $query = $this->db->query("
-        SELECT
-        COUNT(subjects.idteacher) as 'pars',
-        subjects.idteacher,
-        teachers.first_name,
-        teachers.last_name,
-        teachers.patronymic
-        FROM
-        binding
-        INNER JOIN subjects ON subjects.idsubects = binding.idsubjects
-        INNER JOIN teachers ON teachers.idteacher = subjects.idteacher
-        GROUP BY teachers.idteacher");
-        return $query->result_array();
+        $this->db->select("
+            teachers.idteacher,
+            teachers.first_name,
+            teachers.last_name,
+            teachers.patronymic,
+            count(subjects.idsubects) as 'pars'
+        ");
+
+        $this->db->join("binding", "subjects.idsubects = binding.idsubjects");
+        $this->db->join("days", "binding.iddays = days.iddays");
+        $this->db->join("BindingTeacherSubjects", "subjects.idsubects = BindingTeacherSubjects.idSubject");
+        $this->db->join("teachers", "teachers.idteacher = BindingTeacherSubjects.idSubject");
+        $this->db->group_by('teachers.idteacher');
+        return $this->db->get("subjects")->result_array();
     }
 
     function get_short_num_pars()
     {
+        $monThis = date("Y-m-d", time() - (date("N") - 1) * 24 * 60 * 60);
+        $sunThis = date("Y-m-d", time() - (-6 + date("N") - 1) * 24 * 60 * 60);
 
+        $this->db->select("
+            teachers.idteacher,
+            teachers.first_name,
+            teachers.last_name,
+            teachers.patronymic,
+            count(subjects.idsubects) as 'pars'
+        ");
+
+        $this->db->join("binding", "subjects.idsubects = binding.idsubjects");
+        $this->db->join("days", "binding.iddays = days.iddays");
+        $this->db->join("BindingTeacherSubjects", "subjects.idsubects = BindingTeacherSubjects.idSubject");
+        $this->db->join("teachers", "teachers.idteacher = BindingTeacherSubjects.idSubject");
+
+        $this->db->where('days.date BETWEEN ', '"'.$monThis.'" AND "'.$sunThis.'"', FALSE);
+        $this->db->group_by('teachers.idteacher');
+
+        return $this->db->get("subjects")->result_array();
     }
 
     function get_group_num_pars()
@@ -43,18 +62,21 @@ class Statistics_model extends CI_Model {
 
     function get_short_group_num_pars()
     {
-        $this->db->query("SET lc_time_names = 'ru_RU'");
-        $query = $this->db->query("
-        SELECT
-        Count(groups.idgroups)  as 'pars',
-        groups.`name`
-        FROM
-        binding
-        INNER JOIN subjects ON subjects.idsubects = binding.idsubjects
-        INNER JOIN days ON days.iddays = binding.iddays
-        INNER JOIN groups ON groups.idgroups = binding.idgroups
-        WHERE
-        days.date BETWEEN '2013-11-03' AND '2013-11-20'");
-        return $query->result_array();
+        $monThis = date("Y-m-d", time() - (date("N") - 1) * 24 * 60 * 60);
+        $sunThis = date("Y-m-d", time() - (-6 + date("N") - 1) * 24 * 60 * 60);
+
+        $this->db->select("
+            Count(groups.idgroups) as 'pars',
+            groups.`name`
+        ");
+
+        $this->db->join("subjects", "subjects.idsubects = binding.idsubjects");
+        $this->db->join("days", "days.iddays = binding.iddays");
+        $this->db->join("groups", "groups.idgroups = binding.idgroups");
+
+        $this->db->where('days.date BETWEEN', '"'.$monThis.'" AND "'.$sunThis.'"', FALSE);
+        $this->db->group_by('groups.idgroups');
+
+        return $this->db->get("binding")->result_array();
     }
 }

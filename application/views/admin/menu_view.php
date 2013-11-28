@@ -23,9 +23,6 @@
                         <li <?php if ($this->uri->rsegment(1) == "admin_shedule" && ($this->uri->rsegment(2) == "edit_datepick_view" || $this->uri->rsegment(2) == "edit_shedule_view")):?>class="active"<?php endif?>>
                             <a href="<?=base_url()?>admin/shedule/edit">Редактировать</a>
                         </li>
-                        <li <?php if ($this->uri->rsegment(1) == "admin_shedule" && ($this->uri->rsegment(2) == "edit_datepick_audit_view" || $this->uri->rsegment(2) == "edit_audit_view")):?>class="active"<?php endif?>>
-                            <a href="<?=base_url()?>admin/audit/edit">Кабинеты</a>
-                        </li>
                         <li class="divider"></li>
                         <li role="presentation" class="dropdown-header">Редактировать списки</li>
                         <li
