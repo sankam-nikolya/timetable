@@ -2,7 +2,7 @@
 
 class Shedule extends CI_Controller {
 
-    public function index()
+    function index()
     {
         date_default_timezone_set('Asia/Yekaterinburg');
         setlocale(LC_ALL, 'ru_RU.UTF-8');
@@ -24,7 +24,6 @@ class Shedule extends CI_Controller {
         {
             $this->load->view('header_view');
             $this->load->view('menu_view');
-            $this->load->view('time_view');
 
             $this->load->model('shedule_model');
 
