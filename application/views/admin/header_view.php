@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="<?=base_url()?>css/style.css">
     <script type="text/javascript" src="<?=base_url()?>js/jquery-1.10.2.min.js"></script>
     <script src="<?=base_url()?>js/bootstrap.min.js"></script>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
 
     <style type="text/css">
         footer {
@@ -49,6 +50,9 @@
             font-family: 'Glyphicons Halflings';
             src: url('<?=base_url()?>fonts/glyphicons-halflings-regular.eot');
             src: url('<?=base_url()?>fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('<?=base_url()?>fonts/glyphicons-halflings-regular.woff') format('woff'), url('<?=base_url()?>fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('<?=base_url()?>fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg')
+        }
+        body {
+            font-family: "Open Sans", sans-serif;
         }
     </style>
 

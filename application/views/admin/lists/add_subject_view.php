@@ -29,14 +29,6 @@
                 <option value="0" <?php if (isset($info) && $info[0]['active'] == 0):?>selected<?php endif?>>Не активный</option>
             </select>
         </div>
-        <div class="input-group" style="padding-bottom: 20px">
-            <span class="input-group-addon">Предметы</span>
-            <select class="form-control selectpicker" multiple name="subjects[]">
-                <?php foreach ($groups as $group):?>
-                    <option value="<?=$group['idgroups']?>"><?=$group['name']?></option>
-                <?php endforeach?>
-            </select>
-        </div>
         <p><input type="submit" class="btn btn-primary" value="Добавить"></p>
     </form>
 </div>

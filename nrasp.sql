@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50170
 File Encoding         : 65001
 
-Date: 2013-11-29 10:59:57
+Date: 2013-12-23 21:48:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -55,7 +55,7 @@ CREATE TABLE `binding` (
   CONSTRAINT `binding_ibfk_3` FOREIGN KEY (`idlessons_time`) REFERENCES `lessons_time` (`idlessons_time`),
   CONSTRAINT `binding_ibfk_4` FOREIGN KEY (`idsubjects`) REFERENCES `subjects` (`idsubects`),
   CONSTRAINT `binding_ibfk_5` FOREIGN KEY (`idcabinets`) REFERENCES `cabinets` (`idcabinets`)
-) ENGINE=InnoDB AUTO_INCREMENT=453 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=623 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of binding
@@ -185,6 +185,99 @@ INSERT INTO `binding` VALUES ('449', '18', '3', '4', '76', null, '0');
 INSERT INTO `binding` VALUES ('450', '18', '3', '5', '4', null, '0');
 INSERT INTO `binding` VALUES ('451', '18', '3', '6', '81', null, '0');
 INSERT INTO `binding` VALUES ('452', '18', '3', '7', '35', null, '0');
+INSERT INTO `binding` VALUES ('511', '105', '2', '1', '11', null, '0');
+INSERT INTO `binding` VALUES ('512', '105', '2', '2', '12', null, '0');
+INSERT INTO `binding` VALUES ('513', '105', '2', '3', '1', null, '0');
+INSERT INTO `binding` VALUES ('514', '105', '2', '4', '14', null, '0');
+INSERT INTO `binding` VALUES ('515', '105', '6', '5', '33', null, '0');
+INSERT INTO `binding` VALUES ('516', '105', '6', '6', '32', null, '0');
+INSERT INTO `binding` VALUES ('517', '105', '6', '7', '32', null, '0');
+INSERT INTO `binding` VALUES ('552', '104', '2', '2', '4', null, '1');
+INSERT INTO `binding` VALUES ('553', '104', '2', '2', '16', null, '2');
+INSERT INTO `binding` VALUES ('554', '104', '2', '3', '5', null, '0');
+INSERT INTO `binding` VALUES ('555', '104', '2', '4', '16', null, '1');
+INSERT INTO `binding` VALUES ('556', '104', '2', '4', '4', null, '2');
+INSERT INTO `binding` VALUES ('557', '104', '5', '1', '6', null, '0');
+INSERT INTO `binding` VALUES ('558', '104', '5', '2', '1', null, '0');
+INSERT INTO `binding` VALUES ('559', '104', '5', '3', '1', null, '0');
+INSERT INTO `binding` VALUES ('560', '104', '5', '4', '5', null, '0');
+INSERT INTO `binding` VALUES ('561', '104', '6', '4', '29', null, '0');
+INSERT INTO `binding` VALUES ('562', '104', '6', '5', '4', null, '0');
+INSERT INTO `binding` VALUES ('563', '104', '6', '6', '32', null, '0');
+INSERT INTO `binding` VALUES ('564', '104', '6', '7', '32', null, '0');
+INSERT INTO `binding` VALUES ('565', '104', '7', '1', '1', null, '0');
+INSERT INTO `binding` VALUES ('566', '104', '7', '2', '7', null, '0');
+INSERT INTO `binding` VALUES ('567', '104', '7', '3', '4', null, '0');
+INSERT INTO `binding` VALUES ('568', '104', '7', '4', '1', null, '0');
+INSERT INTO `binding` VALUES ('569', '104', '8', '5', '57', null, '1');
+INSERT INTO `binding` VALUES ('570', '104', '8', '5', '56', null, '2');
+INSERT INTO `binding` VALUES ('571', '104', '8', '6', '56', null, '1');
+INSERT INTO `binding` VALUES ('572', '104', '8', '6', '59', null, '2');
+INSERT INTO `binding` VALUES ('573', '104', '8', '7', '59', null, '1');
+INSERT INTO `binding` VALUES ('574', '104', '8', '7', '56', null, '2');
+INSERT INTO `binding` VALUES ('575', '104', '3', '5', '77', null, '0');
+INSERT INTO `binding` VALUES ('576', '104', '3', '6', '81', null, '0');
+INSERT INTO `binding` VALUES ('577', '104', '3', '7', '81', null, '0');
+INSERT INTO `binding` VALUES ('578', '103', '2', '1', '6', null, '0');
+INSERT INTO `binding` VALUES ('579', '103', '2', '2', '14', null, '1');
+INSERT INTO `binding` VALUES ('580', '103', '2', '2', '3', null, '2');
+INSERT INTO `binding` VALUES ('581', '103', '2', '3', '3', null, '1');
+INSERT INTO `binding` VALUES ('582', '103', '2', '3', '14', null, '2');
+INSERT INTO `binding` VALUES ('583', '103', '2', '4', '1', null, '0');
+INSERT INTO `binding` VALUES ('584', '103', '5', '1', '12', null, '0');
+INSERT INTO `binding` VALUES ('585', '103', '5', '2', '12', null, '0');
+INSERT INTO `binding` VALUES ('586', '103', '5', '3', '9', null, '0');
+INSERT INTO `binding` VALUES ('587', '103', '5', '4', '9', null, '0');
+INSERT INTO `binding` VALUES ('588', '103', '6', '5', '27', null, '0');
+INSERT INTO `binding` VALUES ('589', '103', '6', '6', '27', null, '0');
+INSERT INTO `binding` VALUES ('590', '103', '6', '7', '27', null, '0');
+INSERT INTO `binding` VALUES ('591', '103', '7', '1', '40', null, '1');
+INSERT INTO `binding` VALUES ('592', '103', '7', '1', '3', null, '2');
+INSERT INTO `binding` VALUES ('593', '103', '7', '2', '7', null, '0');
+INSERT INTO `binding` VALUES ('594', '103', '7', '3', '44', null, '0');
+INSERT INTO `binding` VALUES ('595', '103', '7', '4', '3', null, '1');
+INSERT INTO `binding` VALUES ('596', '103', '7', '4', '40', null, '2');
+INSERT INTO `binding` VALUES ('597', '103', '8', '1', '57', null, '2');
+INSERT INTO `binding` VALUES ('598', '103', '8', '2', '58', null, '1');
+INSERT INTO `binding` VALUES ('599', '103', '8', '2', '57', null, '2');
+INSERT INTO `binding` VALUES ('600', '103', '8', '3', '57', null, '1');
+INSERT INTO `binding` VALUES ('601', '103', '8', '4', '57', null, '0');
+INSERT INTO `binding` VALUES ('602', '103', '8', '5', '57', null, '0');
+INSERT INTO `binding` VALUES ('603', '103', '1', '6', '73', null, '1');
+INSERT INTO `binding` VALUES ('604', '103', '1', '6', '68', null, '2');
+INSERT INTO `binding` VALUES ('605', '103', '1', '7', '68', null, '1');
+INSERT INTO `binding` VALUES ('606', '103', '1', '7', '73', null, '2');
+INSERT INTO `binding` VALUES ('607', '103', '3', '3', '77', null, '0');
+INSERT INTO `binding` VALUES ('608', '103', '3', '4', '77', null, '0');
+INSERT INTO `binding` VALUES ('609', '103', '3', '5', '3', null, '0');
+INSERT INTO `binding` VALUES ('610', '103', '3', '6', '1', null, '0');
+INSERT INTO `binding` VALUES ('618', '109', '2', '1', '4', null, '0');
+INSERT INTO `binding` VALUES ('619', '109', '2', '2', '6', null, '0');
+INSERT INTO `binding` VALUES ('620', '109', '2', '3', '6', null, '0');
+INSERT INTO `binding` VALUES ('621', '109', '5', '1', '5', null, '0');
+INSERT INTO `binding` VALUES ('622', '109', '5', '2', '9', null, '0');
+
+-- ----------------------------
+-- Table structure for `BindingDayGroupEvent`
+-- ----------------------------
+DROP TABLE IF EXISTS `BindingDayGroupEvent`;
+CREATE TABLE `BindingDayGroupEvent` (
+  `idBindingDayGroupEvent` int(11) NOT NULL AUTO_INCREMENT,
+  `idDay` int(11) DEFAULT NULL,
+  `idGroup` int(11) DEFAULT NULL,
+  `txtEvent` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`idBindingDayGroupEvent`),
+  KEY `idDay` (`idDay`),
+  KEY `idGroup` (`idGroup`),
+  CONSTRAINT `bindingdaygroupevent_ibfk_1` FOREIGN KEY (`idDay`) REFERENCES `days` (`iddays`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `bindingdaygroupevent_ibfk_2` FOREIGN KEY (`idGroup`) REFERENCES `groups` (`idgroups`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of BindingDayGroupEvent
+-- ----------------------------
+INSERT INTO `BindingDayGroupEvent` VALUES ('1', '30', '1', '123');
+INSERT INTO `BindingDayGroupEvent` VALUES ('2', '30', '2', '456');
 
 -- ----------------------------
 -- Table structure for `BindingSubjectGroup`
@@ -344,7 +437,7 @@ CREATE TABLE `BindingTeacherSubjects` (
   KEY `idTeacher` (`idTeacher`),
   CONSTRAINT `bindingteachersubjects_ibfk_1` FOREIGN KEY (`idSubject`) REFERENCES `subjects` (`idsubects`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `bindingteachersubjects_ibfk_2` FOREIGN KEY (`idTeacher`) REFERENCES `teachers` (`idteacher`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of BindingTeacherSubjects
@@ -371,14 +464,6 @@ INSERT INTO `BindingTeacherSubjects` VALUES ('34', '12', '29');
 INSERT INTO `BindingTeacherSubjects` VALUES ('35', '12', '31');
 INSERT INTO `BindingTeacherSubjects` VALUES ('36', '12', '33');
 INSERT INTO `BindingTeacherSubjects` VALUES ('37', '12', '77');
-INSERT INTO `BindingTeacherSubjects` VALUES ('38', '18', '44');
-INSERT INTO `BindingTeacherSubjects` VALUES ('39', '18', '46');
-INSERT INTO `BindingTeacherSubjects` VALUES ('40', '18', '49');
-INSERT INTO `BindingTeacherSubjects` VALUES ('41', '18', '55');
-INSERT INTO `BindingTeacherSubjects` VALUES ('42', '18', '56');
-INSERT INTO `BindingTeacherSubjects` VALUES ('43', '18', '68');
-INSERT INTO `BindingTeacherSubjects` VALUES ('44', '18', '69');
-INSERT INTO `BindingTeacherSubjects` VALUES ('45', '18', '71');
 INSERT INTO `BindingTeacherSubjects` VALUES ('46', '14', '25');
 INSERT INTO `BindingTeacherSubjects` VALUES ('47', '14', '75');
 INSERT INTO `BindingTeacherSubjects` VALUES ('48', '14', '81');
@@ -427,6 +512,14 @@ INSERT INTO `BindingTeacherSubjects` VALUES ('95', '6', '9');
 INSERT INTO `BindingTeacherSubjects` VALUES ('96', '6', '27');
 INSERT INTO `BindingTeacherSubjects` VALUES ('97', '6', '35');
 INSERT INTO `BindingTeacherSubjects` VALUES ('98', '13', '24');
+INSERT INTO `BindingTeacherSubjects` VALUES ('106', '18', '55');
+INSERT INTO `BindingTeacherSubjects` VALUES ('107', '18', '68');
+INSERT INTO `BindingTeacherSubjects` VALUES ('108', '18', '49');
+INSERT INTO `BindingTeacherSubjects` VALUES ('109', '18', '44');
+INSERT INTO `BindingTeacherSubjects` VALUES ('110', '18', '56');
+INSERT INTO `BindingTeacherSubjects` VALUES ('111', '18', '69');
+INSERT INTO `BindingTeacherSubjects` VALUES ('112', '18', '46');
+INSERT INTO `BindingTeacherSubjects` VALUES ('113', '18', '71');
 
 -- ----------------------------
 -- Table structure for `cabinets`
@@ -468,15 +561,7 @@ CREATE TABLE `ci_sessions` (
 -- ----------------------------
 -- Records of ci_sessions
 -- ----------------------------
-INSERT INTO `ci_sessions` VALUES ('0146abd2e6cdb1b33b1a527d872cb5ec', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0', '1385700482', 0x613A363A7B733A393A22757365725F64617461223B733A303A22223B733A383A226964656E74697479223B733A31353A2261646D696E4061646D696E2E636F6D223B733A383A22757365726E616D65223B733A31333A2261646D696E6973747261746F72223B733A353A22656D61696C223B733A31353A2261646D696E4061646D696E2E636F6D223B733A373A22757365725F6964223B733A313A2231223B733A31343A226F6C645F6C6173745F6C6F67696E223B733A31303A2231333835363438343538223B7D);
-INSERT INTO `ci_sessions` VALUES ('0a75af189535051f980c23d92d85ae9e', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0', '1385650902', 0x613A353A7B733A383A226964656E74697479223B733A31353A2261646D696E4061646D696E2E636F6D223B733A383A22757365726E616D65223B733A31333A2261646D696E6973747261746F72223B733A353A22656D61696C223B733A31353A2261646D696E4061646D696E2E636F6D223B733A373A22757365725F6964223B733A313A2231223B733A31343A226F6C645F6C6173745F6C6F67696E223B733A31303A2231323638383839383233223B7D);
-INSERT INTO `ci_sessions` VALUES ('441797e6514bb6c2c90374acf21fe740', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0', '1385649313', '');
-INSERT INTO `ci_sessions` VALUES ('6b28b4a3528c9601c602111ef37aa392', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0', '1385699755', '');
-INSERT INTO `ci_sessions` VALUES ('8be8f609a9dad3d14c15580e07082a30', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0', '1385648848', '');
-INSERT INTO `ci_sessions` VALUES ('d391ffa3f053f8b7f5ae04970c4479a5', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0', '1385648866', '');
-INSERT INTO `ci_sessions` VALUES ('f9af9de01f5b41b640fb6b97d0d22310', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0', '1385650712', 0x613A313A7B733A393A22757365725F64617461223B733A303A22223B7D);
-INSERT INTO `ci_sessions` VALUES ('fd11a92ff0322751517d7f35a17d5151', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0', '1385649774', '');
-INSERT INTO `ci_sessions` VALUES ('fd2f33e6f97cb8a1899c98902c68056c', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0', '1385648917', '');
+INSERT INTO `ci_sessions` VALUES ('f435a2713668598970d19be4eb52eb45', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36', '1387812967', 0x613A363A7B733A393A22757365725F64617461223B733A303A22223B733A383A226964656E74697479223B733A31353A2261646D696E4061646D696E2E636F6D223B733A383A22757365726E616D65223B733A31333A2261646D696E6973747261746F72223B733A353A22656D61696C223B733A31353A2261646D696E4061646D696E2E636F6D223B733A373A22757365725F6964223B733A313A2231223B733A31343A226F6C645F6C6173745F6C6F67696E223B733A31303A2231333835383839373338223B7D);
 
 -- ----------------------------
 -- Table structure for `days`
@@ -487,7 +572,7 @@ CREATE TABLE `days` (
   `date` date DEFAULT NULL,
   `visibility` tinyint(4) DEFAULT '1',
   PRIMARY KEY (`iddays`)
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of days
@@ -520,6 +605,18 @@ INSERT INTO `days` VALUES ('57', '2013-12-11', '1');
 INSERT INTO `days` VALUES ('94', '2013-12-12', '1');
 INSERT INTO `days` VALUES ('97', '2013-12-09', '1');
 INSERT INTO `days` VALUES ('102', '2013-12-14', '1');
+INSERT INTO `days` VALUES ('103', '2013-12-02', '1');
+INSERT INTO `days` VALUES ('104', '2013-12-03', '1');
+INSERT INTO `days` VALUES ('105', '2013-12-04', '1');
+INSERT INTO `days` VALUES ('106', '2013-12-05', '1');
+INSERT INTO `days` VALUES ('107', '2013-12-06', '1');
+INSERT INTO `days` VALUES ('108', '2013-12-07', '1');
+INSERT INTO `days` VALUES ('109', '2013-12-23', '1');
+INSERT INTO `days` VALUES ('110', '2013-12-24', '1');
+INSERT INTO `days` VALUES ('111', '2013-12-25', '1');
+INSERT INTO `days` VALUES ('112', '2013-12-26', '1');
+INSERT INTO `days` VALUES ('113', '2013-12-27', '1');
+INSERT INTO `days` VALUES ('114', '2013-12-28', '1');
 
 -- ----------------------------
 -- Table structure for `groups`
@@ -591,7 +688,7 @@ CREATE TABLE `ion_users` (
 -- ----------------------------
 -- Records of ion_users
 -- ----------------------------
-INSERT INTO `ion_users` VALUES ('1', 0x7F000001, 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', '73266c5a9eb6c9b02d0bd18fcc0ff10deaa3ddfc', '1385648327', '9d029802e28cd9c768e8e62277c0df49ec65c48c', '1268889823', '1385699625', '1', 'Admin', 'istrator', 'ADMIN', '0');
+INSERT INTO `ion_users` VALUES ('1', 0x7F000001, 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', '73266c5a9eb6c9b02d0bd18fcc0ff10deaa3ddfc', '1385648327', '9d029802e28cd9c768e8e62277c0df49ec65c48c', '1268889823', '1387806499', '1', 'Admin', 'istrator', 'ADMIN', '0');
 
 -- ----------------------------
 -- Table structure for `ion_users_groups`

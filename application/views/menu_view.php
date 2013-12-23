@@ -13,6 +13,15 @@
             <ul class="nav navbar-nav">
                 <a class="navbar-brand" href="<?=base_url()?>">Расписание</a>
                 <li><a href="http://xn--j1ajdidf.xn--p1ai/">ПФУРТК</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Фильтр<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?base_url()?>?filter=currently">Актуально</a></li>
+                        <li><a href="<?base_url()?>?filter=all_day">Все дни</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Выбрать диапозон</a></li>
+                    </ul>
+                </li>
             </ul>
             <ul class="nav navbar-nav pull-right">
                 <li><a href="<?=base_url()?>admin">Админ</a></li>

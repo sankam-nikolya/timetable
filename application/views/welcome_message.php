@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Welcome to CodeIgniter</title>
-
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<style type="text/css">
 
 	::selection{ background-color: #E13300; color: white; }
@@ -63,6 +63,12 @@
 		-webkit-box-shadow: 0 0 8px #D0D0D0;
 	}
 	</style>
+    <script>
+        function set()
+        {
+            document.getElementById("1").append("<option>123</option>")
+        }
+    </script>
 </head>
 <body>
 
@@ -70,6 +76,8 @@
 	<h1>Welcome to CodeIgniter!</h1>
 
 	<div id="body">
+        <select id="1" onclick="set()">
+        </select>
 		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
 
 		<p>If you would like to edit this page you'll find it located at:</p>

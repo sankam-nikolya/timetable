@@ -9,12 +9,16 @@
 
     <script src="<?=base_url()?>js/jquery.min.js"></script>
     <script src="<?=base_url()?>js/bootstrap.js"></script>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
 
     <style>
         @font-face {
             font-family: 'Glyphicons Halflings';
             src: url('<?=base_url()?>fonts/glyphicons-halflings-regular.eot');
             src: url('<?=base_url()?>fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('<?=base_url()?>fonts/glyphicons-halflings-regular.woff') format('woff'), url('<?=base_url()?>fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('<?=base_url()?>fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg')
+        }
+        body {
+            font-family: "Open Sans", sans-serif;
         }
     </style>
 

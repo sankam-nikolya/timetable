@@ -38,7 +38,7 @@
                         <td><?=$group['name']?></td>
                         <?php foreach($timing as $item_timing):?>
                             <td>
-                                <select class="selectpicker" data-live-search="true" multiple name="binding_select[]">
+                                <select class="selectpicker" multiple name="binding_select[]">
                                     <optgroup label="Общие пары">
                                         <?php foreach($bindingSubjectGroup as $item):?>
                                             <?php foreach ($item as $item1):?>

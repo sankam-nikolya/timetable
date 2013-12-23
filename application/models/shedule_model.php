@@ -13,11 +13,7 @@ class Shedule_model extends CI_Model {
             s.`name` AS `subject`,
             s.idsubects,
             c.`name` AS cabinet,
-            binding.type,
-            teachers.first_name,
-            teachers.last_name,
-            teachers.patronymic,
-            teachers.idteacher
+            binding.type
         ");
 
         $this->db->join("cabinets c", "binding.idcabinets = c.idcabinets", "LEFT OUTER");
@@ -25,8 +21,6 @@ class Shedule_model extends CI_Model {
         $this->db->join("groups g", "binding.idgroups = g.idgroups");
         $this->db->join("lessons_time lt", "binding.idlessons_time = lt.idlessons_time");
         $this->db->join("subjects s", "binding.idsubjects = s.idsubects");
-        $this->db->join("BindingTeacherSubjects", "s.idsubects = BindingTeacherSubjects.idSubject");
-        $this->db->join("teachers", "teachers.idteacher = BindingTeacherSubjects.idTeacher");
 
         $this->db->where("d.date", $day);
         $this->db->where("g.idgroups", $group);
@@ -36,6 +30,28 @@ class Shedule_model extends CI_Model {
         return $this->db->get("binding")->result_array();
     }
 
+    function get_TeacherSubject($id_subject)
+    {
+        $this->db->select(
+            "
+            teachers.first_name,
+            teachers.last_name,
+            teachers.patronymic,
+            teachers.idteacher
+            "
+        );
+        $this->db->join("teachers", "teachers.idteacher = BindingTeacherSubjects.idTeacher");
+        $this->db->where("idSubject", $id_subject);
+        return $this->db->get("BindingTeacherSubjects")->result_array();
+    }
+
+    function get_event($id_day, $id_group)
+    {
+        $this->db->where("idDay", $id_day);
+        $this->db->where("idGroup", $id_group);
+        return $this->db->get("BindingDayGroupEvent")->result_array();
+    }
+
     public function get_days($filter)
     {
         $this->db->query("SET lc_time_names = 'ru_RU'");
@@ -43,17 +59,15 @@ class Shedule_model extends CI_Model {
         {
             case 'currently' :
             {
-                //$from = date("Y-m-d", time() - (1 * 24 * 60 * 60));
-                //$to = date("Y-m-d", time() + (7 * 24 * 60 * 60));
-                $from = date("Y-m-d", time() - (date("N") - 1) * 24 * 60 * 60);
-                $to   = date("Y-m-d", time() - (-6 + date("N") - 1) * 24 * 60 * 60);
-                $query = $this->db->query("SELECT DISTINCT DATE_FORMAT (date, '%W %d.%m.%Y') AS 'formated_date', date FROM days WHERE date BETWEEN '". $from ."' AND '". $to ."' ORDER BY date");
+                $from = date("Y-m-d", time() - (1 * 24 * 60 * 60));
+                $to = date("Y-m-d", time() + (7 * 24 * 60 * 60));
+                $query = $this->db->query("SELECT DISTINCT iddays, DATE_FORMAT (date, '%W %d.%m.%Y') AS 'formated_date', date FROM days WHERE date BETWEEN '". $from ."' AND '". $to ."' ORDER BY date");
 
                 return $query->result_array();
             }
             case 'all_day' :
             {
-                $query = $this->db->query("SELECT DISTINCT  DATE_FORMAT (date, '%W %d.%m.%Y') AS 'formated_date', date as 'date' FROM days ORDER BY date DESC");
+                $query = $this->db->query("SELECT DISTINCT iddays, DATE_FORMAT (date, '%W %d.%m.%Y') AS 'formated_date', date as 'date' FROM days ORDER BY date DESC");
                 return $query->result_array();
             }
             break;

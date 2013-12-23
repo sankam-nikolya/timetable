@@ -26,22 +26,23 @@ class Statistics_model extends CI_Model {
         $sunThis = date("Y-m-d", time() - (-6 + date("N") - 1) * 24 * 60 * 60);
 
         $this->db->select("
+            binding.idsubjects,
+            Count(binding.idsubjects) as 'pars',
             teachers.idteacher,
             teachers.first_name,
             teachers.last_name,
-            teachers.patronymic,
-            count(subjects.idsubects) as 'pars'
+            teachers.patronymic
         ");
 
-        $this->db->join("binding", "subjects.idsubects = binding.idsubjects");
         $this->db->join("days", "binding.iddays = days.iddays");
+        $this->db->join("subjects", "subjects.idsubects = binding.idsubjects");
         $this->db->join("BindingTeacherSubjects", "subjects.idsubects = BindingTeacherSubjects.idSubject");
-        $this->db->join("teachers", "teachers.idteacher = BindingTeacherSubjects.idSubject");
+        $this->db->join("teachers", "teachers.idteacher = BindingTeacherSubjects.idTeacher");
 
         $this->db->where('days.date BETWEEN ', '"'.$monThis.'" AND "'.$sunThis.'"', FALSE);
-        $this->db->group_by('teachers.idteacher');
+        $this->db->group_by('binding.idsubjects');
 
-        return $this->db->get("subjects")->result_array();
+        return $this->db->get("binding")->result_array();
     }
 
     function get_group_num_pars()
