@@ -1,17 +1,15 @@
 
-<script type="text/javascript" src="<?=base_url()?>js/bootstrap-select.min.js"></script>
-<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/bootstrap-select.min.css">
+<script type="text/javascript" src="<?= base_url() ?>js/select2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/select2.css">
+<link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/select2-bootstrap.css">
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-            $('.selectpicker').selectpicker('mobile');
-        }
-        else
-            $('.selectpicker').selectpicker({
-                width: '80'
-            })
-    })
+    $(document).ready(function () {
+        $('.selectpicker').select2({
+            width: '80',
+            maximumSelectionSize: 3
+        })
+    });
 </script>
 
 <div class="container">
@@ -21,7 +19,7 @@
                 <tbody>
                 <tr>
                     <td rowspan="3" style="vertical-align: middle">Группа</td>
-                    <td colspan="7" style="text-align: center; font-weight: bold;"><?=$day['date']?></td>
+                    <td colspan="<?=count($timing)+1?>" style="text-align: center; font-weight: bold;"><?=$day['date']?></td>
                 </tr>
                 <tr>
                     <?php foreach($timing as $item_num):?>

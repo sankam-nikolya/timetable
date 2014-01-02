@@ -43,6 +43,9 @@
             </ul>
             <ul class="nav navbar-nav pull-right">
                 <li>
+                    <a href="<?=base_url()?>auth/logout">Выход</a>
+                </li>
+                <li>
                     <a href="<?=base_url()?>">В расписание &rarr;</a>
                 </li>
 

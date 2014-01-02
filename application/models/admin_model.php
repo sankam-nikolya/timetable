@@ -57,6 +57,7 @@ class Admin_model extends CI_Model {
              LEFT OUTER JOIN BindingSubjectGroup ON BindingSubjectGroup.idSubject = subjects.idsubects
              LEFT OUTER JOIN groups ON BindingSubjectGroup.idGroup = groups.idgroups
         WHERE groups.idgroups = $id_group
+        GROUP BY subjects.idsubects
         ");
 
         return $query->result_array();

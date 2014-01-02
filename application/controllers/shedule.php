@@ -42,7 +42,7 @@ class Shedule extends CI_Controller {
                     $data['event'] = $this->shedule_model->get_event($day['iddays'], $group['idgroups']);
                     if (count($data['event']) > 0)
                     {
-                        $data['pars_rendered'][0] = '<td colspan="'. count($data['pars_timing']) .'">123</td>';
+                        $data['pars_rendered'][0] = '<td colspan="'. count($data['pars_timing']) .'">'. $data['event'][0]['txtEvent'] .'</td>';
                     }
                     else
                     {

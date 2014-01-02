@@ -137,7 +137,7 @@ class Admin_shedule extends CI_Controller
         if ($this->ion_auth->is_admin()) {
             $this->load->model('admin_model');
             $bindings = $this->input->post('binding_select');
-            $bindings_audit = $this->input->post('binding_audit_select');
+
             $exploded = array();
             foreach ($bindings as $item) {
                 array_push($exploded, explode(":", $item));
@@ -159,6 +159,17 @@ class Admin_shedule extends CI_Controller
         } else {
             header("Location: " . base_url() . 'auth/login');
         }
+    }
+
+    function update_db_events()
+    {
+        //TODO to coding
+        print_r($_POST['event']);
+        /*
+        foreach ($_POST['event'] as $item)
+        {
+            print_r($item['day']);
+        }*/
     }
 
     function teachers_list_view()
