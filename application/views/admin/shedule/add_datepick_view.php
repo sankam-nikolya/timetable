@@ -10,6 +10,14 @@
 <script type="text/javascript" src="<?base_url()?>/js/datepicker/daterangepicker.js"></script>
 
 <div class="container">
+    <?php if (isset($_GET['response'])):?>
+        <?php if ($_GET['response'] == 'success'):?>
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <p>Расписание успешно обновлено! <a href="<?=base_url()?>">В расписание &rarr;</a></p>
+            </div>
+        <?php endif?>
+    <?php endif?>
     <div class="well">
         <form class="form-horizontal" method="post" action="<?=base_url()?>index.php/admin_shedule/add_shedule_view">
             <fieldset>

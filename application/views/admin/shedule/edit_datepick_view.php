@@ -19,7 +19,7 @@
         <?php endif?>
     <?php endif?>
     <div class="well">
-        <form class="form-horizontal" method="post" action="<?=base_url()?>index.php/admin_shedule/edit_shedule_view">
+        <form class="form-horizontal" method="get" action="<?=base_url()?>index.php/admin_shedule/edit_shedule_view">
             <fieldset>
                 <div class="control-group">
                     <label class="control-label" for="reservation">Выберите дату:</label>

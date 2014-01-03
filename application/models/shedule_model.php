@@ -61,19 +61,28 @@ class Shedule_model extends CI_Model {
             {
                 $from = date("Y-m-d", time() - (1 * 24 * 60 * 60));
                 $to = date("Y-m-d", time() + (7 * 24 * 60 * 60));
-                $query = $this->db->query("SELECT DISTINCT iddays, DATE_FORMAT (date, '%W %d.%m.%Y') AS 'formated_date', date FROM days WHERE date BETWEEN '". $from ."' AND '". $to ."' ORDER BY date");
+                $query = $this->db->query("SELECT DISTINCT iddays, DATE_FORMAT (date, '%W %d.%m.%Y') AS 'formated_date', date, UNIX_TIMESTAMP(date) as 'unix_time' FROM days WHERE date BETWEEN '". $from ."' AND '". $to ."' ORDER BY date");
 
                 return $query->result_array();
             }
+            break;
             case 'all_day' :
             {
-                $query = $this->db->query("SELECT DISTINCT iddays, DATE_FORMAT (date, '%W %d.%m.%Y') AS 'formated_date', date as 'date' FROM days ORDER BY date DESC");
+                $query = $this->db->query("SELECT DISTINCT iddays, DATE_FORMAT (date, '%W %d.%m.%Y') AS 'formated_date', date as 'date', UNIX_TIMESTAMP(date) as 'unix_time' FROM days ORDER BY date DESC");
                 return $query->result_array();
             }
             break;
         }
 
 
+    }
+
+    function get_days_f_t($from, $to)
+    {
+        $this->db->query("SET lc_time_names = 'ru_RU'");
+        $query = $this->db->query("SELECT DISTINCT iddays, DATE_FORMAT (date, '%W %d.%m.%Y') AS 'formated_date', date, UNIX_TIMESTAMP(date) as 'unix_time' FROM days WHERE date BETWEEN '". $from ."' AND '". $to ."' ORDER BY date");
+
+        return $query->result_array();
     }
 
     public function get_hw()

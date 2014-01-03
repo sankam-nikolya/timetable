@@ -25,7 +25,6 @@
 
         <div class="tab-content">
             <div class="tab-pane active" id="s1">
-                <div class="">
                     <form action="<?= base_url() ?>index.php/admin_shedule/update_db_binding" method="post">
                         <?php foreach ($days as $day): ?>
                             <table class="table table-bordered">
@@ -111,7 +110,6 @@
                         <p><input type="submit" value="Обновить" class="btn btn-default"></p>
                     </form>
                 </div>
-            </div>
             <div class="tab-pane" id="s2">
                 <div class="">
                     <?php foreach ($days as $day): ?>

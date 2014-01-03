@@ -199,4 +199,10 @@ class Admin_model extends CI_Model {
         $this->db->where('idteacher', $id);
         $this->db->delete('teachers');
     }
+
+    function delete_day($data)
+    {
+        $this->db->where('iddays', (int)$data['id']);
+        $this->db->delete('days');
+    }
 }

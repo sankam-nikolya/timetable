@@ -9,15 +9,15 @@ class Statistics_model extends CI_Model {
             teachers.first_name,
             teachers.last_name,
             teachers.patronymic,
-            count(subjects.idsubects) as 'pars'
+            count(binding.idsubjects) as 'pars'
         ");
 
-        $this->db->join("binding", "subjects.idsubects = binding.idsubjects");
         $this->db->join("days", "binding.iddays = days.iddays");
+        $this->db->join("subjects", "subjects.idsubects = binding.idsubjects");
         $this->db->join("BindingTeacherSubjects", "subjects.idsubects = BindingTeacherSubjects.idSubject");
-        $this->db->join("teachers", "teachers.idteacher = BindingTeacherSubjects.idSubject");
-        $this->db->group_by('teachers.idteacher');
-        return $this->db->get("subjects")->result_array();
+        $this->db->join("teachers", "teachers.idteacher = BindingTeacherSubjects.idTeacher");
+        $this->db->group_by('binding.idsubjects');
+        return $this->db->get("binding")->result_array();
     }
 
     function get_short_num_pars()

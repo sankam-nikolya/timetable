@@ -94,8 +94,8 @@ class Admin_shedule extends CI_Controller
             for ($i = 0; $i < count($data['groups']); $i++) {
                 $data['bindingSubjectGroup'][$i] = $this->admin_model->get_bindingSubjectGroup($data['groups'][$i]['idgroups']);
             }
-            if (isset($_POST['datepick'])) {
-                $datepick = $_POST['datepick'];
+            if (isset($_GET['datepick'])) {
+                $datepick = $_GET['datepick'];
                 $from_to = explode(":", $datepick);
                 $data['days'] = $this->admin_model->get($from_to[0], $from_to[1]);
                 $data['bindings'] = $this->admin_model->get_binding_info($data['days'][0]['iddays'], end($data['days'])['iddays']);
@@ -126,7 +126,7 @@ class Admin_shedule extends CI_Controller
                 );
                 $this->admin_model->insert_binding($data);
             }
-            header("Location: " . base_url() . 'admin/shedule/add');
+            header("Location: " . base_url() . 'admin/shedule/add/?response=success');
         } else {
             header("Location: " . base_url() . 'auth/login');
         }
@@ -163,6 +163,7 @@ class Admin_shedule extends CI_Controller
 
     function update_db_events()
     {
+        if ($this->ion_auth->is_admin()) {
         $this->load->model('admin_model');
 
         if ($_POST['txtEvent'] == '') {
@@ -180,6 +181,9 @@ class Admin_shedule extends CI_Controller
                 'txtEvent' => $_POST['txtEvent']
             );
             $this->admin_model->update_event($data, $action);
+        }
+        } else {
+            header("Location: " . base_url() . 'auth/login');
         }
     }
 
@@ -377,6 +381,20 @@ class Admin_shedule extends CI_Controller
             $this->load->model('admin_model');
             $this->admin_model->delete_teacher($this->input->get('id'));
             header("Location: " . base_url() . 'admin/teachers/?response=delete_success');
+        } else {
+            header("Location: " . base_url() . 'auth/login');
+        }
+    }
+
+    function delete_db_day()
+    {
+        if ($this->ion_auth->is_admin()) {
+            $this->load->model('admin_model');
+
+            $data = array(
+                'id' => (int)$_POST['id']
+            );
+            $this->admin_model->delete_day($data);
         } else {
             header("Location: " . base_url() . 'auth/login');
         }
