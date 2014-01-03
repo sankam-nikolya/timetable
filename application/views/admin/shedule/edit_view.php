@@ -22,6 +22,7 @@
             <li><a href="#s2" data-toggle="tab">События</a></li>
         </ul>
         <br>
+
         <div class="tab-content">
             <div class="tab-pane active" id="s1">
                 <div class="">
@@ -113,46 +114,57 @@
             </div>
             <div class="tab-pane" id="s2">
                 <div class="">
-                    <form action="<?= base_url() ?>index.php/admin_shedule/update_db_events" method="post">
-                        <?php foreach ($days as $day): ?>
-                            <table class="table table-bordered">
-                                <tbody>
-                                <tr>
-                                    <td rowspan="3" style="vertical-align: middle">Группа</td>
-                                    <td colspan="<?= count($timing) ?>"
-                                        style="text-align: center; font-weight: bold;"><?= $day['formated_date'] ?></td>
-                                </tr>
-                                <tr>
-                                    <?php foreach ($timing as $item_num): ?>
-                                        <td><?= $item_num['num'] ?></td>
-                                    <?php endforeach ?>
-                                </tr>
-                                <tr>
-                                    <?php foreach ($timing as $item_timing): ?>
-                                        <td><?= $item_timing['start_time'] ?> - <?= $item_timing['end_time'] ?></td>
-                                    <?php endforeach ?>
-                                </tr>
-                                <?php foreach ($groups as $group): ?>
-                                    <tr>
-                                        <td><?= $group['name'] ?></td>
-                                        <td colspan="<?= count($timing) ?>">
-                                            <div class="input-group" style="width: 100%">
-                                                <input type="text" class="form-control"
-                                                       name="event[][[day]<?= $day['iddays'] ?>[group][]<?= $group['idgroups'] ?>[text]]">
-                                            </div>
-                                        </td>
-                                    </tr>
+                    <?php foreach ($days as $day): ?>
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <td rowspan="3" style="vertical-align: middle">Группа</td>
+                                <td colspan="<?= count($timing) ?>"
+                                    style="text-align: center; font-weight: bold;"><?= $day['formated_date'] ?></td>
+                            </tr>
+                            <tr>
+                                <?php foreach ($timing as $item_num): ?>
+                                    <td><?= $item_num['num'] ?></td>
                                 <?php endforeach ?>
-                                </tbody>
-                            </table>
-                        <?php endforeach ?>
-
-                        <p><input type="submit" value="Обновить" class="btn btn-default"></p>
-                    </form>
+                            </tr>
+                            <tr>
+                                <?php foreach ($timing as $item_timing): ?>
+                                    <td><?= $item_timing['start_time'] ?> - <?= $item_timing['end_time'] ?></td>
+                                <?php endforeach ?>
+                            </tr>
+                            <?php foreach ($groups as $group): ?>
+                                <tr>
+                                    <td><?= $group['name'] ?></td>
+                                    <td colspan="<?= count($timing) ?>">
+                                        <div class="input-group" style="width: 100%">
+                                            <input type="text" class="form-control" onchange="update_event(<?= $day['iddays'] ?>, <?= $group['idgroups'] ?>, $( this ).val())">
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    <?php endforeach ?>
                 </div>
             </div>
         </div>
-    </div><!-- /.tabbable -->
+    </div>
+    <!-- /.tabbable -->
 </div>
+<script type="text/javascript">
+    function update_event(id_day, id_group, message) {
+        var data = {
+            idDay: id_day,
+            idGroup: id_group,
+            txtEvent: message
+        };
+
+        $.ajax({
+            url: "<?= base_url() ?>index.php/admin_shedule/update_db_events",
+            type: 'POST',
+            data: data
+        });
+    }
+</script>
 
 

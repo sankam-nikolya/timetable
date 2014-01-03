@@ -171,6 +171,23 @@ class Admin_model extends CI_Model {
         $this->db->insert('subjects', $data);
     }
 
+    function update_event($data, $action)
+    {
+        if ($action == 'delete')
+        {
+            $this->db->where('idDay', $data['idDay']);
+            $this->db->where('idGroup', $data['idGroup']);
+            $this->db->delete('BindingDayGroupEvent');
+        }
+        else
+        {
+            $this->db->where('idDay', $data['idDay']);
+            $this->db->where('idGroup', $data['idGroup']);
+            $this->db->delete('BindingDayGroupEvent');
+            $this->db->insert('BindingDayGroupEvent', $data);
+        }
+    }
+
     function delete_subject($id)
     {
         $this->db->where('idsubects', $id);

@@ -163,13 +163,24 @@ class Admin_shedule extends CI_Controller
 
     function update_db_events()
     {
-        //TODO to coding
-        print_r($_POST['event']);
-        /*
-        foreach ($_POST['event'] as $item)
-        {
-            print_r($item['day']);
-        }*/
+        $this->load->model('admin_model');
+
+        if ($_POST['txtEvent'] == '') {
+            $action = 'delete';
+            $data = array(
+                'idDay' => $_POST['idDay'],
+                'idGroup' => $_POST['idGroup']
+            );
+            $this->admin_model->update_event($data, $action);
+        } else {
+            $action = 'insert';
+            $data = array(
+                'idDay' => $_POST['idDay'],
+                'idGroup' => $_POST['idGroup'],
+                'txtEvent' => $_POST['txtEvent']
+            );
+            $this->admin_model->update_event($data, $action);
+        }
     }
 
     function teachers_list_view()

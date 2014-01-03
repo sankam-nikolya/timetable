@@ -6,7 +6,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('.selectpicker').select2({
-            width: '80',
+            width: '120',
             maximumSelectionSize: 3
         })
     });
