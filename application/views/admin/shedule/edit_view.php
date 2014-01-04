@@ -49,7 +49,7 @@
                                         <td><?= $group['name'] ?></td>
                                         <?php foreach ($timing as $item_timing): ?>
                                             <td>
-                                                <select class="selectpicker" multiple name="binding_select[]">
+                                                <select class="selectpicker" multiple name="binding_select[]" onchange="alert1(<?=$day['iddays']?><?= $group['idgroups'] ?><?= $item_timing['idlessons_time'] ?>)">
                                                     <optgroup label="Общие пары">
                                                         <?php foreach ($bindingSubjectGroup as $item): ?>
                                                             <?php foreach ($item as $item1): ?>
@@ -163,6 +163,15 @@
             data: data
         });
     }
+    $(document).ready(function(){
+        $.ajax({
+            url         : "<?= base_url() ?>index.php/admin_shedule/update_db_events",
+            dataType    : 'json',
+            success     : function (result) {
+                alert(result['ajax']);
+            }
+        })
+    });
 </script>
 
 
