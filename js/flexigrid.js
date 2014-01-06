@@ -13,14 +13,14 @@
     var browser = $.browser
 
     if (!browser) {
-        function uaMatch( ua ) {
+        function uaMatch(ua) {
             ua = ua.toLowerCase();
 
-            var match = /(chrome)[ \/]([\w.]+)/.exec( ua ) ||
-                /(webkit)[ \/]([\w.]+)/.exec( ua ) ||
-                /(opera)(?:.*version|)[ \/]([\w.]+)/.exec( ua ) ||
-                /(msie) ([\w.]+)/.exec( ua ) ||
-                ua.indexOf("compatible") < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec( ua ) ||
+            var match = /(chrome)[ \/]([\w.]+)/.exec(ua) ||
+                /(webkit)[ \/]([\w.]+)/.exec(ua) ||
+                /(opera)(?:.*version|)[ \/]([\w.]+)/.exec(ua) ||
+                /(msie) ([\w.]+)/.exec(ua) ||
+                ua.indexOf("compatible") < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec(ua) ||
                 [];
 
             return {
@@ -29,18 +29,18 @@
             };
         };
 
-        var matched = uaMatch( navigator.userAgent );
+        var matched = uaMatch(navigator.userAgent);
         browser = {};
 
-        if ( matched.browser ) {
+        if (matched.browser) {
             browser[ matched.browser ] = true;
             browser.version = matched.version;
         }
 
         // Chrome is Webkit, but Webkit is also Safari.
-        if ( browser.chrome ) {
+        if (browser.chrome) {
             browser.webkit = true;
-        } else if ( browser.webkit ) {
+        } else if (browser.webkit) {
             browser.safari = true;
         }
     }
@@ -55,14 +55,14 @@
      * http://docs.jquery.com/UI
      */
 
-    if(typeof $.support.selectstart != 'function') {
+    if (typeof $.support.selectstart != 'function') {
         $.support.selectstart = "onselectstart" in document.createElement("div");
     }
 
-    if(typeof $.fn.disableSelection != 'function') {
-        $.fn.disableSelection = function() {
-            return this.bind( ( $.support.selectstart ? "selectstart" : "mousedown" ) +
-                ".ui-disableSelection", function( event ) {
+    if (typeof $.fn.disableSelection != 'function') {
+        $.fn.disableSelection = function () {
+            return this.bind(( $.support.selectstart ? "selectstart" : "mousedown" ) +
+                ".ui-disableSelection", function (event) {
                 event.preventDefault();
             });
         };
@@ -118,16 +118,16 @@
             onError: false,
             onSubmit: false, //using a custom populate function
             __mw: { //extendable middleware function holding object
-                datacol: function(p, col, val) { //middleware for formatting data columns
+                datacol: function (p, col, val) { //middleware for formatting data columns
                     var _col = (typeof p.datacol[col] == 'function') ? p.datacol[col](val) : val; //format column using function
-                    if(typeof p.datacol['*'] == 'function') { //if wildcard function exists
+                    if (typeof p.datacol['*'] == 'function') { //if wildcard function exists
                         return p.datacol['*'](_col); //run wildcard function
                     } else {
                         return _col; //return column without wildcard
                     }
                 }
             },
-            getGridClass: function(g) { //get the grid class, always returns g
+            getGridClass: function (g) { //get the grid class, always returns g
                 return g;
             },
             datacol: {}, //datacol middleware object 'colkey': function(colval) {}
@@ -151,7 +151,7 @@
                     top: g.hDiv.offsetTop + 1
                 });
                 var cdpad = this.cdpad;
-                var cdcounter=0;
+                var cdcounter = 0;
                 $('div', g.cDrag).hide();
                 $('thead tr:first th:visible', this.hDiv).each(function () {
                     var n = $('thead tr:first th:visible', g.hDiv).index(this);
@@ -221,7 +221,7 @@
                     };
                 } else if (dragtype == 'colMove') {//column header drag
                     $(e.target).disableSelection(); //disable selecting the column header
-                    if((p.colMove === true)) {
+                    if ((p.colMove === true)) {
                         $(g.nDiv).hide();
                         $(g.nBtn).hide();
                         this.hset = $(this.hDiv).offset();
@@ -313,7 +313,7 @@
                     this.colresize = false;
                     if ($.cookies) {
                         var name = p.colModel[n].name;		// Store the widths in the cookies
-                        $.cookie('flexiwidths/'+name, nw);
+                        $.cookie('flexiwidths/' + name, nw);
                     }
                 } else if (this.vresize) {
                     this.vresize = false;
@@ -440,7 +440,7 @@
                         var tr = document.createElement('tr');
                         if (row.name) tr.name = row.name;
                         if (row.color) {
-                            $(tr).css('background',row.color);
+                            $(tr).css('background', row.color);
                         } else {
                             if (i % 2 && p.striped) tr.className = 'erow';
                         }
@@ -466,9 +466,9 @@
                                     td.innerHTML = p.__mw.datacol(p, $(this).attr('abbr'), iHTML); //use middleware datacol to format cols
                                 }
                                 // If the content has a <BGCOLOR=nnnnnn> option, decode it.
-                                var offs = td.innerHTML.indexOf( '<BGCOLOR=' );
-                                if( offs >0 ) {
-                                    $(td).css('background', text.substr(offs+7,7) );
+                                var offs = td.innerHTML.indexOf('<BGCOLOR=');
+                                if (offs > 0) {
+                                    $(td).css('background', text.substr(offs + 7, 7));
                                 }
 
                                 $(td).attr('abbr', $(this).attr('abbr'));
@@ -499,7 +499,7 @@
                         var tr = document.createElement('tr');
                         if ($(this).attr('name')) tr.name = $(this).attr('name');
                         if ($(this).attr('color')) {
-                            $(tr).css('background',$(this).attr('id'));
+                            $(tr).css('background', $(this).attr('id'));
                         } else {
                             if (i % 2 && p.striped) tr.className = 'erow';
                         }
@@ -515,9 +515,9 @@
                             td.align = this.align;
 
                             var text = $("cell:eq(" + idx + ")", robj).text();
-                            var offs = text.indexOf( '<BGCOLOR=' );
-                            if( offs >0 ) {
-                                $(td).css('background',	 text.substr(offs+7,7) );
+                            var offs = text.indexOf('<BGCOLOR=');
+                            if (offs > 0) {
+                                $(td).css('background', text.substr(offs + 7, 7));
                             }
                             td.innerHTML = p.__mw.datacol(p, $(this).attr('abbr'), text); //use middleware datacol to format cols
                             $(td).attr('abbr', $(this).attr('abbr'));
@@ -626,25 +626,32 @@
                 if (p.page > p.pages) {
                     p.page = p.pages;
                 }
-                var param = [{
-                    name: 'page',
-                    value: p.newp
-                }, {
-                    name: 'rp',
-                    value: p.rp
-                }, {
-                    name: 'sortname',
-                    value: p.sortname
-                }, {
-                    name: 'sortorder',
-                    value: p.sortorder
-                }, {
-                    name: 'query',
-                    value: p.query
-                }, {
-                    name: 'qtype',
-                    value: p.qtype
-                }];
+                var param = [
+                    {
+                        name: 'page',
+                        value: p.newp
+                    },
+                    {
+                        name: 'rp',
+                        value: p.rp
+                    },
+                    {
+                        name: 'sortname',
+                        value: p.sortname
+                    },
+                    {
+                        name: 'sortorder',
+                        value: p.sortorder
+                    },
+                    {
+                        name: 'query',
+                        value: p.query
+                    },
+                    {
+                        name: 'qtype',
+                        value: p.qtype
+                    }
+                ];
                 if (p.params.length) {
                     for (var pi = 0; pi < p.params.length; pi++) {
                         param[param.length] = p.params[pi];
@@ -661,7 +668,8 @@
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         try {
                             if (p.onError) p.onError(XMLHttpRequest, textStatus, errorThrown);
-                        } catch (e) {}
+                        } catch (e) {
+                        }
                     }
                 });
             },
@@ -772,7 +780,7 @@
                 };
             },
             addRowProp: function () {
-                $('tbody tr', g.bDiv).on('click', function (e) {
+                $('tbody tr', g.bDiv).on('click',function (e) {
                     var obj = (e.target || e.srcElement);
                     if (obj.href || obj.type) return true;
                     if (e.ctrlKey || e.metaKey) {
@@ -780,10 +788,10 @@
                         return;
                     }
                     $(this).toggleClass('trSelected');
-                    if (p.singleSelect && ! g.multisel) {
+                    if (p.singleSelect && !g.multisel) {
                         $(this).siblings().removeClass('trSelected');
                     }
-                }).on('mousedown', function (e) {
+                }).on('mousedown',function (e) {
                         if (e.shiftKey) {
                             $(this).toggleClass('trSelected');
                             g.multisel = true;
@@ -795,12 +803,12 @@
                             g.multisel = true;
                             this.focus();
                         }
-                    }).on('mouseup', function (e) {
-                        if (g.multisel && ! (e.ctrlKey || e.metaKey)) {
+                    }).on('mouseup',function (e) {
+                        if (g.multisel && !(e.ctrlKey || e.metaKey)) {
                             g.multisel = false;
                             $(g.gDiv).noSelect(false);
                         }
-                    }).on('dblclick', function () {
+                    }).on('dblclick',function () {
                         if (p.onDoubleClick) {
                             p.onDoubleClick(this, g, p);
                         }
@@ -808,7 +816,8 @@
                         if (g.multisel && e.shiftKey) {
                             $(this).toggleClass('trSelected');
                         }
-                    }, function () {});
+                    }, function () {
+                    });
                 if (browser.msie && browser.version < 7.0) {
                     $(this).hover(function () {
                         $(this).addClass('trOver');
@@ -819,22 +828,20 @@
             },
 
             combo_flag: true,
-            combo_resetIndex: function(selObj)
-            {
-                if(this.combo_flag) {
+            combo_resetIndex: function (selObj) {
+                if (this.combo_flag) {
                     selObj.selectedIndex = 0;
                 }
                 this.combo_flag = true;
             },
-            combo_doSelectAction: function(selObj)
-            {
-                eval( selObj.options[selObj.selectedIndex].value );
+            combo_doSelectAction: function (selObj) {
+                eval(selObj.options[selObj.selectedIndex].value);
                 selObj.selectedIndex = 0;
                 this.combo_flag = false;
             },
             //Add title attribute to div if cell contents is truncated
-            addTitleToCell: function(tdDiv) {
-                if(p.addTitleToCell) {
+            addTitleToCell: function (tdDiv) {
+                if (p.addTitleToCell) {
                     var $span = $('<span />').css('display', 'none'),
                         $div = (tdDiv instanceof jQuery) ? tdDiv : $(tdDiv),
                         div_w = $div.outerWidth(),
@@ -847,7 +854,7 @@
                     span_w = $span.innerWidth();
                     $span.remove();
 
-                    if(span_w > div_w) {
+                    if (span_w > div_w) {
                         $div.attr('title', $div.text());
                     } else {
                         $div.removeAttr('title');
@@ -855,7 +862,7 @@
                 }
             },
             autoResizeColumn: function (obj) {
-                if(!p.dblClickResize) {
+                if (!p.dblClickResize) {
                     return;
                 }
                 var n = $('div', this.cDrag).index(obj),
@@ -903,14 +910,14 @@
                 var cm = p.colModel[i];
                 var th = document.createElement('th');
                 $(th).attr('axis', 'col' + i);
-                if( cm ) {	// only use cm if its defined
+                if (cm) {	// only use cm if its defined
                     if ($.cookies) {
-                        var cookie_width = 'flexiwidths/'+cm.name;		// Re-Store the widths in the cookies
-                        if( $.cookie(cookie_width) != undefined ) {
+                        var cookie_width = 'flexiwidths/' + cm.name;		// Re-Store the widths in the cookies
+                        if ($.cookie(cookie_width) != undefined) {
                             cm.width = $.cookie(cookie_width);
                         }
                     }
-                    if( cm.display != undefined ) {
+                    if (cm.display != undefined) {
                         th.innerHTML = cm.display;
                     }
                     if (cm.name && cm.sortable) {
@@ -930,7 +937,7 @@
                     }
                 } else {
                     th.innerHTML = "";
-                    $(th).attr('width',30);
+                    $(th).attr('width', 30);
                 }
                 $(tr).append(th);
             }
@@ -953,7 +960,7 @@
         g.sDiv = document.createElement('div');
         g.pDiv = document.createElement('div'); //create pager container
 
-        if(p.colResize === false) { //don't display column drag if we are not using it
+        if (p.colResize === false) { //don't display column drag if we are not using it
             $(g.cDrag).css('display', 'none');
         }
 
@@ -989,11 +996,11 @@
                         paddingLeft: 20
                     });
                     if (btn.bimage) // if bimage defined, use its string as an image url for this buttons style (RS)
-                        $('span',btnDiv).css( 'background', 'url('+btn.bimage+') no-repeat center left' );
-                    $('span',btnDiv).css( 'paddingLeft', 20 );
+                        $('span', btnDiv).css('background', 'url(' + btn.bimage + ') no-repeat center left');
+                    $('span', btnDiv).css('paddingLeft', 20);
 
                     if (btn.tooltip) // add title if exists (RS)
-                        $('span',btnDiv)[0].title = btn.tooltip;
+                        $('span', btnDiv)[0].title = btn.tooltip;
 
                     btnDiv.onpress = btn.onpress;
                     btnDiv.name = btn.name;
@@ -1024,39 +1031,39 @@
         g.hDiv.className = 'hDiv';
 
         // Define a combo button set with custom action'ed calls when clicked.
-        if( p.combobuttons && $(g.tDiv2) )
-        {
+        if (p.combobuttons && $(g.tDiv2)) {
             var btnDiv = document.createElement('div');
             btnDiv.className = 'fbutton';
 
             var tSelect = document.createElement('select');
-            $(tSelect).change( function () { g.combo_doSelectAction( tSelect ) } );
-            $(tSelect).click( function () { g.combo_resetIndex( tSelect) } );
+            $(tSelect).change(function () {
+                g.combo_doSelectAction(tSelect)
+            });
+            $(tSelect).click(function () {
+                g.combo_resetIndex(tSelect)
+            });
             tSelect.className = 'cselect';
             $(btnDiv).append(tSelect);
 
-            for (i=0;i<p.combobuttons.length;i++)
-            {
+            for (i = 0; i < p.combobuttons.length; i++) {
                 var btn = p.combobuttons[i];
-                if (!btn.separator)
-                {
+                if (!btn.separator) {
                     var btnOpt = document.createElement('option');
                     btnOpt.innerHTML = btn.name;
 
                     if (btn.bclass)
                         $(btnOpt)
                             .addClass(btn.bclass)
-                            .css({paddingLeft:20})
+                            .css({paddingLeft: 20})
                         ;
                     if (btn.bimage)  // if bimage defined, use its string as an image url for this buttons style (RS)
-                        $(btnOpt).css( 'background', 'url('+btn.bimage+') no-repeat center left' );
-                    $(btnOpt).css( 'paddingLeft', 20 );
+                        $(btnOpt).css('background', 'url(' + btn.bimage + ') no-repeat center left');
+                    $(btnOpt).css('paddingLeft', 20);
 
                     if (btn.tooltip) // add title if exists (RS)
                         $(btnOpt)[0].title = btn.tooltip;
 
-                    if (btn.onpress)
-                    {
+                    if (btn.onpress) {
                         btnOpt.value = btn.onpress;
                     }
                     $(tSelect).append(btnOpt);
@@ -1188,7 +1195,7 @@
         //set cDrag only if we are using it
         if (p.colResize === true) {
             var cdcol = $('thead tr:first th:first', g.hDiv).get(0);
-            if(cdcol !== null) {
+            if (cdcol !== null) {
                 g.cDrag.className = 'cDrag';
                 g.cdpad = 0;
                 g.cdpad += (isNaN(parseInt($('div', cdcol).css('borderLeftWidth'), 10)) ? 0 : parseInt($('div', cdcol).css('borderLeftWidth'), 10));
@@ -1205,7 +1212,7 @@
                 $(g.cDrag).css({
                     top: -hdheight + 'px'
                 });
-                $('thead tr:first th', g.hDiv).each(function() {
+                $('thead tr:first th', g.hDiv).each(function () {
                     var cgDiv = document.createElement('div');
                     $(g.cDrag).append(cgDiv);
                     if (!p.cgwidth) {
@@ -1213,18 +1220,18 @@
                     }
                     $(cgDiv).css({
                         height: cdheight + hdheight
-                    }).mousedown(function(e) {
+                    }).mousedown(function (e) {
                             g.dragStart('colresize', e, this);
-                        }).dblclick(function(e) {
+                        }).dblclick(function (e) {
                             g.autoResizeColumn(this);
                         });
                     if (browser.msie && browser.version < 7.0) {
                         g.fixHeight($(g.gDiv).height());
-                        $(cgDiv).hover(function() {
+                        $(cgDiv).hover(function () {
                             g.fixHeight();
                             $(this).addClass('dragging');
-                        }, function() {
-                            if(!g.colresize) {
+                        }, function () {
+                            if (!g.colresize) {
                                 $(this).removeClass('dragging');
                             }
                         });
@@ -1333,7 +1340,7 @@
                     p.qtype = sitems[0].name;
                 }
                 $(g.sDiv).append("<div class='sDiv2'>" + p.findtext +
-                    " <input type='text' value='" + p.query +"' size='30' name='q' class='qsbox' /> "+
+                    " <input type='text' value='" + p.query + "' size='30' name='q' class='qsbox' /> " +
                     " <select name='qtype'>" + sopt + "</select></div>");
                 //Split into separate selectors because of bug in jQuery 1.3.2
                 $('input[name=q]', g.sDiv).keydown(function (e) {
@@ -1447,7 +1454,8 @@
                 g.multisel = false;
             }
         });
-        $(g.gDiv).hover(function () {}, function () {
+        $(g.gDiv).hover(function () {
+        }, function () {
             $(g.nDiv).hide();
             $(g.nBtn).hide();
         });
@@ -1456,7 +1464,8 @@
             g.dragMove(e);
         }).mouseup(function (e) {
                 g.dragEnd();
-            }).hover(function () {}, function () {
+            }).hover(function () {
+            }, function () {
                 g.dragEnd();
             });
         //browser adjustments
@@ -1541,7 +1550,9 @@
             });
         }
     }; //end noSelect
-    $.fn.flexSearch = function(p) { // function to search grid
-        return this.each( function() { if (this.grid&&this.p.searchitems) this.grid.doSearch(); });
+    $.fn.flexSearch = function (p) { // function to search grid
+        return this.each(function () {
+            if (this.grid && this.p.searchitems) this.grid.doSearch();
+        });
     }; //end flexSearch
 })(jQuery);

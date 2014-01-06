@@ -1,6 +1,7 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Admin_model extends CI_Model {
+class Admin_model extends CI_Model
+{
 
     function get_teachers()
     {
@@ -32,6 +33,7 @@ class Admin_model extends CI_Model {
         $query = $this->db->get("groups");
         return $query->result_array();
     }
+
     function get_subjects()
     {
         $this->db->query("SET lc_time_names = 'ru_RU'");
@@ -39,29 +41,26 @@ class Admin_model extends CI_Model {
         $query = $this->db->get("subjects");
         return $query->result_array();
     }
+
     function get_bindingSubjectGroup($id_group)
     {
-        //TODO reformat to AR
-        $query = $this->db->query("
-        SELECT
-            DISTINCT
+        $this->db->distinct();
+        $this->db->select('
             groups.idgroups,
             groups.`name` AS `group`,
             subjects.idsubects AS idsubjects,
-            subjects.`name` AS `subject`,
-            teachers.first_name AS teacher_fname,
-            teachers.patronymic AS teacher_patronymic
-        FROM teachers
-             INNER JOIN BindingTeacherSubjects ON teachers.idteacher = BindingTeacherSubjects.idTeacher
-             INNER JOIN subjects ON subjects.idsubects = BindingTeacherSubjects.idSubject
-             LEFT OUTER JOIN BindingSubjectGroup ON BindingSubjectGroup.idSubject = subjects.idsubects
-             LEFT OUTER JOIN groups ON BindingSubjectGroup.idGroup = groups.idgroups
-        WHERE groups.idgroups = $id_group
-        GROUP BY subjects.idsubects
-        ");
+            subjects.`name` AS `subject`');
 
-        return $query->result_array();
+        $this->db->join('BindingSubjectGroup', 'subjects.idsubects = BindingSubjectGroup.idSubject');
+        $this->db->join('groups', 'groups.idgroups = BindingSubjectGroup.idGroup');
+
+        $this->db->where('BindingSubjectGroup.idGroup', $id_group);
+
+        $this->db->group_by('subjects.idsubects');
+
+        return $this->db->get('subjects')->result_array();
     }
+
     function get($from, $to)
     {
         $this->db->query("SET lc_time_names = 'ru_RU'");
@@ -77,9 +76,10 @@ class Admin_model extends CI_Model {
         $query = $this->db->get("days");
         return $query->result_array();
     }
-    public function get_time()
+
+    function get_time()
     {
-        $query = $this ->db->query('SELECT idlessons_time, num, DATE_FORMAT (start_time, "%H:%i") AS start_time, DATE_FORMAT (end_time, "%H:%i") AS end_time FROM lessons_time WHERE active = 1');
+        $query = $this->db->query('SELECT idlessons_time, num, DATE_FORMAT (start_time, "%H:%i") AS start_time, DATE_FORMAT (end_time, "%H:%i") AS end_time FROM lessons_time WHERE active = 1');
         return $query->result_array();
     }
 
@@ -101,7 +101,7 @@ class Admin_model extends CI_Model {
 
     function get_binding_info($from, $to)
     {
-        $this->db->where("iddays BETWEEN ".(int)$from ." AND ". (int)$to);
+        $this->db->where("iddays BETWEEN " . (int)$from . " AND " . (int)$to);
         return $this->db->get("binding")->result_array();
     }
 
@@ -117,9 +117,19 @@ class Admin_model extends CI_Model {
         return $this->db->get('BindingSubjectGroup')->result_array();
     }
 
-    function delete_iddays_from_bidning($id)
+    function get_event($data)
     {
-        $this->db->where('iddays', $id);
+        $this->db->where('idDay', $data['idDay']);
+        $this->db->where('idGroup', $data['idGroup']);
+        return $this->db->get('BindingDayGroupEvent')->result_array();
+
+    }
+
+    function delete_from_bidning($data)
+    {
+        $this->db->where('iddays', $data['iddays']);
+        $this->db->where('idgroups', $data['idgroups']);
+        $this->db->where('idlessons_time', $data['idlessons_time']);
         $this->db->delete('binding');
     }
 
@@ -173,14 +183,11 @@ class Admin_model extends CI_Model {
 
     function update_event($data, $action)
     {
-        if ($action == 'delete')
-        {
+        if ($action == 'delete') {
             $this->db->where('idDay', $data['idDay']);
             $this->db->where('idGroup', $data['idGroup']);
             $this->db->delete('BindingDayGroupEvent');
-        }
-        else
-        {
+        } else {
             $this->db->where('idDay', $data['idDay']);
             $this->db->where('idGroup', $data['idGroup']);
             $this->db->delete('BindingDayGroupEvent');

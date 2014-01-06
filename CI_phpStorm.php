@@ -71,7 +71,9 @@
  */
 class CI_Controller extends my_models
 {
-  public function __construct() {} //This default return construct as set
+    public function __construct()
+    {
+    } //This default return construct as set
 }
 
 /**
@@ -121,5 +123,7 @@ class CI_Controller extends my_models
  */
 class CI_Model
 {
-  public function __construct() {} //This default return construct as set
+    public function __construct()
+    {
+    } //This default return construct as set
 }

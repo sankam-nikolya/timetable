@@ -2,13 +2,15 @@
 
 class Admin_shedule extends CI_Controller
 {
-
     function index()
     {
         if ($this->ion_auth->is_admin()) {
             $this->load->model('statistics_model');
             $data['short_num_pars'] = $this->statistics_model->get_short_num_pars();
             $data['short_group_num_pars'] = $this->statistics_model->get_short_group_num_pars();
+
+            $data['n_short_num_pars'] = $this->statistics_model->n_get_short_num_pars();
+            $data['n_short_group_num_pars'] = $this->statistics_model->n_get_short_group_num_pars();
 
             $this->load->view('admin/header_view');
             $this->load->view('admin/menu_view');
@@ -52,14 +54,25 @@ class Admin_shedule extends CI_Controller
                 $from_to = explode(":", $datepick);
                 $date_end = $from_to[1];
                 $date_start = $from_to[0];
+
                 while ($date_start <= $date_end) {
                     $date_start = date('Y-m-d', strtotime($date_start));
                     $array_date = array('date' => $date_start);
-                    $this->admin_model->insert_days($array_date);
+                    if (count($data['days'] = $this->admin_model->get($date_start, $date_start)) > 0) {
+
+                    } else {
+                        $this->admin_model->insert_days($array_date);
+                    }
                     $date_start = date('Y-m-d', strtotime($date_start) + 86400);
                 }
                 $data['days'] = $this->admin_model->get($from_to[0], $from_to[1]);
-                $this->load->view('admin/shedule/add_view', $data);
+                $end = end($data['days']);
+                if ($end['iddays'] < $data['days'][0]['iddays']) {
+                    $data['bindings'] = $this->admin_model->get_binding_info($end['iddays'], $data['days'][0]['iddays']);
+                } else {
+                    $data['bindings'] = $this->admin_model->get_binding_info($data['days'][0]['iddays'],$end['iddays']);
+                }
+                $this->load->view('admin/shedule/edit_view', $data);
             }
         } else {
             header("Location: " . base_url() . 'auth/login');
@@ -94,39 +107,17 @@ class Admin_shedule extends CI_Controller
             for ($i = 0; $i < count($data['groups']); $i++) {
                 $data['bindingSubjectGroup'][$i] = $this->admin_model->get_bindingSubjectGroup($data['groups'][$i]['idgroups']);
             }
-            if (isset($_GET['datepick'])) {
-                $datepick = $_GET['datepick'];
-                $from_to = explode(":", $datepick);
-                $data['days'] = $this->admin_model->get($from_to[0], $from_to[1]);
-                $data['bindings'] = $this->admin_model->get_binding_info($data['days'][0]['iddays'], end($data['days'])['iddays']);
+            if (isset($_GET['from'])) {
+                $data['days'] = $this->admin_model->get($_GET['from'], $_GET['to']);
+                $end = end($data['days']);
+                if ($end['iddays'] < $data['days'][0]['iddays']) {
+                    $data['bindings'] = $this->admin_model->get_binding_info($end['iddays'], $data['days'][0]['iddays']);
+                } else {
+                    $data['bindings'] = $this->admin_model->get_binding_info($data['days'][0]['iddays'], $end['iddays']);
+                }
                 $this->load->view('admin/shedule/edit_view', $data);
             }
             $this->load->view('footer_view');
-        } else {
-            header("Location: " . base_url() . 'auth/login');
-        }
-    }
-
-    function add_db_binding()
-    {
-        if ($this->ion_auth->is_admin()) {
-            $this->load->model('admin_model');
-            $bindings = $this->input->post('binding_select');
-            $exploded = array();
-            foreach ($bindings as $item) {
-                array_push($exploded, explode(":", $item));
-            }
-            foreach ($exploded as $item) {
-                $data = array(
-                    'iddays' => $item[0],
-                    'idgroups' => $item[1],
-                    'idlessons_time' => $item[2],
-                    'type' => $item[3],
-                    'idsubjects' => $item[4]
-                );
-                $this->admin_model->insert_binding($data);
-            }
-            header("Location: " . base_url() . 'admin/shedule/add/?response=success');
         } else {
             header("Location: " . base_url() . 'auth/login');
         }
@@ -136,26 +127,40 @@ class Admin_shedule extends CI_Controller
     {
         if ($this->ion_auth->is_admin()) {
             $this->load->model('admin_model');
-            $bindings = $this->input->post('binding_select');
 
-            $exploded = array();
-            foreach ($bindings as $item) {
-                array_push($exploded, explode(":", $item));
-            }
-            foreach ($exploded as $item) {
-                $this->admin_model->delete_iddays_from_bidning($item[0]);
-            }
-            foreach ($exploded as $item) {
-                $data = array(
-                    'iddays' => $item[0],
-                    'idgroups' => $item[1],
-                    'idlessons_time' => $item[2],
-                    'type' => $item[3],
-                    'idsubjects' => $item[4]
-                );
+            $data = array(
+                'iddays' => $_POST['iddays'],
+                'idgroups' => $_POST['idgroups'],
+                'idlessons_time' => $_POST['idlessons_time'],
+                'idsubjects' => $_POST['idsubjects'],
+                'type' => $_POST['type']
+            );
+
+            $this->admin_model->delete_from_bidning($data);
+            if ($_POST['action'] == 'insert')
                 $this->admin_model->insert_binding($data);
-            }
-            header("Location: " . base_url() . 'admin/shedule/edit/?response=success');
+        } else {
+            header("Location: " . base_url() . 'auth/login');
+        }
+    }
+
+    function update_db_binding_sub()
+    {
+        if ($this->ion_auth->is_admin()) {
+            $this->load->model('admin_model');
+
+            $data = array(
+                'iddays' => $_POST['iddays'],
+                'idgroups' => $_POST['idgroups'],
+                'idlessons_time' => $_POST['idlessons_time'],
+                'idsubjects' => $_POST['idsubjects'],
+                'type' => $_POST['type']
+            );
+
+            if ($_POST['t'] == 0)
+                $this->admin_model->delete_from_bidning($data);
+
+            $this->admin_model->insert_binding($data);
         } else {
             header("Location: " . base_url() . 'auth/login');
         }
@@ -164,24 +169,41 @@ class Admin_shedule extends CI_Controller
     function update_db_events()
     {
         if ($this->ion_auth->is_admin()) {
-        $this->load->model('admin_model');
+            $this->load->model('admin_model');
 
-        if ($_POST['txtEvent'] == '') {
-            $action = 'delete';
+            if ($_POST['txtEvent'] == '') {
+                $action = 'delete';
+                $data = array(
+                    'idDay' => $_POST['idDay'],
+                    'idGroup' => $_POST['idGroup']
+                );
+                $this->admin_model->update_event($data, $action);
+            } else {
+                $action = 'insert';
+                $data = array(
+                    'idDay' => $_POST['idDay'],
+                    'idGroup' => $_POST['idGroup'],
+                    'txtEvent' => $_POST['txtEvent']
+                );
+                $this->admin_model->update_event($data, $action);
+            }
+        } else {
+            header("Location: " . base_url() . 'auth/login');
+        }
+    }
+
+    function get_events()
+    {
+        if ($this->ion_auth->is_admin()) {
+            $this->load->model('admin_model');
+
             $data = array(
                 'idDay' => $_POST['idDay'],
                 'idGroup' => $_POST['idGroup']
             );
-            $this->admin_model->update_event($data, $action);
-        } else {
-            $action = 'insert';
-            $data = array(
-                'idDay' => $_POST['idDay'],
-                'idGroup' => $_POST['idGroup'],
-                'txtEvent' => $_POST['txtEvent']
-            );
-            $this->admin_model->update_event($data, $action);
-        }
+
+            print_r($this->admin_model->get_event($data));
+
         } else {
             header("Location: " . base_url() . 'auth/login');
         }

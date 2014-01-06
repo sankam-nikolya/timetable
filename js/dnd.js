@@ -6,7 +6,7 @@ function DragObject(element) {
     var rememberPosition
     var mouseOffset
 
-    this.onDragStart = function(offset) {
+    this.onDragStart = function (offset) {
         var s = element.style
         rememberPosition = {top: s.top, left: s.left, position: s.position}
         s.position = 'absolute'
@@ -14,29 +14,30 @@ function DragObject(element) {
         mouseOffset = offset
     }
 
-    this.hide = function() {
+    this.hide = function () {
         element.style.display = 'none'
     }
 
-    this.show = function() {
+    this.show = function () {
         element.style.display = ''
     }
 
-    this.onDragMove = function(x, y) {
-        element.style.top =  y - mouseOffset.y +'px'
-        element.style.left = x - mouseOffset.x +'px'
+    this.onDragMove = function (x, y) {
+        element.style.top = y - mouseOffset.y + 'px'
+        element.style.left = x - mouseOffset.x + 'px'
     }
 
-    this.onDragSuccess = function(dropTarget) { }
+    this.onDragSuccess = function (dropTarget) {
+    }
 
-    this.onDragFail = function() {
+    this.onDragFail = function () {
         var s = element.style
         s.top = rememberPosition.top
         s.left = rememberPosition.left
         s.position = rememberPosition.position
     }
 
-    this.toString = function() {
+    this.toString = function () {
         return element.id
     }
 }

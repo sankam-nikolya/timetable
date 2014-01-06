@@ -1,6 +1,7 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Statistics_model extends CI_Model {
+class Statistics_model extends CI_Model
+{
 
     function get_num_pars()
     {
@@ -39,7 +40,32 @@ class Statistics_model extends CI_Model {
         $this->db->join("BindingTeacherSubjects", "subjects.idsubects = BindingTeacherSubjects.idSubject");
         $this->db->join("teachers", "teachers.idteacher = BindingTeacherSubjects.idTeacher");
 
-        $this->db->where('days.date BETWEEN ', '"'.$monThis.'" AND "'.$sunThis.'"', FALSE);
+        $this->db->where('days.date BETWEEN ', '"' . $monThis . '" AND "' . $sunThis . '"', FALSE);
+        $this->db->group_by('binding.idsubjects');
+
+        return $this->db->get("binding")->result_array();
+    }
+
+    function n_get_short_num_pars()
+    {
+        $monNext = date("Y-m-d", time() - (-7 + date("N") - 1) * 24 * 60 * 60);
+        $sunNext = date("Y-m-d", time() - (-13 + date("N") - 1) * 24 * 60 * 60);
+
+        $this->db->select("
+            binding.idsubjects,
+            Count(binding.idsubjects) as 'pars',
+            teachers.idteacher,
+            teachers.first_name,
+            teachers.last_name,
+            teachers.patronymic
+        ");
+
+        $this->db->join("days", "binding.iddays = days.iddays");
+        $this->db->join("subjects", "subjects.idsubects = binding.idsubjects");
+        $this->db->join("BindingTeacherSubjects", "subjects.idsubects = BindingTeacherSubjects.idSubject");
+        $this->db->join("teachers", "teachers.idteacher = BindingTeacherSubjects.idTeacher");
+
+        $this->db->where('days.date BETWEEN ', '"' . $monNext . '" AND "' . $sunNext . '"', FALSE);
         $this->db->group_by('binding.idsubjects');
 
         return $this->db->get("binding")->result_array();
@@ -75,7 +101,27 @@ class Statistics_model extends CI_Model {
         $this->db->join("days", "days.iddays = binding.iddays");
         $this->db->join("groups", "groups.idgroups = binding.idgroups");
 
-        $this->db->where('days.date BETWEEN', '"'.$monThis.'" AND "'.$sunThis.'"', FALSE);
+        $this->db->where('days.date BETWEEN', '"' . $monThis . '" AND "' . $sunThis . '"', FALSE);
+        $this->db->group_by('groups.idgroups');
+
+        return $this->db->get("binding")->result_array();
+    }
+
+    function n_get_short_group_num_pars()
+    {
+        $monNext = date("Y-m-d", time() - (-7 + date("N") - 1) * 24 * 60 * 60);
+        $sunNext = date("Y-m-d", time() - (-13 + date("N") - 1) * 24 * 60 * 60);
+
+        $this->db->select("
+            Count(groups.idgroups) as 'pars',
+            groups.`name`
+        ");
+
+        $this->db->join("subjects", "subjects.idsubects = binding.idsubjects");
+        $this->db->join("days", "days.iddays = binding.iddays");
+        $this->db->join("groups", "groups.idgroups = binding.idgroups");
+
+        $this->db->where('days.date BETWEEN', '"' . $monNext . '" AND "' . $sunNext . '"', FALSE);
         $this->db->group_by('groups.idgroups');
 
         return $this->db->get("binding")->result_array();

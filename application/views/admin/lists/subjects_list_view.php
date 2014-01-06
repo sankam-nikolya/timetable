@@ -11,14 +11,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach($subjects as $subject):?>
+                <?php foreach ($subjects as $subject): ?>
                     <tr style="text-align: left">
-                        <td><?=$subject['idsubects']?></td>
-                        <td><a href="<?=base_url()?>index.php/admin_shedule/subject_edit_view/?id=<?=$subject['idsubects']?>"><?=$subject['full_name']?></a></td>
-                        <td><?=$subject['name']?></td>
-                        <td><?php if ($subject['active'] == 1):?>Активен <?php else:?>Не активен<?php endif?></td>
+                        <td><?= $subject['idsubects'] ?></td>
+                        <td>
+                            <a href="<?= base_url() ?>index.php/admin_shedule/subject_edit_view/?id=<?= $subject['idsubects'] ?>"><?= $subject['full_name'] ?></a>
+                        </td>
+                        <td><?= $subject['name'] ?></td>
+                        <td><?php if ($subject['active'] == 1): ?>Активен <?php else: ?>Не активен<?php endif ?></td>
                     </tr>
-                <?php endforeach?>
+                <?php endforeach ?>
                 </tbody>
             </table>
         </div>
@@ -26,7 +28,8 @@
             <div class="well sidebar-nav">
                 <ul class="nav">
                     <li>
-                        <a href="<?=base_url()?>index.php/admin_shedule/subject_add_view"><span class="glyphicon glyphicon-plus"> Добавить</span></a>
+                        <a href="<?= base_url() ?>index.php/admin_shedule/subject_add_view"><span
+                                class="glyphicon glyphicon-plus"> Добавить</span></a>
                     </li>
                 </ul>
             </div>

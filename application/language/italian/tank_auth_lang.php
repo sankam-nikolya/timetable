@@ -24,7 +24,7 @@ $lang['auth_message_new_password_activated'] = "Cambio della password avvenuto c
 $lang['auth_message_new_password_failed'] = "Il tuo codice di attivazione &egrave; errato. Perfavora controlla l'e-mail e riesegui le operazioni.";
 $lang['auth_message_new_email_sent'] = "Una e-mail di conferma &egrave; stata inviata a %s. Segui le istruzioni contenute nella e-mail per cambiare il tuo indirizzo e-mail";
 $lang['auth_message_new_email_activated'] = "E-mail cambiata con successo";
-$lang['auth_message_new_email_failed'] =  "Il tuo codice di attivazione &egrave; errato o scaduto. Perfavore controlla la tua e-mail e segui le istruzioni"; 
+$lang['auth_message_new_email_failed'] = "Il tuo codice di attivazione &egrave; errato o scaduto. Perfavore controlla la tua e-mail e segui le istruzioni";
 $lang['auth_message_banned'] = "Sei stato bannato";
 $lang['auth_message_unregistered'] = "Il tuo account &egrave; stato cancellato...";
 

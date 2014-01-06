@@ -23,10 +23,10 @@
  </datalist>
  */
 
-$.fn.datalist = function() {
+$.fn.datalist = function () {
 
     //first test for native placeholder support before continuing
-    return ((typeof this[0].list === 'object' ) && (document.createElement('datalist') && !!window.HTMLDataListElement)) ? this : this.each(function() {
+    return ((typeof this[0].list === 'object' ) && (document.createElement('datalist') && !!window.HTMLDataListElement)) ? this : this.each(function () {
         //local vars
         var $this = $(this),
         //the main guts of the plugin
@@ -36,8 +36,7 @@ $.fn.datalist = function() {
         //wrapper stuffs
             width = $this.width(),
             height = $this.height(),
-            ul = $("<ul>", {"class": "datalist", "width": width, "css":
-            {'position': 'absolute',
+            ul = $("<ul>", {"class": "datalist", "width": width, "css": {'position': 'absolute',
                 'left': 0,
                 'top': height + 6,
                 'margin': 0,
@@ -47,9 +46,9 @@ $.fn.datalist = function() {
                 '-moz-box-shadow': '0px 2px 3px #ccc',
                 '-webkit-box-shadow': '0px 2px 3px #ccc',
                 'box-shadow': '0px 2px 3px #ccc',
-                'z-index':99,
-                'background':'#fff',
-                'cursor':'default'}
+                'z-index': 99,
+                'background': '#fff',
+                'cursor': 'default'}
             }),
             wrapper = $('<div>').css('position', 'relative');
 
@@ -59,31 +58,32 @@ $.fn.datalist = function() {
             return this;
         } else {
             //otherwise, build the structure
-            opts.each(function(i, opt) {
+            opts.each(function (i, opt) {
                 $('<li>')
-                    .append('<span class="value">'+opt.value+'</span>')
-                    .append('<span class="label" style="float:right">'+opt.label+'</span>')
+                    .append('<span class="value">' + opt.value + '</span>')
+                    .append('<span class="label" style="float:right">' + opt.label + '</span>')
                     .appendTo(ul);
             });
-        };
+        }
+        ;
 
         //stick the stuff in and hide it
         $this.wrap(wrapper);
         ul.hide().insertAfter($this);
 
         //show it on focus
-        $this.focus(function(){
+        $this.focus(function () {
             ul.show();
         });
 
         //hide it on blur
-        $this.blur(function(){
+        $this.blur(function () {
             ul.hide();
         });
 
         //set value of input to clicked option
         var lis = $this.next().find('li');
-        lis.mousedown(function(){
+        lis.mousedown(function () {
             var value = $(this).find('span.value').text();
             $this.val(value);
         });

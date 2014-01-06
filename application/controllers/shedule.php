@@ -25,8 +25,6 @@ class Shedule extends CI_Controller
         $this->load->view('menu_view');
 
 
-
-
         $data['pars_timing'] = $this->shedule_model->get_time();
         $data['groups'] = $this->shedule_model->get_groups();
         //$data['days'] = $this->shedule_model->get_days($this->input->get('filter'));

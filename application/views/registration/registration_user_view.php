@@ -1,8 +1,8 @@
-<?php echo validation_errors();?>
+<?php echo validation_errors(); ?>
 
 <div class="container">
     <div class="well">
-        <?php echo form_open('registration/add_user')?>
+        <?php echo form_open('registration/add_user') ?>
 
         <p>Ваш логин:</p>
         <input type="text" name="login" value="" size="50" class="form-control">

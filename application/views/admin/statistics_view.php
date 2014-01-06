@@ -3,7 +3,7 @@
     $(function () {
 
         // Radialize the colors
-        Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
+        Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function (color) {
             return {
                 radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
                 stops: [
@@ -34,21 +34,23 @@
                         enabled: true,
                         color: '#000000',
                         connectorColor: '#000000',
-                        formatter: function() {
-                            return '<b>'+ this.point.name +'</b>: '+ Math.round(this.percentage) +' %';
+                        formatter: function () {
+                            return '<b>' + this.point.name + '</b>: ' + Math.round(this.percentage) + ' %';
                         }
                     }
                 }
             },
-            series: [{
-                type: 'pie',
-                name: 'Всего уроков',
-                data: [
-                    <?php foreach ($num_pars as $item):?>
+            series: [
+                {
+                    type: 'pie',
+                    name: 'Всего уроков',
+                    data: [
+                        <?php foreach ($num_pars as $item):?>
                         ['<?=$item['first_name']; echo ' '.$item['patronymic']?>', <?=$item['pars']?>],
-                    <?php endforeach?>
-                ]
-            }]
+                        <?php endforeach?>
+                    ]
+                }
+            ]
         });
         // Build the chart
         $('#groups').highcharts({
@@ -71,33 +73,37 @@
                         enabled: true,
                         color: '#000000',
                         connectorColor: '#000000',
-                        formatter: function() {
-                            return '<b>'+ this.point.name +'</b>: '+ Math.round(this.percentage) +' %';
+                        formatter: function () {
+                            return '<b>' + this.point.name + '</b>: ' + Math.round(this.percentage) + ' %';
                         }
                     }
                 }
             },
-            series: [{
-                type: 'pie',
-                name: 'Всего уроков',
-                data: [
-                    <?foreach ($group_num_pars as $item):?>
+            series: [
+                {
+                    type: 'pie',
+                    name: 'Всего уроков',
+                    data: [
+                        <?foreach ($group_num_pars as $item):?>
                         ['<?=$item['name']?>', <?=$item['pars']?>],
-                    <?endforeach?>
-                ]
-            }]
+                        <?endforeach?>
+                    ]
+                }
+            ]
         });
     });
 
 
 </script>
-<script src="<?=base_url()?>js/charts/highcharts.js"></script>
-<script src="<?=base_url()?>js/charts/modules/exporting.js"></script>
+<script src="<?= base_url() ?>js/charts/highcharts.js"></script>
+<script src="<?= base_url() ?>js/charts/modules/exporting.js"></script>
 
 
 <div class="container">
     <a name="teachers"></a>
+
     <div id="teachers"></div>
     <a name="groups"></a>
+
     <div id="groups"></div>
 </div>
