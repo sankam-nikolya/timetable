@@ -5,6 +5,8 @@
 
 .table {
     text-align: center;
+    box-shadow: 0 0 8px rgba(82,168,236,.6);
+    -moz-box-shadow: 0 0 8px rgba(82,168,236,.6);
 }
 
 .table p {

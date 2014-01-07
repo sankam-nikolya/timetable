@@ -91,13 +91,13 @@
                 }
             ]
         });
-    });
+    })
 
 
 </script>
+<script type="text/javascript" src="<?= base_url() ?>js/stats/swfobject.js"></script>
 <script src="<?= base_url() ?>js/charts/highcharts.js"></script>
 <script src="<?= base_url() ?>js/charts/modules/exporting.js"></script>
-
 
 <div class="container">
     <a name="teachers"></a>
@@ -106,4 +106,21 @@
     <a name="groups"></a>
 
     <div id="groups"></div>
+    <br>
+
+    <a name="ga"></a>
+    <div id="visitors_3" align="center" style="padding-bottom:80px">
+        <strong>Äëÿ ïðîñìîòðà ñîæåðæèìîãî, óñòàíîâèòå ïîñëåäíþþ âåðñèþ Adobe Flash Player</strong>
+    </div>
+
+    <script type="text/javascript">
+        // <![CDATA[
+            var so = new SWFObject("<?= base_url() ?>js/stats/amline.swf", "amline_chart", "600", "400", "8", "#FFFFFF");
+            so.addVariable("path", "./amline/");
+            so.addVariable("settings_file", escape("<?= base_url() ?>js/stats/visitors_3_settings.xml?<?php echo mktime();?>"));
+            so.addVariable("data_file", escape("<?= base_url() ?>js/stats/visitors_3.csv?<?php echo mktime();?>"));
+            so.addVariable("preloader_color", "#BBBBBB");
+            so.write("visitors_3");
+        // ]]>
+    </script>
 </div>
