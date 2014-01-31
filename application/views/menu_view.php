@@ -50,7 +50,7 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav pull-right">
-                <li><a href="<?= base_url() ?>admin">Админ</a></li>
+                <li><a href="<?= base_url() ?>admin">Администрирование</a></li>
             </ul>
         </div>
     </div>

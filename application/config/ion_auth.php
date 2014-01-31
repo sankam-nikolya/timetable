@@ -23,7 +23,7 @@ $config['use_mongodb'] = FALSE;
 */
 $config['collections']['users'] = 'ion_users';
 $config['collections']['groups'] = 'ion_groups';
-$config['collections']['login_attempts'] = 'login_attempts';
+$config['collections']['login_attempts'] = 'ion_login_attempts';
 
 /*
 | -------------------------------------------------------------------------
@@ -34,7 +34,7 @@ $config['collections']['login_attempts'] = 'login_attempts';
 $config['tables']['users'] = 'ion_users';
 $config['tables']['groups'] = 'ion_groups';
 $config['tables']['users_groups'] = 'ion_users_groups';
-$config['tables']['login_attempts'] = 'login_attempts';
+$config['tables']['login_attempts'] = 'ion_login_attempts';
 
 /*
  | Users table column and Group table column you want to join WITH.
@@ -92,10 +92,10 @@ $config['email_activation'] = FALSE; // Email Activation for registration
 $config['manual_activation'] = FALSE; // Manual Activation for registration
 $config['remember_users'] = TRUE; // Allow users to be remembered and enable auto-login
 $config['user_expire'] = 86500; // How long to remember the user (seconds). Set to zero for no expiration
-$config['user_extend_on_login'] = FALSE; // Extend the users cookies every time they auto-login
-$config['track_login_attempts'] = FALSE; // Track the number of failed login attempts for each user or ip.
+$config['user_extend_on_login'] = TRUE; // Extend the users cookies every time they auto-login
+$config['track_login_attempts'] = TRUE; // Track the number of failed login attempts for each user or ip.
 $config['track_login_ip_address'] = TRUE; // Track login attempts by IP Address, if FALSE will track based on identity. (Default: TRUE)
-$config['maximum_login_attempts'] = 3; // The maximum number of failed login attempts.
+$config['maximum_login_attempts'] = 100; // The maximum number of failed login attempts.
 $config['lockout_time'] = 600; // The number of seconds to lockout an account due to exceeded attempts
 $config['forgot_password_expiration'] = 0; // The number of milliseconds after which a forgot password request will expire. If set to 0, forgot password requests will not expire.
 

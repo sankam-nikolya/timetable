@@ -1,15 +1,12 @@
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#reservation').daterangepicker({
-            separator: '&to='
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script>
+    $(document).ready(function() {
+        $( "#reservation" ).datepicker({
+            dateFormat: 'yy-mm-dd'
         });
-    });
-</script>
-<link rel="stylesheet" type="text/css" media="all" href="<? base_url() ?>/css/datepicker/daterangepicker-bs3.css"/>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-<script type="text/javascript" src="<? base_url() ?>/js/datepicker/moment.js"></script>
-<script type="text/javascript" src="<? base_url() ?>/js/datepicker/daterangepicker.js"></script>
-
+    });  
+</script>  
 <div class="container">
     <?php if (isset($_GET['response'])): ?>
         <?php if ($_GET['response'] == 'success'): ?>
@@ -43,6 +40,6 @@
 <script type="text/javascript">
     function open_days(range)
     {
-        window.location.href = '<?=base_url()?>index.php/admin_shedule/edit_shedule_view/?from=' + range;
+        window.location.href = '<?=base_url()?>index.php/admin_shedule/edit_shedule_view/?from=' + range + '&to=' + range;
     }
 </script>

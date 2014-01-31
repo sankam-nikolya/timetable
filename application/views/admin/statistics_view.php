@@ -108,7 +108,6 @@
     <div id="groups"></div>
     <br>
 
-    <a name="ga"></a>
     <div id="visitors_3" align="center" style="padding-bottom:80px">
         <strong>Äëÿ ïðîñìîòðà ñîæåðæèìîãî, óñòàíîâèòå ïîñëåäíþþ âåðñèþ Adobe Flash Player</strong>
     </div>

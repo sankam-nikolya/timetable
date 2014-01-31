@@ -7,11 +7,16 @@ class Admin_shedule extends CI_Controller
         if ($this->ion_auth->is_admin()) {
             $this->load->model('statistics_model');
             $data['short_num_pars'] = $this->statistics_model->get_short_num_pars();
-            $data['short_group_num_pars'] = $this->statistics_model->get_short_group_num_pars();
+            $data['short_group_num_pars_0'] = $this->statistics_model->get_short_group_num_pars_0();
+            $data['short_group_num_pars_1'] = $this->statistics_model->get_short_group_num_pars_1();
+            $data['short_group_num_pars_2'] = $this->statistics_model->get_short_group_num_pars_2();
 
             $data['n_short_num_pars'] = $this->statistics_model->n_get_short_num_pars();
-            $data['n_short_group_num_pars'] = $this->statistics_model->n_get_short_group_num_pars();
+            $data['n_short_group_num_pars_0'] = $this->statistics_model->n_get_short_group_num_pars_0();
+            $data['n_short_group_num_pars_1'] = $this->statistics_model->n_get_short_group_num_pars_1();
+            $data['n_short_group_num_pars_2'] = $this->statistics_model->n_get_short_group_num_pars_2();
 
+            
             $this->load->view('admin/header_view');
             $this->load->view('admin/menu_view');
             $this->load->view('admin/shedule/index_view', $data);

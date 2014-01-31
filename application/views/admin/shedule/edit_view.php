@@ -25,6 +25,11 @@
 
         <div class="tab-content">
             <div class="tab-pane active" id="s1">
+                <div class="alert alert-info alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    Расписание обновляется по мере того, как вы его набираете. Не нужно нажимать кнопку
+                    "Обновить".
+                </div>
                 <?php foreach ($days as $day): ?>
                     <input type="hidden" value="<?= $day['iddays'] ?>" name="day">
                     <table class="table table-bordered">

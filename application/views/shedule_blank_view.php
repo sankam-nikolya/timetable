@@ -43,7 +43,7 @@
 <?php endif ?>
 
 <div class="container"
-    <?php if ($day_for_now['unix_time'] < time()): ?>
+    <?php if ($day_for_now['date'] < date('Y-m-d')): ?>
         style="opacity: 0.5"
     <?php endif ?>
     >
