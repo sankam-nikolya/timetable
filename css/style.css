@@ -1,0 +1,40 @@
+.menu {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.table {
+    text-align: center;
+    box-shadow: 0 0 8px rgba(82,168,236,.6);
+    -moz-box-shadow: 0 0 8px rgba(82,168,236,.6);
+}
+
+.table p {
+    margin: 0 0 0px;
+}
+
+.table .rowdown td {
+    height: 60px;
+    vertical-align: middle;
+}
+
+.table .wordup {
+    color: blue;
+}
+
+.table .wordbottom {
+    color: red;
+}
+
+.table .clr {
+    color: #808080;
+}
+
+.navbar {
+  	-webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+	box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+	background-color: #f9f9f9;
+	border-color: #e8e8e8;
+	border: 1px solid transparent;
+  	border-radius: 0px;
+}

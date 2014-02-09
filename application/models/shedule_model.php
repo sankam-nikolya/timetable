@@ -3,30 +3,35 @@
 class Shedule_model extends CI_Model
 {
 
-    public function get_pars($day, $group)
+    public function get_pars($day_start, $day_end)
     {
-        $this->db->query("SET lc_time_names = 'ru_RU'");
-
         $this->db->select("
+            binding.iddays,
             g.idgroups,
             g.`name` AS `group`,
             lt.num,
             s.`name` AS `subject`,
             s.idsubects,
             c.`name` AS cabinet,
-            binding.type
+            binding.type,
+            teachers.first_name, 
+            teachers.patronymic
         ");
 
-        $this->db->join("cabinets c", "binding.idcabinets = c.idcabinets", "LEFT OUTER");
+        $this->db->join("cabinets c", "binding.idcabinets = c.idcabinets", "LEFT");
         $this->db->join("days d", "binding.iddays = d.iddays");
         $this->db->join("groups g", "binding.idgroups = g.idgroups");
         $this->db->join("lessons_time lt", "binding.idlessons_time = lt.idlessons_time");
         $this->db->join("subjects s", "binding.idsubjects = s.idsubects");
+        $this->db->join("BindingTeacherSubjects", "s.idsubects = BindingTeacherSubjects.idSubject", "LEFT");
+        $this->db->join("teachers", "BindingTeacherSubjects.idTeacher = teachers.idteacher", "LEFT");
 
-        $this->db->where("d.date", $day);
-        $this->db->where("g.idgroups", $group);
+        $this->db->where("d.date >=", $day_start);
+        $this->db->where("d.date <=", $day_end);
 
-        $this->db->order_by("num,  binding.type", "ASC");
+        $this->db->group_by("binding.idbinding");
+
+        $this->db->order_by("binding.iddays, g.`order`, lt.num", "ASC");
 
         return $this->db->get("binding")->result_array();
     }
@@ -59,22 +64,14 @@ class Shedule_model extends CI_Model
         switch ($filter) {
             case 'currently' :
             {
-                $from = date("Y-m-d", time() - (1 * 24 * 60 * 60));
+                $from = date("Y-m-d", time() - (0 * 24 * 60 * 60));
                 $to = date("Y-m-d", time() + (7 * 24 * 60 * 60));
                 $query = $this->db->query("SELECT DISTINCT iddays, DATE_FORMAT (date, '%W %d.%m.%Y') AS 'formated_date', date, UNIX_TIMESTAMP(date) as 'unix_time' FROM days WHERE date BETWEEN '" . $from . "' AND '" . $to . "' ORDER BY date");
 
                 return $query->result_array();
             }
-                break;
-            case 'all_day' :
-            {
-                $query = $this->db->query("SELECT DISTINCT iddays, DATE_FORMAT (date, '%W %d.%m.%Y') AS 'formated_date', date as 'date', UNIX_TIMESTAMP(date) as 'unix_time' FROM days ORDER BY date DESC");
-                return $query->result_array();
-            }
-                break;
+            break;
         }
-
-
     }
 
     function get_days_f_t($from, $to)

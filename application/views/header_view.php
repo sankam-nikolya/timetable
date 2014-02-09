@@ -9,7 +9,7 @@
 
     <script src="<?= base_url() ?>js/jquery.min.js"></script>
     <script src="<?= base_url() ?>js/bootstrap.js"></script>
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Ubuntu:400&subset=cyrillic,latin" rel="stylesheet" type="text/css" />
 
     <style>
         @font-face {
@@ -19,7 +19,7 @@
         }
 
         body {
-            font-family: "Open Sans", sans-serif;
+            font-family: "Ubuntu", sans-serif;
         }
     </style>
 
