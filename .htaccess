@@ -7,13 +7,13 @@
 </IfModule>
 
 
-RewriteEngine On
+#RewriteEngine On
 
-RewriteCond %{REMOTE_ADDR} !=127.0.0.1
+#RewriteCond %{REMOTE_ADDR} !=127.0.0.1
 
-RewriteCond %{REQUEST_URI} !^/offline.php
+#RewriteCond %{REQUEST_URI} !^/offline.php
 
-RewriteCond %{REQUEST_URI} !^/img
+#RewriteCond %{REQUEST_URI} !^/img
 
-RewriteRule ^(.*)$ /offline.php [R=302,L]
+#RewriteRule ^(.*)$ /offline.php [R=302,L]
 

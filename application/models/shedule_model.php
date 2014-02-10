@@ -14,6 +14,7 @@ class Shedule_model extends CI_Model
             s.idsubects,
             c.`name` AS cabinet,
             binding.type,
+            binding.idlessons_time,
             teachers.first_name, 
             teachers.patronymic
         ");
@@ -36,21 +37,6 @@ class Shedule_model extends CI_Model
         return $this->db->get("binding")->result_array();
     }
 
-    function get_TeacherSubject($id_subject)
-    {
-        $this->db->select(
-            "
-            teachers.first_name,
-            teachers.last_name,
-            teachers.patronymic,
-            teachers.idteacher
-            "
-        );
-        $this->db->join("teachers", "teachers.idteacher = BindingTeacherSubjects.idTeacher");
-        $this->db->where("idSubject", $id_subject);
-        return $this->db->get("BindingTeacherSubjects")->result_array();
-    }
-
     function get_event($id_day, $id_group)
     {
         $this->db->where("idDay", $id_day);
@@ -66,7 +52,7 @@ class Shedule_model extends CI_Model
             {
                 $from = date("Y-m-d", time() - (0 * 24 * 60 * 60));
                 $to = date("Y-m-d", time() + (7 * 24 * 60 * 60));
-                $query = $this->db->query("SELECT DISTINCT iddays, DATE_FORMAT (date, '%W %d.%m.%Y') AS 'formated_date', date, UNIX_TIMESTAMP(date) as 'unix_time' FROM days WHERE date BETWEEN '" . $from . "' AND '" . $to . "' ORDER BY date");
+                $query = $this->db->query("SELECT DISTINCT iddays, DATE_FORMAT(date, '%W %d.%m.%Y') AS 'formated_date', date, UNIX_TIMESTAMP(date) as 'unix_time' FROM days WHERE date BETWEEN '" . $from . "' AND '" . $to . "' ORDER BY date");
 
                 return $query->result_array();
             }
@@ -77,20 +63,14 @@ class Shedule_model extends CI_Model
     function get_days_f_t($from, $to)
     {
         $this->db->query("SET lc_time_names = 'ru_RU'");
-        $query = $this->db->query("SELECT DISTINCT iddays, DATE_FORMAT (date, '%W %d.%m.%Y') AS 'formated_date', date, UNIX_TIMESTAMP(date) as 'unix_time' FROM days WHERE date BETWEEN '" . $from . "' AND '" . $to . "' ORDER BY date");
+        $query = $this->db->query("SELECT DISTINCT iddays, DATE_FORMAT(date, '%W %d.%m.%Y') AS 'formated_date', date, UNIX_TIMESTAMP(date) as 'unix_time' FROM days WHERE date BETWEEN '" . $from . "' AND '" . $to . "' ORDER BY date");
 
-        return $query->result_array();
-    }
-
-    public function get_hw()
-    {
-        $query = $this->db->get("homework");
         return $query->result_array();
     }
 
     public function get_time()
     {
-        $query = $this->db->query('SELECT idlessons_time, num, DATE_FORMAT (start_time, "%H:%i") AS start_time, DATE_FORMAT (end_time, "%H:%i") AS end_time FROM lessons_time WHERE active = 1');
+        $query = $this->db->query('SELECT idlessons_time, num, DATE_FORMAT(start_time, "%H:%i") AS start_time, DATE_FORMAT(end_time, "%H:%i") AS end_time FROM lessons_time WHERE active = 1');
         return $query->result_array();
     }
 
