@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"cont",
+				"apd_continue"
+			],
+			[
 				"bid",
 				"binding"
 			],
@@ -20,10 +24,13 @@
 	"buffers":
 	[
 		{
+			"contents": "<?php if (!defined('BASEPATH')) exit('No direct script access allowed');\n\nclass Shedule extends CI_Controller\n{\n\n    function index()\n    {\n        date_default_timezone_set('Asia/Yekaterinburg');\n        setlocale(LC_ALL, 'ru_RU.UTF-8');\n\n        $this->load->model('shedule_model');\n\n        if (!isset($_GET['filter'])) {\n            $_GET['filter'] = 'currently';\n            $data['days'] = $this->shedule_model->get_days('currently');\n        } elseif (isset($_GET['filter'])) {\n            $data['days'] = $this->shedule_model->get_days($this->input->get('filter'));\n        }\n\n        if (isset($_GET['from']) && isset($_GET['to'])) {\n            $data['days'] = $this->shedule_model->get_days_f_t($_GET['from'], $_GET['to']);\n        }\n\n        $this->load->view('header_view');\n        $this->load->view('menu_view');\n\n\n        $data['pars_timing'] = $this->shedule_model->get_time();\n        $data['pars_timing'] = $this->shedule_model->get_time();\n        $data['groups']      = $this->shedule_model->get_groups();\n        $end_data_days       = end($data['days']);\n        $data['pars']        = $this->shedule_model->get_pars($data['days'][0]['date'], $end_data_days['date']);\n        \n        foreach ($data['days'] as $day) \n        {\n            $data['rend'] = array();\n            foreach ($data['groups'] as $group) {\n                array_push($data['rend'], '<tr><td class=\"anouncegroup\">'.$group['name'].'</td>');\n                for ($i = 0; $i < count($data['pars_timing']); $i++) \n                {\n                    foreach ($data['pars'] as $par) \n                    {\n                        //print_r($day);\n                        if ($par['iddays'] != $day['iddays'])\n                        {\n                            array_push($data['rend'], '<td>2 ('.$par['iddays'].' '.$par['idgroups'].' '.$par['idlessons_time'].')</td>');\n                            continue;\n                        }\n                        if ($par['idgroups'] != $group['idgroups'])\n                        {\n                            array_push($data['rend'], '<td>2 ('.$par['iddays'].' '.$par['idgroups'].' '.$par['idlessons_time'].')</td>');\n                            continue;\n                        }\n                        if ( $par['idlessons_time'] != $data['pars_timing'][$i]['idlessons_time']) \n                        {\n                            array_push($data['rend'], '<td>2 ('.$par['iddays'].' '.$par['idgroups'].' '.$par['idlessons_time'].')</td>');\n                            continue;\n                        }\n                        array_push($data['rend'], '<td>'.$par[\"group\"].' some par</td>');\n                        \n                    }\n                }\n                array_push($data['rend'], '</tr>');\n            }\n            $data['day_for_now']    = $day['formated_date'];\n            $data['id_day_for_now'] = $day['iddays'];\n            $this->load->view('shedule_view', $data);\n        }\n        \n        $this->load->view('footer_view');\n    }\n}",
 			"file": "application/controllers/shedule.php",
+			"file_size": 3157,
+			"file_write_time": 130365755485468750,
 			"settings":
 			{
-				"buffer_size": 2382,
+				"buffer_size": 3013,
 				"line_ending": "Windows"
 			}
 		},
@@ -42,32 +49,28 @@
 				"buffer_size": 909,
 				"line_ending": "Windows"
 			}
-		},
-		{
-			"file": ".htaccess",
-			"settings":
-			{
-				"buffer_size": 373,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/config/routes.php",
-			"settings":
-			{
-				"buffer_size": 2098,
-				"line_ending": "Windows"
-			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 0.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"packag",
+				"Package Control: Install Package"
+			],
+			[
+				"control",
+				"Package Control: Install Package"
+			]
 		],
-		"width": 0.0
+		"width": 464.0
 	},
 	"console":
 	{
@@ -84,16 +87,19 @@
 	},
 	"file_history":
 	[
+		"/C/project/t2stan5arch_writer/ReadSensor/ReadSensor.bpr",
+		"/C/AppServ/www/application/views/admin/shedule/edit_view.php",
+		"/C/AppServ/www/application/config/routes.php",
+		"/C/AppServ/www/.htaccess",
 		"/C/AppServ/www/application/views/header_view.php",
 		"/C/AppServ/www/application/config/config.php",
 		"/C/WINDOWS/system32/drivers/etc/hosts",
 		"/C/AppServ/www/application/config/database.php",
-		"/C/AppServ/www/.htaccess",
 		"/C/AppServ/www/index.php"
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -107,6 +113,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"iocom",
+			"tt"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -124,7 +132,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -132,15 +140,15 @@
 					"file": "application/controllers/shedule.php",
 					"settings":
 					{
-						"buffer_size": 2382,
+						"buffer_size": 3013,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2380,
-								2380
+								2944,
+								2944
 							]
 						],
 						"settings":
@@ -149,8 +157,8 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 38.0,
-						"translation.y": 528.0,
+						"translation.x": 0.0,
+						"translation.y": 496.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -167,8 +175,8 @@
 						"selection":
 						[
 							[
-								276,
-								281
+								1505,
+								1505
 							]
 						],
 						"settings":
@@ -177,8 +185,8 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": 47.0,
+						"translation.y": 384.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -195,8 +203,8 @@
 						"selection":
 						[
 							[
-								766,
-								769
+								357,
+								357
 							]
 						],
 						"settings":
@@ -207,58 +215,6 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": ".htaccess",
-					"settings":
-					{
-						"buffer_size": 373,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								373,
-								373
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "application/config/routes.php",
-					"settings":
-					{
-						"buffer_size": 2098,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2098,
-								2098
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 480.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

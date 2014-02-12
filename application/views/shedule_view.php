@@ -18,11 +18,24 @@
 
         <tr class="rowdown">      
             <tr>      
-                <?php foreach ($rend as $ren):?>
-                    <?=$ren?>       
-                <?php endforeach?>    
+                <?php foreach ($groups as $group):?>
+                    <tr>
+                        <td class="anouncegroup"><?=$group['name']?></td>
+                        <?php foreach ($pars_timing as $item_timing): ?>
+                            <?php foreach ($rend as $par):?>
+                                <?php if ($par['iddays'] == $id_day_for_now && $par['idgroups'] == $group['idgroups'] && $par['idlessons_time'] == $item_timing['idlessons_time']):?>
+                                    <td>para</td>
+                                    <?php break;?>
+                                <?php elseif ($par['iddays'] == $id_day_for_now && $par['idgroups'] == $group['idgroups']):?>
+                                    <td>ne para</td>    
+                                    <?php break;?>
+                                <?php endif?>
+                            <?php endforeach?>
+                        <?php endforeach ?>  
+                    </tr>    
+                <?php endforeach?>
+                
             <tr>        
         </tr>
     </table>
-
 </div>
