@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Shedule extends CI_Controller
+class Shedulezao extends CI_Controller
 {
 
     function index()
@@ -26,17 +26,17 @@ class Shedule extends CI_Controller
         $this->load->view('type_view');
 
         $data['pars_timing'] = $this->shedule_model->get_time();
-        $data['groups'] = $this->shedule_model->get_groups();
+        $data['groups'] = $this->shedule_model->get_groups_zao();
         
         foreach ($data['days'] as $day) 
         {
-            $data['pars']               = $this->shedule_model->get_pars($day['iddays']);
-            $data['event']              = $this->shedule_model->get_event($day['iddays']);
+            $data['pars']               = $this->shedule_model->get_pars_zao($day['iddays']);
+            $data['event']              = $this->shedule_model->get_event_zao($day['iddays']);
             if (count($data['pars']) > 0 || count($data['event']) > 0)
             {
                 $data['day_for_now']    = $day;
                 $this->load->view('shedule_view', $data);
-            }            
+            }    
         }
         $this->load->view('footer_view');
     }

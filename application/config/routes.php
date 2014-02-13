@@ -39,6 +39,8 @@
 */
 
 $route['default_controller'] = "shedule";
+$route['fulltime'] = "shedule";
+$route['parttime'] = "shedulezao";
 $route['auth'] = "auth";
 $route['admin'] = "admin_shedule";
 $route['admin/shedule'] = "admin_shedule";

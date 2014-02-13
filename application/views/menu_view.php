@@ -84,6 +84,6 @@
 </div><!-- /.modal -->
 <script type="text/javascript">
     function redirect(range) {
-        window.location.href = '<?=base_url()?>?from=' + range;
+        window.location.href = '<?=base_url()?><?=$this->uri->rsegment(1)?>?from=' + range;
     }
 </script>

@@ -41,9 +41,9 @@
         }
     </script>
 <?php endif ?>
-<div class="container" <?php if ($day_for_now['date'] < date('Y-m-d')): ?> style="opacity: 0.5" <?php endif ?>>
+<div class="container">
 
-    <table class="table table-bordered" onmouseover="show_button_<?= $day_for_now['unix_time'] ?>()">
+    <table class="table table-bordered" onmouseover="show_button_<?= $day_for_now['unix_time'] ?>()" <?php if ($day_for_now['date'] < date('Y-m-d')): ?> style="opacity: 0.5;"<?php endif ?> <?php if ($day_for_now['date'] == date('Y-m-d')):?>style="box-shadow: 0 0 8px #d98635; -moz-box-shadow: 0 0 8px #d98635;"<?php endif?>>
         <tr>
             <td rowspan="3" style="vertical-align: middle">Группа</td>
             <td colspan="<?=count($pars_timing)?>" style="text-align: center; font-weight: bold;"><?= $day_for_now['formated_date'] ?>
