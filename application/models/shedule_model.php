@@ -3,7 +3,7 @@
 class Shedule_model extends CI_Model
 {
 
-    public function get_pars($day_start, $day_end)
+    function get_pars($day)
     {
         $this->db->select("
             binding.iddays,
@@ -27,8 +27,7 @@ class Shedule_model extends CI_Model
         $this->db->join("BindingTeacherSubjects", "s.idsubects = BindingTeacherSubjects.idSubject", "LEFT");
         $this->db->join("teachers", "BindingTeacherSubjects.idTeacher = teachers.idteacher", "LEFT");
 
-        $this->db->where("d.date >=", $day_start);
-        $this->db->where("d.date <=", $day_end);
+        $this->db->where("binding.iddays", (int)$day);
 
         $this->db->group_by("binding.idbinding");
 
@@ -37,14 +36,13 @@ class Shedule_model extends CI_Model
         return $this->db->get("binding")->result_array();
     }
 
-    function get_event($id_day, $id_group)
+    function get_event($id_day)
     {
         $this->db->where("idDay", $id_day);
-        $this->db->where("idGroup", $id_group);
         return $this->db->get("BindingDayGroupEvent")->result_array();
     }
 
-    public function get_days($filter)
+    function get_days($filter)
     {
         $this->db->query("SET lc_time_names = 'ru_RU'");
         switch ($filter) {
@@ -68,13 +66,13 @@ class Shedule_model extends CI_Model
         return $query->result_array();
     }
 
-    public function get_time()
+    function get_time()
     {
         $query = $this->db->query('SELECT idlessons_time, num, DATE_FORMAT(start_time, "%H:%i") AS start_time, DATE_FORMAT(end_time, "%H:%i") AS end_time FROM lessons_time WHERE active = 1');
         return $query->result_array();
     }
 
-    public function get_count_groups_per_day($day)
+    function get_count_groups_per_day($day)
     {
         $this->db->join('days', 'days.iddays = binding.iddays', 'inner');
         $this->db->where('date', $day);
@@ -82,7 +80,7 @@ class Shedule_model extends CI_Model
         return $query;
     }
 
-    public function get_groups()
+    function get_groups()
     {
         //TODO выводить группы в расписание из binding, а не из общего пула групп
         $this->db->where('active', 1);
