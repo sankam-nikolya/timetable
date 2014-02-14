@@ -10,22 +10,35 @@
 <script type="text/javascript">
     $(document).ready(function () {
         <?php foreach ($days as $day): ?>
-                <?php foreach ($groups as $group): ?>
-                    var data = {
-                            idGroup: parseInt(<?=$group['idgroups']?>)
-                    };
-                    $(".<?=$day['iddays']?><?=$group['idgroups']?>").select2({
-                        width: '130',
-                        ajax: {
-                            url: "<?=base_url()?>admin_shedule/json_bindingSubjectGroup",
-                            type: 'POST',
-                            data: data,
-                            results: function (data, page) {
-                                return { results: data };
-                            }
-                        }
-                    });
-                <?php endforeach ?>
+        <?php foreach ($groups as $group): ?>
+        $(".<?=$day['iddays']?><?=$group['idgroups']?>").select2({
+            width: '130',
+            multiple: true,
+            data: [
+                {text: ''},
+                {text: '0'},
+                <?php foreach ($subject_for_group as $sg):?>
+                <?php if ($sg['id_group'] == $group['idgroups']):?>
+                {id: "<?=$sg['id']?>, 0", text: "<?=$sg['name']?>"},
+                <?php endif?>
+                <?php endforeach?>
+                {text: ''},
+                {text: '1'},
+                <?php foreach ($subject_for_group as $sg):?>
+                <?php if ($sg['id_group'] == $group['idgroups']):?>
+                {id: "<?=$sg['id']?>, 1", text: "<?=$sg['name']?>"},
+                <?php endif?>
+                <?php endforeach?>
+                {text: ''},
+                {text: '2'},
+                <?php foreach ($subject_for_group as $sg):?>
+                <?php if ($sg['id_group'] == $group['idgroups']):?>
+                {id: "<?=$sg['id']?>, 2", text: "<?=$sg['name']?>"},
+                <?php endif?>
+                <?php endforeach?>
+            ]
+        });
+        <?php endforeach ?>
         <?php endforeach ?>
     });
 </script>
@@ -68,9 +81,11 @@
                                 <td><?= $group['name'] ?></td>
                                 <?php foreach ($timing as $item_timing): ?>
                                     <td>
-                                        <div class="selectpicker <?=$day['iddays']?><?=$group['idgroups']?>" multiple name="binding_select[]" onchange="update_binding(<?= $day['iddays'] ?>, <?= $group['idgroups'] ?>, <?= $item_timing['idlessons_time'] ?>, $( this ).val())">
+                                        <div class="selectpicker <?= $day['iddays'] ?><?= $group['idgroups'] ?>"
+                                             multiple name="binding_select[]"
+                                             onchange="update_binding(<?= $day['iddays'] ?>, <?= $group['idgroups'] ?>, <?= $item_timing['idlessons_time'] ?>, $( this ).val())">
                                         </div>
-                                    </td>    
+                                    </td>
                                 <?php endforeach ?>
                             </tr>
                         <?php endforeach ?>
@@ -143,8 +158,7 @@
             var t = 0;
             for (var i = 0; i < idsubjects_type.length; ++i) {
 
-                if (idsubjects_type.length == 2)
-                {
+                if (idsubjects_type.length == 2) {
                     var idsubjects_type_array = new Array();
                     idsubjects_type_array = idsubjects_type[i].split(',');
 
@@ -164,8 +178,7 @@
                         data: data
                     });
                 }
-                else
-                {
+                else {
                     var idsubjects_type_array = new Array();
                     idsubjects_type_array = idsubjects_type[i].split(',');
 

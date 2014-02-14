@@ -112,6 +112,7 @@ class Admin_shedule extends CI_Controller
             if (isset($_GET['from'])) 
             {
                 $data['days'] = $this->admin_model->get($_GET['from'], $_GET['to']);
+                $data['subject_for_group'] = $this->admin_model->get_bindingSubjectGroup();
                 $end = end($data['days']);
                 if ($end['iddays'] < $data['days'][0]['iddays']) 
                 {
@@ -133,7 +134,8 @@ class Admin_shedule extends CI_Controller
 
     function json_bindingSubjectGroup()
     {
-        print_r($data['bindingSubjectGroup'] = $this->admin_model->get_bindingSubjectGroup($_POST['idGroup']));
+        $this->load->model('admin_model');
+        json_encode($this->admin_model->get_bindingSubjectGroup(1));
     }
 
     function update_db_binding()

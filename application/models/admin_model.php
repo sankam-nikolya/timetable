@@ -42,17 +42,16 @@ class Admin_model extends CI_Model
         return $query->result_array();
     }
 
-    function get_bindingSubjectGroup($id_group)
+    function get_bindingSubjectGroup()
     {
         $this->db->distinct();
         $this->db->select('
-            groups.idgroups as id,
-            groups.`name` AS `name`');
+            groups.idgroups as id_group,
+            subjects.`name` AS `name`,
+            subjects.idsubects as id');
 
         $this->db->join('BindingSubjectGroup', 'subjects.idsubects = BindingSubjectGroup.idSubject');
         $this->db->join('groups', 'groups.idgroups = BindingSubjectGroup.idGroup');
-
-        $this->db->where('BindingSubjectGroup.idGroup', $id_group);
 
         $this->db->group_by('subjects.idsubects');
 
