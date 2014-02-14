@@ -46,10 +46,8 @@ class Admin_model extends CI_Model
     {
         $this->db->distinct();
         $this->db->select('
-            groups.idgroups,
-            groups.`name` AS `group`,
-            subjects.idsubects AS idsubjects,
-            subjects.`name` AS `subject`');
+            groups.idgroups as id,
+            groups.`name` AS `name`');
 
         $this->db->join('BindingSubjectGroup', 'subjects.idsubects = BindingSubjectGroup.idSubject');
         $this->db->join('groups', 'groups.idgroups = BindingSubjectGroup.idGroup');
@@ -68,7 +66,7 @@ class Admin_model extends CI_Model
         $this->db->select("
             iddays,
             date,
-            DATE_FORMAT (date, '%W %d.%m.%Y') as 'formated_date',
+            DATE_FORMAT(date, '%W %d.%m.%Y') as 'formated_date',
             visibility
         ", FALSE);
         $this->db->where("date BETWEEN '$from' AND '$to'");
@@ -79,7 +77,7 @@ class Admin_model extends CI_Model
 
     function get_time()
     {
-        $query = $this->db->query('SELECT idlessons_time, num, DATE_FORMAT (start_time, "%H:%i") AS start_time, DATE_FORMAT (end_time, "%H:%i") AS end_time FROM lessons_time WHERE active = 1');
+        $query = $this->db->query('SELECT idlessons_time, num, DATE_FORMAT(start_time, "%H:%i") AS start_time, DATE_FORMAT(end_time, "%H:%i") AS end_time FROM lessons_time WHERE active = 1');
         return $query->result_array();
     }
 

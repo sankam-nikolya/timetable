@@ -99,33 +99,41 @@ class Admin_shedule extends CI_Controller
 
     function edit_shedule_view()
     {
-        if ($this->ion_auth->is_admin()) {
+        if ($this->ion_auth->is_admin()) 
+        {
             $this->load->model('admin_model');
 
             $data['subjects'] = $this->admin_model->get_subjects();
-            $data['timing'] = $this->admin_model->get_time();
-            $data['groups'] = $this->admin_model->get_groups();
+            $data['timing']   = $this->admin_model->get_time();
+            $data['groups']   = $this->admin_model->get_groups();
 
             $this->load->view('admin/header_view');
             $this->load->view('admin/menu_view');
-
-            for ($i = 0; $i < count($data['groups']); $i++) {
-                $data['bindingSubjectGroup'][$i] = $this->admin_model->get_bindingSubjectGroup($data['groups'][$i]['idgroups']);
-            }
-            if (isset($_GET['from'])) {
+            if (isset($_GET['from'])) 
+            {
                 $data['days'] = $this->admin_model->get($_GET['from'], $_GET['to']);
                 $end = end($data['days']);
-                if ($end['iddays'] < $data['days'][0]['iddays']) {
+                if ($end['iddays'] < $data['days'][0]['iddays']) 
+                {
                     $data['bindings'] = $this->admin_model->get_binding_info($end['iddays'], $data['days'][0]['iddays']);
-                } else {
+                } 
+                else 
+                {
                     $data['bindings'] = $this->admin_model->get_binding_info($data['days'][0]['iddays'], $end['iddays']);
                 }
                 $this->load->view('admin/shedule/edit_view', $data);
             }
             $this->load->view('footer_view');
-        } else {
+        } 
+        else 
+        {
             header("Location: " . base_url() . 'auth/login');
         }
+    }
+
+    function json_bindingSubjectGroup()
+    {
+        print_r($data['bindingSubjectGroup'] = $this->admin_model->get_bindingSubjectGroup($_POST['idGroup']));
     }
 
     function update_db_binding()

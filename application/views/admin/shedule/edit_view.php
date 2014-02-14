@@ -9,10 +9,24 @@
 </style>
 <script type="text/javascript">
     $(document).ready(function () {
-        $('.selectpicker').select2({
-            width: '130',
-            maximumSelectionSize: 2
-        })
+        <?php foreach ($days as $day): ?>
+                <?php foreach ($groups as $group): ?>
+                    var data = {
+                            idGroup: parseInt(<?=$group['idgroups']?>)
+                    };
+                    $(".<?=$day['iddays']?><?=$group['idgroups']?>").select2({
+                        width: '130',
+                        ajax: {
+                            url: "<?=base_url()?>admin_shedule/json_bindingSubjectGroup",
+                            type: 'POST',
+                            data: data,
+                            results: function (data, page) {
+                                return { results: data };
+                            }
+                        }
+                    });
+                <?php endforeach ?>
+        <?php endforeach ?>
     });
 </script>
 <div class="container">
@@ -54,58 +68,9 @@
                                 <td><?= $group['name'] ?></td>
                                 <?php foreach ($timing as $item_timing): ?>
                                     <td>
-                                        <select class="selectpicker" multiple name="binding_select[]"
-                                                onchange="update_binding(<?= $day['iddays'] ?>, <?= $group['idgroups'] ?>, <?= $item_timing['idlessons_time'] ?>, $( this ).val())">
-                                            <optgroup label="Общие пары">
-                                                <?php foreach ($bindingSubjectGroup as $item): ?>
-                                                    <?php foreach ($item as $item1): ?>
-                                                        <?php if ($item1['idgroups'] == $group['idgroups']): ?>
-                                                            <option
-                                                                <?php foreach ($bindings as $binding): ?>
-                                                                    <?php if ($day['iddays'] == $binding['iddays'] && $group['idgroups'] == $binding['idgroups'] && $item_timing['idlessons_time'] == $binding['idlessons_time'] && $item1['idsubjects'] == $binding['idsubjects'] && 0 == $binding['type']): ?>
-                                                                        selected
-                                                                    <?php endif ?>
-                                                                <?php endforeach ?>
-                                                                value="<?= $item1['idsubjects'] ?>,0"
-                                                                ><?= $item1['subject'] ?></option>
-                                                        <?php endif ?>
-                                                    <?php endforeach ?>
-                                                <?php endforeach ?>
-                                            </optgroup>
-                                            <optgroup label="1 подгруппа">
-                                                <?php foreach ($bindingSubjectGroup as $item): ?>
-                                                    <?php foreach ($item as $item1): ?>
-                                                        <?php if ($item1['idgroups'] == $group['idgroups']): ?>
-                                                            <option
-                                                                <?php foreach ($bindings as $binding): ?>
-                                                                    <?php if ($day['iddays'] == $binding['iddays'] && $group['idgroups'] == $binding['idgroups'] && $item_timing['idlessons_time'] == $binding['idlessons_time'] && $item1['idsubjects'] == $binding['idsubjects'] && 1 == $binding['type']): ?>
-                                                                        selected
-                                                                    <?php endif ?>
-                                                                <?php endforeach ?>
-                                                                value="<?= $item1['idsubjects'] ?>,1"
-                                                                ><?= $item1['subject'] ?></option>
-                                                        <?php endif ?>
-                                                    <?php endforeach ?>
-                                                <?php endforeach ?>
-                                            </optgroup>
-                                            <optgroup label="2 подгруппа">
-                                                <?php foreach ($bindingSubjectGroup as $item): ?>
-                                                    <?php foreach ($item as $item1): ?>
-                                                        <?php if ($item1['idgroups'] == $group['idgroups']): ?>
-                                                            <option
-                                                                <?php foreach ($bindings as $binding): ?>
-                                                                    <?php if ($day['iddays'] == $binding['iddays'] && $group['idgroups'] == $binding['idgroups'] && $item_timing['idlessons_time'] == $binding['idlessons_time'] && $item1['idsubjects'] == $binding['idsubjects'] && 2 == $binding['type']): ?>
-                                                                        selected
-                                                                    <?php endif ?>
-                                                                <?php endforeach ?>
-                                                                value="<?= $item1['idsubjects'] ?>,2"
-                                                                ><?= $item1['subject'] ?></option>
-                                                        <?php endif ?>
-                                                    <?php endforeach ?>
-                                                <?php endforeach ?>
-                                            </optgroup>
-                                        </select>
-                                    </td>
+                                        <div class="selectpicker <?=$day['iddays']?><?=$group['idgroups']?>" multiple name="binding_select[]" onchange="update_binding(<?= $day['iddays'] ?>, <?= $group['idgroups'] ?>, <?= $item_timing['idlessons_time'] ?>, $( this ).val())">
+                                        </div>
+                                    </td>    
                                 <?php endforeach ?>
                             </tr>
                         <?php endforeach ?>
