@@ -10,7 +10,9 @@
 <script type="text/javascript">
     function openWindow(group, day, lesson_time)
     {
-        window.open("<?=base_url()?>index.php/admin_shedule/popup_edit/?group="+group+"&day="+day+"&lt="+lesson_time, 'newwindow', config='height=200, width=370, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no');
+        var x = 500;
+        var y = 600;
+        window.open("<?=base_url()?>index.php/admin_shedule/popup_edit/?group="+group+"&day="+day+"&lt="+lesson_time, 'newwindow', config="height=200, width=370, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no, top="+x+", left="+y);
     }
 </script>
 <div class="container">
@@ -24,7 +26,6 @@
         <div class="tab-content">
             <div class="tab-pane active" id="s1">
                 <?php foreach ($days as $day): ?>
-                    <input type="hidden" value="<?= $day['iddays'] ?>" name="day">
                     <table class="table table-bordered">
                         <tbody>
                         <tr>
@@ -43,11 +44,26 @@
                             <?php endforeach ?>
                         </tr>
                         <?php foreach ($groups as $group): ?>
-                            <tr>
+                            <tr id="bottom">
                                 <td><?= $group['name'] ?></td>
                                 <?php foreach ($timing as $item_timing): ?>
-                                    <td onclick="openWindow(<?=$group['idgroups']?>, <?=$day['iddays']?>, <?=$item_timing['idlessons_time']?>);">
-                                        
+                                    <td>
+                                        <div id="<?=$group['idgroups']?><?=$day['iddays']?><?=$item_timing['idlessons_time']?>">
+                                            <?php foreach ($pars as $par):?>
+                                                <?php if ($par['iddays'] == $day['iddays'] && $par['idgroups'] == $group['idgroups'] && $par['idlessons_time'] == $item_timing['idlessons_time']):?>
+                                                    <?php if ($par['type'] == 0):?>
+                                                        <p><span title="Общая пара. Преподаватель: <?=$par['first_name']?> <?=$par['patronymic']?>"><?=$par['subject']?> <span class="clr"><?=$par['cabinet']?></span></span></p>
+                                                    <?php endif?>    
+                                                    <?php if ($par['type'] == 1):?>
+                                                        <p><span class="wordup" title="Верхняя подгруппа. Преподаватель: <?=$par['first_name']?> <?=$par['patronymic']?>"><?=$par['subject']?> <span class="clr"><?=$par['cabinet']?></span></span></p>
+                                                    <?php endif?>   
+                                                    <?php if ($par['type'] == 2):?>
+                                                        <p><span class="wordbottom" title="Нижняя подгруппа. Преподаватель: <?=$par['first_name']?> <?=$par['patronymic']?>"><?=$par['subject']?> <span class="clr"><?=$par['cabinet']?></span></span></p>
+                                                    <?php endif?>   
+                                                <?php endif?>    
+                                            <?php endforeach?>
+                                            <span class="pull-right"><img id="img_repaet" src="<?=base_url()?>css/images/repeat.png"> <img id="img_edit" src="<?=base_url()?>css/images/edit.png"  onclick="openWindow(<?=$group['idgroups']?>, <?=$day['iddays']?>, <?=$item_timing['idlessons_time']?>);"> <img id="img_delete" src="<?=base_url()?>css/images/delete.png"></spam>
+                                        </div>
                                     </td>
                                 <?php endforeach ?>
                             </tr>

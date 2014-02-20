@@ -100,7 +100,35 @@ class Admin_model extends CI_Model
 
     function get_binding_info($from, $to)
     {
-        $this->db->where("iddays BETWEEN " . (int)$from . " AND " . (int)$to);
+        $this->db->select("
+            binding.iddays,
+            g.idgroups,
+            g.`name` AS `group`,
+            lt.num,
+            s.`name` AS `subject`,
+            s.idsubects,
+            c.`name` AS cabinet,
+            binding.type,
+            binding.idlessons_time,
+            teachers.first_name, 
+            teachers.patronymic,
+            c.name as 'cabinet'
+        ");
+
+        $this->db->join("cabinets c", "binding.idcabinets = c.idcabinets", "LEFT");
+        $this->db->join("days d", "binding.iddays = d.iddays");
+        $this->db->join("groups g", "binding.idgroups = g.idgroups");
+        $this->db->join("lessons_time lt", "binding.idlessons_time = lt.idlessons_time");
+        $this->db->join("subjects s", "binding.idsubjects = s.idsubects");
+        $this->db->join("BindingTeacherSubjects", "s.idsubects = BindingTeacherSubjects.idSubject", "LEFT");
+        $this->db->join("teachers", "BindingTeacherSubjects.idTeacher = teachers.idteacher", "LEFT");
+
+        $this->db->where("d.date BETWEEN '$from' AND '$to'");
+
+        $this->db->group_by("binding.idbinding");
+
+        $this->db->order_by("binding.iddays, g.`order`, lt.num, binding.type",  "ASC");
+
         return $this->db->get("binding")->result_array();
     }
 
@@ -125,6 +153,15 @@ class Admin_model extends CI_Model
     }
 
     function delete_from_bidning($data)
+    {
+        $this->db->where('iddays', $data['iddays']);
+        $this->db->where('idgroups', $data['idgroups']);
+        $this->db->where('idlessons_time', $data['idlessons_time']);
+        $this->db->where('type', $data['type']);
+        $this->db->delete('binding');
+    }
+
+    function delete_from_bidning_0($data)
     {
         $this->db->where('iddays', $data['iddays']);
         $this->db->where('idgroups', $data['idgroups']);

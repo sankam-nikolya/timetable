@@ -38,3 +38,14 @@
 	border: 1px solid transparent;
   	border-radius: 0px;
 }
+
+.table #bottom td{
+    height: 100px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#img_repeat {
+    display:none;
+}
+

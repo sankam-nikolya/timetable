@@ -16,7 +16,8 @@ class Shedule_model extends CI_Model
             binding.type,
             binding.idlessons_time,
             teachers.first_name, 
-            teachers.patronymic
+            teachers.patronymic,
+            c.name as 'cabinet'
         ");
 
         $this->db->join("cabinets c", "binding.idcabinets = c.idcabinets", "LEFT");
@@ -32,7 +33,7 @@ class Shedule_model extends CI_Model
 
         $this->db->group_by("binding.idbinding");
 
-        $this->db->order_by("binding.iddays, g.`order`, lt.num", "ASC");
+        $this->db->order_by("binding.iddays, g.`order`, lt.num, binding.type", "ASC");
 
         return $this->db->get("binding")->result_array();
     }

@@ -77,6 +77,7 @@ class Admin_shedule extends CI_Controller
                 } else {
                     $data['bindings'] = $this->admin_model->get_binding_info($data['days'][0]['iddays'],$end['iddays']);
                 }
+                $data['pars'] = array();
                 $this->load->view('admin/shedule/edit_view', $data);
             }
         } else {
@@ -103,7 +104,6 @@ class Admin_shedule extends CI_Controller
         {
             $this->load->model('admin_model');
 
-            $data['subjects'] = $this->admin_model->get_subjects();
             $data['timing']   = $this->admin_model->get_time();
             $data['groups']   = $this->admin_model->get_groups();
 
@@ -112,15 +112,7 @@ class Admin_shedule extends CI_Controller
             if (isset($_GET['from'])) 
             {
                 $data['days'] = $this->admin_model->get($_GET['from'], $_GET['to']);
-                $end = end($data['days']);
-                if ($end['iddays'] < $data['days'][0]['iddays']) 
-                {
-                    $data['bindings'] = $this->admin_model->get_binding_info($end['iddays'], $data['days'][0]['iddays']);
-                } 
-                else 
-                {
-                    $data['bindings'] = $this->admin_model->get_binding_info($data['days'][0]['iddays'], $end['iddays']);
-                }
+                $data['pars'] = $this->admin_model->get_binding_info($_GET['from'], $_GET['to']);
                 $this->load->view('admin/shedule/edit_view', $data);
             }
             $this->load->view('footer_view');
@@ -131,50 +123,41 @@ class Admin_shedule extends CI_Controller
         }
     }
 
-    function json_bindingSubjectGroup()
-    {
-        $this->load->model('admin_model');
-        json_encode($this->admin_model->get_bindingSubjectGroup(1));
-    }
-
     function update_db_binding()
     {
         if ($this->ion_auth->is_admin()) {
             $this->load->model('admin_model');
 
             $data = array(
-                'iddays' => $_POST['iddays'],
-                'idgroups' => $_POST['idgroups'],
-                'idlessons_time' => $_POST['idlessons_time'],
-                'idsubjects' => $_POST['idsubjects'],
-                'type' => $_POST['type']
+                'iddays'            => $_POST['iddays'],
+                'idgroups'          => $_POST['idgroups'],
+                'idlessons_time'    => $_POST['idlessons_time'],
+                'idsubjects'        => $_POST['idsubjects'],
+                'type'              => $_POST['type'],
+                'idcabinets'        => $_POST['idcabinets']
             );
-
-            $this->admin_model->delete_from_bidning($data);
-            if ($_POST['action'] == 'insert')
-                $this->admin_model->insert_binding($data);
+            if ($data['type'] != 0)
+                $this->admin_model->delete_from_bidning($data);
+            else 
+                $this->admin_model->delete_from_bidning_0($data);
+            $this->admin_model->insert_binding($data);  
         } else {
             header("Location: " . base_url() . 'auth/login');
         }
     }
 
-    function update_db_binding_sub()
+    function db_binding_clear()
     {
         if ($this->ion_auth->is_admin()) {
             $this->load->model('admin_model');
 
             $data = array(
-                'iddays' => $_POST['iddays'],
-                'idgroups' => $_POST['idgroups'],
-                'idlessons_time' => $_POST['idlessons_time'],
-                'idsubjects' => $_POST['idsubjects'],
-                'type' => $_POST['type']
+                'iddays'            => $_POST['iddays'],
+                'idgroups'          => $_POST['idgroups'],
+                'idlessons_time'    => $_POST['idlessons_time']
             );
-
-            if ($_POST['t'] == 0)
-                $this->admin_model->delete_from_bidning($data);
-
-            $this->admin_model->insert_binding($data);
+            $this->admin_model->delete_from_bidning_0($data);
+            $this->admin_model->insert_binding($data);  
         } else {
             header("Location: " . base_url() . 'auth/login');
         }
