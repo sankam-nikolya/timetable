@@ -37,12 +37,12 @@ class Admin_model extends CI_Model
     function get_subjects()
     {
         $this->db->query("SET lc_time_names = 'ru_RU'");
-        $this->db->order_by('full_name');
+        $this->db->order_by('name');
         $query = $this->db->get("subjects");
         return $query->result_array();
     }
 
-    function get_bindingSubjectGroup()
+    function get_bindingSubjectGroup($group)
     {
         $this->db->distinct();
         $this->db->select('
@@ -53,7 +53,10 @@ class Admin_model extends CI_Model
         $this->db->join('BindingSubjectGroup', 'subjects.idsubects = BindingSubjectGroup.idSubject');
         $this->db->join('groups', 'groups.idgroups = BindingSubjectGroup.idGroup');
 
+        $this->db->where('BindingSubjectGroup.idGroup', (int)$group);
+
         $this->db->group_by('subjects.idsubects');
+        $this->db->order_by('subjects.`name`');
 
         return $this->db->get('subjects')->result_array();
     }
@@ -70,8 +73,7 @@ class Admin_model extends CI_Model
         ", FALSE);
         $this->db->where("date BETWEEN '$from' AND '$to'");
         $this->db->order_by('date');
-        $query = $this->db->get("days");
-        return $query->result_array();
+        return $this->db->get("days")->result_array();
     }
 
     function get_time()

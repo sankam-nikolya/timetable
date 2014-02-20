@@ -8,39 +8,10 @@
     }
 </style>
 <script type="text/javascript">
-    $(document).ready(function () {
-        <?php foreach ($days as $day): ?>
-        <?php foreach ($groups as $group): ?>
-        $(".<?=$day['iddays']?><?=$group['idgroups']?>").select2({
-            width: '130',
-            multiple: true,
-            data: [
-                {text: ''},
-                {text: '0'},
-                <?php foreach ($subject_for_group as $sg):?>
-                <?php if ($sg['id_group'] == $group['idgroups']):?>
-                {id: "<?=$sg['id']?>, 0", text: "<?=$sg['name']?>"},
-                <?php endif?>
-                <?php endforeach?>
-                {text: ''},
-                {text: '1'},
-                <?php foreach ($subject_for_group as $sg):?>
-                <?php if ($sg['id_group'] == $group['idgroups']):?>
-                {id: "<?=$sg['id']?>, 1", text: "<?=$sg['name']?>"},
-                <?php endif?>
-                <?php endforeach?>
-                {text: ''},
-                {text: '2'},
-                <?php foreach ($subject_for_group as $sg):?>
-                <?php if ($sg['id_group'] == $group['idgroups']):?>
-                {id: "<?=$sg['id']?>, 2", text: "<?=$sg['name']?>"},
-                <?php endif?>
-                <?php endforeach?>
-            ]
-        });
-        <?php endforeach ?>
-        <?php endforeach ?>
-    });
+    function openWindow(group, day, lesson_time)
+    {
+        window.open("<?=base_url()?>index.php/admin_shedule/popup_edit/?group="+group+"&day="+day+"&lt="+lesson_time, 'newwindow', config='height=200, width=370, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no');
+    }
 </script>
 <div class="container">
     <div class="tabbable">
@@ -52,11 +23,6 @@
 
         <div class="tab-content">
             <div class="tab-pane active" id="s1">
-                <div class="alert alert-info alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    Расписание обновляется по мере того, как вы его набираете. Не нужно нажимать кнопку
-                    "Обновить".
-                </div>
                 <?php foreach ($days as $day): ?>
                     <input type="hidden" value="<?= $day['iddays'] ?>" name="day">
                     <table class="table table-bordered">
@@ -80,11 +46,8 @@
                             <tr>
                                 <td><?= $group['name'] ?></td>
                                 <?php foreach ($timing as $item_timing): ?>
-                                    <td>
-                                        <div class="selectpicker <?= $day['iddays'] ?><?= $group['idgroups'] ?>"
-                                             multiple name="binding_select[]"
-                                             onchange="update_binding(<?= $day['iddays'] ?>, <?= $group['idgroups'] ?>, <?= $item_timing['idlessons_time'] ?>, $( this ).val())">
-                                        </div>
+                                    <td onclick="openWindow(<?=$group['idgroups']?>, <?=$day['iddays']?>, <?=$item_timing['idlessons_time']?>);">
+                                        
                                     </td>
                                 <?php endforeach ?>
                             </tr>
@@ -152,66 +115,4 @@
             data: data
         });
     }
-
-    function update_binding(iddays, idgroups, idlessons_time, idsubjects_type) {
-        if (idsubjects_type != null) {
-            var t = 0;
-            for (var i = 0; i < idsubjects_type.length; ++i) {
-
-                if (idsubjects_type.length == 2) {
-                    var idsubjects_type_array = new Array();
-                    idsubjects_type_array = idsubjects_type[i].split(',');
-
-                    var data = {
-                        iddays: iddays,
-                        idgroups: idgroups,
-                        idlessons_time: idlessons_time,
-                        idsubjects: parseInt(idsubjects_type_array[0]),
-                        type: parseInt(idsubjects_type_array[1]),
-                        action: 'insert',
-                        t: t
-                    };
-                    ++t;
-                    $.ajax({
-                        url: "<?= base_url() ?>index.php/admin_shedule/update_db_binding_sub",
-                        type: 'POST',
-                        data: data
-                    });
-                }
-                else {
-                    var idsubjects_type_array = new Array();
-                    idsubjects_type_array = idsubjects_type[i].split(',');
-
-                    var data = {
-                        iddays: iddays,
-                        idgroups: idgroups,
-                        idlessons_time: idlessons_time,
-                        idsubjects: parseInt(idsubjects_type_array[0]),
-                        type: parseInt(idsubjects_type_array[1]),
-                        action: 'insert'
-                    };
-                    $.ajax({
-                        url: "<?= base_url() ?>index.php/admin_shedule/update_db_binding",
-                        type: 'POST',
-                        data: data
-                    });
-                }
-            }
-        }
-        else {
-            var data = {
-                iddays: parseInt(iddays),
-                idgroups: parseInt(idgroups),
-                idlessons_time: parseInt(idlessons_time),
-                action: 'delete'
-            };
-            $.ajax({
-                url: "<?= base_url() ?>index.php/admin_shedule/update_db_binding",
-                type: 'POST',
-                data: data
-            });
-        }
-    }
 </script>
-
-

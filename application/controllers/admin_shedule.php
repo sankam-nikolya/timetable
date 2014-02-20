@@ -112,7 +112,6 @@ class Admin_shedule extends CI_Controller
             if (isset($_GET['from'])) 
             {
                 $data['days'] = $this->admin_model->get($_GET['from'], $_GET['to']);
-                $data['subject_for_group'] = $this->admin_model->get_bindingSubjectGroup();
                 $end = end($data['days']);
                 if ($end['iddays'] < $data['days'][0]['iddays']) 
                 {
@@ -434,6 +433,29 @@ class Admin_shedule extends CI_Controller
             $this->admin_model->delete_day($data);
         } else {
             header("Location: " . base_url() . 'auth/login');
+        }
+    }
+
+    function popup_edit()
+    {
+        if ($this->ion_auth->is_admin()) 
+        {            
+            $this->load->model('admin_model');
+            $data['subjects']   = $this->admin_model->get_bindingSubjectGroup($this->input->get('group'));
+            $data['audits']     = $this->admin_model->get_audits();
+
+            $this->load->view('admin/shedule/popup_subjects_view', $data);
+        }
+    }
+
+    function db_popup_apply()
+    {
+        if ($this->ion_auth->is_admin()) 
+        {            
+            if ($this->input->post('select0') == 0)
+            {
+                
+            }
         }
     }
 }

@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>Расписание</title>
+    <meta name = "description" content = "Сайт расписание Полевского филиала Уральского радиотехнического колледжа" />
+    <meta name = "keywords" content = "расписание, ПФУРТК. какие пары завтра?, пары, уроки, преподаватели" />
     <link href="<?= base_url() ?>css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
     <link href="<?= base_url() ?>css/style.css" rel="stylesheet">
