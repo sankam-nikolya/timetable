@@ -2,6 +2,11 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="<?= base_url() ?>css/bootstrap.min.css">
+	<style type="text/css">
+		body {
+            font-family: "Ubuntu", sans-serif;
+        }
+	</style>
 	<script src="<?= base_url() ?>js/jquery.min.js"></script>
 	<script type="text/javascript">
 		

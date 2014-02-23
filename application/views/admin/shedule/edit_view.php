@@ -48,22 +48,22 @@
                                 <td><?= $group['name'] ?></td>
                                 <?php foreach ($timing as $item_timing): ?>
                                     <td id="edit_td">
-                                        <div id="<?=$group['idgroups']?><?=$day['iddays']?><?=$item_timing['idlessons_time']?>">
+                                        <div id="<?=$day['iddays']?><?=$group['idgroups']?><?=$item_timing['idlessons_time']?>">
                                             <?php foreach ($pars as $par):?>
                                                 <?php if ($par['iddays'] == $day['iddays'] && $par['idgroups'] == $group['idgroups'] && $par['idlessons_time'] == $item_timing['idlessons_time']):?>
                                                     <?php if ($par['type'] == 0):?>
-                                                        <p><span title="Общая пара. Преподаватель: <?=$par['first_name']?> <?=$par['patronymic']?>"><?=$par['subject']?> <span class="clr"><?=$par['cabinet']?></span></span></p>
+                                                        <p><?=$par['subject']?> <span class="clr"><?=$par['cabinet']?></span></p>
                                                     <?php endif?>    
                                                     <?php if ($par['type'] == 1):?>
-                                                        <p><span class="wordup" title="Верхняя подгруппа. Преподаватель: <?=$par['first_name']?> <?=$par['patronymic']?>"><?=$par['subject']?> <span class="clr"><?=$par['cabinet']?></span></span></p>
+                                                        <p><span class="wordup"><?=$par['subject']?></span> <span class="clr"><?=$par['cabinet']?></span></p>
                                                     <?php endif?>   
                                                     <?php if ($par['type'] == 2):?>
-                                                        <p><span class="wordbottom" title="Нижняя подгруппа. Преподаватель: <?=$par['first_name']?> <?=$par['patronymic']?>"><?=$par['subject']?> <span class="clr"><?=$par['cabinet']?></span></span></p>
+                                                        <p><span class="wordbottom"><?=$par['subject']?></span> <span class="clr"><?=$par['cabinet']?></span></p>
                                                     <?php endif?>   
                                                 <?php endif?>    
                                             <?php endforeach?>
-                                            <span class="pull-right"><img id="img_repeat" src="<?=base_url()?>css/images/repeat.png"> <img id="img_edit" src="<?=base_url()?>css/images/edit.png"  onclick="openWindow(<?=$group['idgroups']?>, <?=$day['iddays']?>, <?=$item_timing['idlessons_time']?>);"> <img id="img_delete" src="<?=base_url()?>css/images/delete.png" onclick="delete_binding(<?=$day['iddays']?>, <?=$group['idgroups']?>, <?=$item_timing['idlessons_time']?>)"></spam>
                                         </div>
+                                        <span class="pull-right"><img id="img_repeat" src="<?=base_url()?>css/images/repeat.png" onclick="refresh_td(<?=$day['iddays']?>, <?=$group['idgroups']?>, <?=$item_timing['idlessons_time']?>)"> <img id="img_edit" src="<?=base_url()?>css/images/edit.png"  onclick="openWindow(<?=$group['idgroups']?>, <?=$day['iddays']?>, <?=$item_timing['idlessons_time']?>);"> <img id="img_delete" src="<?=base_url()?>css/images/delete.png" onclick="delete_binding(<?=$day['iddays']?>, <?=$group['idgroups']?>, <?=$item_timing['idlessons_time']?>)"></spam>
                                     </td>
                                 <?php endforeach ?>
                             </tr>
@@ -148,5 +148,50 @@
                 data: data
             });
         }        
+    }
+
+    function refresh_td(iddays, idgroups, idlessons_time)
+    {
+        var data = {
+                iddays: iddays,
+                idgroups: idgroups,
+                idlessons_time: idlessons_time
+            };
+
+            $.ajax({
+                url: "<?= base_url() ?>index.php/admin_shedule/get_short_binding",
+                type: 'POST',
+                data: data,
+                 success: function(msg) {
+                    console.log(msg);   
+                    $("#"+iddays+idgroups+idlessons_time).empty();
+                    for (var i = 0; i < msg.length; i++) {
+                        switch (msg[i]['type'])
+                        {
+                            case '0': 
+                                $("#"+iddays+idgroups+idlessons_time).append( "<p>" + msg[i]['name']);                            
+                                if (msg[i]['cab'] != null)
+                                    $("#"+iddays+idgroups+idlessons_time).append(" <span class='clr'>" + msg[i]['cab'] + "</span>");
+                                $("#"+iddays+idgroups+idlessons_time).append("</p>");
+                            break;
+                            case '1': 
+                                $("#"+iddays+idgroups+idlessons_time).append( "<p><span class='wordup'>" + msg[i]['name']);                            
+                                if (msg[i]['cab'] != null)
+                                    $("#"+iddays+idgroups+idlessons_time).append(" <span class='clr'>" + msg[i]['cab'] + "</span>");
+                                $("#"+iddays+idgroups+idlessons_time).append("</p>");
+
+                            break;
+                            case '2': 
+                                $("#"+iddays+idgroups+idlessons_time).append( "<p><span class='wordbottom'>" + msg[i]['name']);                           
+                                if (msg[i]['cab'] != null)
+                                    $("#"+iddays+idgroups+idlessons_time).append(" <span class='clr'>" + msg[i]['cab'] + "</span>");
+                                $("#"+iddays+idgroups+idlessons_time).append("</p>");
+
+                            break;
+
+                        }
+                    };                
+                }
+            });
     }
 </script>

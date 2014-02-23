@@ -137,7 +137,9 @@ class Admin_model extends CI_Model
         $this->db->select("
             s.idsubects,
             c.idcabinets,
-            binding.type
+            binding.type,
+            s.name,
+            c.name as 'cab'
         ");
 
         $this->db->join("cabinets c", "binding.idcabinets = c.idcabinets", "LEFT");

@@ -446,4 +446,19 @@ class Admin_shedule extends CI_Controller
             $this->admin_model->delete_binding($data);
         }
     }
+
+    function get_short_binding()
+    {
+        if ($this->ion_auth->is_admin()) 
+        {            
+            $this->output->set_content_type('application/json');
+            $this->load->model('admin_model');
+            $data = array(
+                'day' => (int)$_POST['iddays'],
+                'group' => (int)$_POST['idgroups'],
+                'lt' => (int)$_POST['idlessons_time']
+            );
+            $this->output->set_content_type('application/json')->set_output(json_encode($this->admin_model->get_binding_info_for_popup($data)));
+        }
+    }
 }
