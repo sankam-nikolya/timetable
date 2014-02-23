@@ -132,6 +132,33 @@ class Admin_model extends CI_Model
         return $this->db->get("binding")->result_array();
     }
 
+    function get_binding_info_for_popup($data)
+    {
+        $this->db->select("
+            s.idsubects,
+            c.idcabinets,
+            binding.type
+        ");
+
+        $this->db->join("cabinets c", "binding.idcabinets = c.idcabinets", "LEFT");
+        $this->db->join("days d", "binding.iddays = d.iddays");
+        $this->db->join("groups g", "binding.idgroups = g.idgroups");
+        $this->db->join("lessons_time lt", "binding.idlessons_time = lt.idlessons_time");
+        $this->db->join("subjects s", "binding.idsubjects = s.idsubects");
+        $this->db->join("BindingTeacherSubjects", "s.idsubects = BindingTeacherSubjects.idSubject", "LEFT");
+        $this->db->join("teachers", "BindingTeacherSubjects.idTeacher = teachers.idteacher", "LEFT");
+
+        $this->db->where("binding.iddays", (int)$data['day']);
+        $this->db->where("binding.idgroups", (int)$data['group']);
+        $this->db->where("binding.idlessons_time", (int)$data['lt']);
+
+        $this->db->group_by("binding.idbinding");
+
+        $this->db->order_by("binding.iddays, g.`order`, lt.num, binding.type",  "ASC");
+
+        return $this->db->get("binding")->result_array();
+    }
+
     function get_binding_TeacherSubject($idTeacher)
     {
         $this->db->where('idTeacher', $idTeacher);
@@ -247,5 +274,13 @@ class Admin_model extends CI_Model
     {
         $this->db->where('iddays', (int)$data['id']);
         $this->db->delete('days');
+    }
+
+    function delete_binding($data)
+    {
+        $this->db->where('iddays', (int)$data['iddays']);
+        $this->db->where('idgroups', (int)$data['idgroups']);
+        $this->db->where('idlessons_time', (int)$data['idlessons_time']);
+        $this->db->delete('binding');
     }
 }

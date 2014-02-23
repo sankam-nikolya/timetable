@@ -1,6 +1,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<link rel="stylesheet" href="<?= base_url() ?>css/bootstrap.min.css">
 	<script src="<?= base_url() ?>js/jquery.min.js"></script>
 	<script type="text/javascript">
 		
@@ -121,69 +122,144 @@
 		    }
 		    return result;
 		} 
-
 	</script>
 </head>
 <body>
-	<table border="1">
-		<tr>
-			<td>Общая пара</td>
-			<td>
-				<select id="select0">
-					<option value="0"></option>
-					<?php foreach ($subjects as $subject):?>
-						<option value="<?=$subject['id']?>"><?=$subject['name']?></option>						
-					<?php endforeach?>
-				</select>
-			</td>
-			<td>
-				<select id="cab0">
-					<option value="0"></option>
-					<?php foreach ($audits as $audit):?>
-						<option value="<?=$audit['idcabinets']?>"><?=$audit['name']?></option>						
-					<?php endforeach?>
-				</select>
-			</td>
-		</tr>	
-		<tr>
-			<td>Первая подгруппа</td>
-			<td>
-				<select id="select1">
-					<option value="0"></option>
-					<?php foreach ($subjects as $subject):?>
-						<option value="<?=$subject['id']?>"><?=$subject['name']?></option>						
-					<?php endforeach?>
-				</select>
-			</td>
-			<td>
-				<select id="cab1">
-					<option value="0"></option>
-					<?php foreach ($audits as $audit):?>
-						<option value="<?=$audit['idcabinets']?>"><?=$audit['name']?></option>						
-					<?php endforeach?>
-				</select>
-			</td>
-		</tr>	
-		<tr>
-			<td>Вторая подгруппа</td>
-			<td>
-				<select id="select2">
-					<option value="0"></option>
-					<?php foreach ($subjects as $subject):?>
-						<option value="<?=$subject['id']?>"><?=$subject['name']?></option>						
-					<?php endforeach?>
-				</select>
-			</td>
-			<td>
-				<select id="cab2">
-					<option value="0"></option>
-					<?php foreach ($audits as $audit):?>
-						<option value="<?=$audit['idcabinets']?>"><?=$audit['name']?></option>						
-					<?php endforeach?>
-				</select>
-			</td>
-		</tr>	
-	</table>
-	<p><button id="cancel" onclick="window.close();">Cancel</button> <button id="apply" onclick="click_apply()">Apply</button></p>
+	<div class="well-sm">
+		<table>
+				<tr>
+					<td>Общая пара</td>
+					<td>
+						<select id="select0">
+							<option value="0"></option>
+							<?php foreach ($subjects as $subject):?>
+								<option 
+								<?php foreach ($pars as $par):?>
+									<?php if ($par['idsubects'] == $subject['id'] && $par['type'] == 0):?>selected <?php endif?>
+								<?php endforeach?>
+								value="<?=$subject['id']?>"><?=$subject['name']?></option>						
+							<?php endforeach?>
+						</select>
+					</td>
+					<td>
+						<select id="cab0">
+							<option value="0"></option>
+							<?php foreach ($audits as $audit):?>
+								<option 
+								<?php foreach ($pars as $par):?>
+									<?php if ($par['idcabinets'] == $audit['idcabinets'] && $par['type'] == 0):?>selected <?php endif?>
+								<?php endforeach?>
+								value="<?=$audit['idcabinets']?>"><?=$audit['name']?></option>						
+							<?php endforeach?>
+						</select>
+					</td>
+				</tr>	
+				<tr>
+					<td>Первая подгруппа</td>
+					<td>
+						<select id="select1">
+							<option value="0"></option>
+							<?php foreach ($subjects as $subject):?>
+								<option
+								<?php foreach ($pars as $par):?>
+									<?php if ($par['idsubects'] == $subject['id'] && $par['type'] == 1):?>selected <?php endif?>
+								<?php endforeach?>
+								value="<?=$subject['id']?>"><?=$subject['name']?></option>						
+							<?php endforeach?>
+						</select>
+					</td>
+					<td>
+						<select id="cab1">
+							<option value="0"></option>
+							<?php foreach ($audits as $audit):?>
+								<option 
+								<?php foreach ($pars as $par):?>
+									<?php if ($par['idcabinets'] == $audit['idcabinets'] && $par['type'] == 1):?>selected <?php endif?>
+								<?php endforeach?>
+								value="<?=$audit['idcabinets']?>"><?=$audit['name']?></option>						
+							<?php endforeach?>
+						</select>
+					</td>
+				</tr>	
+				<tr>
+					<td>Вторая подгруппа</td>
+					<td>
+						<select id="select2">
+							<option value="0"></option>
+							<?php foreach ($subjects as $subject):?>
+								<option 
+								<?php foreach ($pars as $par):?>
+									<?php if ($par['idsubects'] == $subject['id'] && $par['type'] == 2):?>selected <?php endif?>
+								<?php endforeach?>
+								value="<?=$subject['id']?>"><?=$subject['name']?></option>						
+							<?php endforeach?>
+						</select>
+					</td>
+					<td>
+						<select id="cab2">
+							<option value="0"></option>
+							<?php foreach ($audits as $audit):?>
+								<option 
+								<?php foreach ($pars as $par):?>
+									<?php if ($par['idcabinets'] == $audit['idcabinets'] && $par['type'] == 2):?>selected <?php endif?>
+								<?php endforeach?>
+								value="<?=$audit['idcabinets']?>"><?=$audit['name']?></option>						
+							<?php endforeach?>
+						</select>
+					</td>
+				</tr>	
+			</table>
+			<p style="padding-top:10px"><button class="btn btn-default btn-sm"  id="cancel" onclick="window.close();">Отмена</button> <button class="btn btn-primary btn-sm" id="apply" onclick="click_apply()">Принять</button></p>
+			<script>
+				$( "#select0" ).change(function() {
+					if ( $( "#select0" ).val() != 0 )
+					{
+						$( "#select1" ).prop('disabled', true);
+						$( "#cab1" ).prop('disabled', true);
+
+						$( "#select2" ).prop('disabled', true);
+						$( "#cab2" ).prop('disabled', true);
+					}
+					else
+					{
+						$( "#select1" ).prop('disabled', false);
+						$( "#cab1" ).prop('disabled', false);
+
+						$( "#select2" ).prop('disabled', false);
+						$( "#cab2" ).prop('disabled', false);
+					}
+					
+				});
+
+				$( "#select1" ).change(function() {
+					if ( $("#select1").val() != 0 || $("#select2").val() != 0 )
+					{
+						$( "#select0" ).prop('disabled', true);
+						$( "#cab0" ).prop('disabled', true);
+					}
+					else 
+					{
+						$( "#select0" ).prop('disabled', false);
+						$( "#cab0" ).prop('disabled', false);
+					}
+
+				});
+
+				$( "#select2" ).change(function() {
+					if ( $("#select2").val() != 0 || $("#select1").val() != 0 )
+					{
+						$( "#select0" ).prop('disabled', true);
+						$( "#cab0" ).prop('disabled', true);
+					}
+					else
+					{
+						$( "#select0" ).prop('disabled', false);
+						$( "#cab0" ).prop('disabled', false);
+					}
+
+				});
+			</script>
+	</div>
+	
 </body>
 </html>

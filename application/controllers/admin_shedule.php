@@ -427,18 +427,23 @@ class Admin_shedule extends CI_Controller
             $data['subjects']   = $this->admin_model->get_bindingSubjectGroup($this->input->get('group'));
             $data['audits']     = $this->admin_model->get_audits();
 
+            $data['pars']       = $this->admin_model->get_binding_info_for_popup($this->input->get());
+
             $this->load->view('admin/shedule/popup_subjects_view', $data);
         }
     }
 
-    function db_popup_apply()
+    function delete_binding()
     {
         if ($this->ion_auth->is_admin()) 
         {            
-            if ($this->input->post('select0') == 0)
-            {
-                
-            }
+            $this->load->model('admin_model');
+            $data = array(
+                'iddays' => (int)$_POST['iddays'],
+                'idgroups' => (int)$_POST['idgroups'],
+                'idlessons_time' => (int)$_POST['idlessons_time']
+            );
+            $this->admin_model->delete_binding($data);
         }
     }
 }

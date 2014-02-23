@@ -12,7 +12,7 @@
     {
         var x = 500;
         var y = 600;
-        window.open("<?=base_url()?>index.php/admin_shedule/popup_edit/?group="+group+"&day="+day+"&lt="+lesson_time, 'newwindow', config="height=200, width=370, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no, top="+x+", left="+y);
+        window.open("<?=base_url()?>index.php/admin_shedule/popup_edit/?group="+group+"&day="+day+"&lt="+lesson_time, 'newwindow', config="height=140, width=400, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no, top="+x+", left="+y);
     }
 </script>
 <div class="container">
@@ -47,7 +47,7 @@
                             <tr id="bottom">
                                 <td><?= $group['name'] ?></td>
                                 <?php foreach ($timing as $item_timing): ?>
-                                    <td>
+                                    <td id="edit_td">
                                         <div id="<?=$group['idgroups']?><?=$day['iddays']?><?=$item_timing['idlessons_time']?>">
                                             <?php foreach ($pars as $par):?>
                                                 <?php if ($par['iddays'] == $day['iddays'] && $par['idgroups'] == $group['idgroups'] && $par['idlessons_time'] == $item_timing['idlessons_time']):?>
@@ -62,7 +62,7 @@
                                                     <?php endif?>   
                                                 <?php endif?>    
                                             <?php endforeach?>
-                                            <span class="pull-right"><img id="img_repaet" src="<?=base_url()?>css/images/repeat.png"> <img id="img_edit" src="<?=base_url()?>css/images/edit.png"  onclick="openWindow(<?=$group['idgroups']?>, <?=$day['iddays']?>, <?=$item_timing['idlessons_time']?>);"> <img id="img_delete" src="<?=base_url()?>css/images/delete.png"></spam>
+                                            <span class="pull-right"><img id="img_repeat" src="<?=base_url()?>css/images/repeat.png"> <img id="img_edit" src="<?=base_url()?>css/images/edit.png"  onclick="openWindow(<?=$group['idgroups']?>, <?=$day['iddays']?>, <?=$item_timing['idlessons_time']?>);"> <img id="img_delete" src="<?=base_url()?>css/images/delete.png" onclick="delete_binding(<?=$day['iddays']?>, <?=$group['idgroups']?>, <?=$item_timing['idlessons_time']?>)"></spam>
                                         </div>
                                     </td>
                                 <?php endforeach ?>
@@ -130,5 +130,23 @@
             type: 'POST',
             data: data
         });
+    }
+
+    function delete_binding(iddays, idgroups, idlessons_time)
+    {
+        if (confirm("Вы уверены, что хотите удалить?")) 
+        {
+            var data = {
+                iddays: iddays,
+                idgroups: idgroups,
+                idlessons_time: idlessons_time
+            };
+
+            $.ajax({
+                url: "<?= base_url() ?>index.php/admin_shedule/delete_binding",
+                type: 'POST',
+                data: data
+            });
+        }        
     }
 </script>
