@@ -102,8 +102,15 @@
                                     <td><?= $group['name'] ?></td>
                                     <td colspan="<?= count($timing) ?>">
                                         <div class="input-group" style="width: 100%">
-                                            <input type="text" class="form-control"
-                                                   onchange="update_event(<?= $day['iddays'] ?>, <?= $group['idgroups'] ?>, $( this ).val())">
+                                            <input  type="text" class="form-control"
+                                                    onchange="update_event(<?= $day['iddays'] ?>, <?= $group['idgroups'] ?>, $( this ).val())"
+                                                    <?php foreach ($events as $event):?>
+                                                        <?php if ($event['idDay'] == $day['iddays'] && $event['idGroup'] == $group['idgroups']):?>
+                                                           value="<?=$event['txtEvent']?>" 
+                                                        <?endif?>
+                                                    <?php endforeach?>
+                                                    
+                                                   >
                                         </div>
                                     </td>
                                 </tr>
@@ -153,45 +160,45 @@
     function refresh_td(iddays, idgroups, idlessons_time)
     {
         var data = {
-                iddays: iddays,
-                idgroups: idgroups,
-                idlessons_time: idlessons_time
-            };
+            iddays: iddays,
+            idgroups: idgroups,
+            idlessons_time: idlessons_time
+        };
 
-            $.ajax({
-                url: "<?= base_url() ?>index.php/admin_shedule/get_short_binding",
-                type: 'POST',
-                data: data,
-                 success: function(msg) {
-                    console.log(msg);   
-                    $("#"+iddays+idgroups+idlessons_time).empty();
-                    for (var i = 0; i < msg.length; i++) {
-                        switch (msg[i]['type'])
-                        {
-                            case '0': 
-                                $("#"+iddays+idgroups+idlessons_time).append( "<p>" + msg[i]['name']);                            
-                                if (msg[i]['cab'] != null)
-                                    $("#"+iddays+idgroups+idlessons_time).append(" <span class='clr'>" + msg[i]['cab'] + "</span>");
-                                $("#"+iddays+idgroups+idlessons_time).append("</p>");
-                            break;
-                            case '1': 
-                                $("#"+iddays+idgroups+idlessons_time).append( "<p><span class='wordup'>" + msg[i]['name']);                            
-                                if (msg[i]['cab'] != null)
-                                    $("#"+iddays+idgroups+idlessons_time).append(" <span class='clr'>" + msg[i]['cab'] + "</span>");
-                                $("#"+iddays+idgroups+idlessons_time).append("</p>");
+        $.ajax({
+            url: "<?= base_url() ?>index.php/admin_shedule/get_short_binding",
+            type: 'POST',
+            data: data,
+            success: function(msg) {
+                console.log(msg);   
+                $("#"+iddays+idgroups+idlessons_time).empty();
+                for (var i = 0; i < msg.length; i++) {
+                    switch (msg[i]['type'])
+                    {
+                        case '0': 
+                            $("#"+iddays+idgroups+idlessons_time).append( "<p>" + msg[i]['name']);                            
+                            if (msg[i]['cab'] != null)
+                                $("#"+iddays+idgroups+idlessons_time).append(" <span class='clr'>" + msg[i]['cab'] + "</span>");
+                            $("#"+iddays+idgroups+idlessons_time).append("</p>");
+                        break;
+                        case '1': 
+                            $("#"+iddays+idgroups+idlessons_time).append( "<p><span class='wordup'>" + msg[i]['name']);                            
+                            if (msg[i]['cab'] != null)
+                                $("#"+iddays+idgroups+idlessons_time).append(" <span class='clr'>" + msg[i]['cab'] + "</span>");
+                            $("#"+iddays+idgroups+idlessons_time).append("</p>");
 
-                            break;
-                            case '2': 
-                                $("#"+iddays+idgroups+idlessons_time).append( "<p><span class='wordbottom'>" + msg[i]['name']);                           
-                                if (msg[i]['cab'] != null)
-                                    $("#"+iddays+idgroups+idlessons_time).append(" <span class='clr'>" + msg[i]['cab'] + "</span>");
-                                $("#"+iddays+idgroups+idlessons_time).append("</p>");
+                        break;
+                        case '2': 
+                            $("#"+iddays+idgroups+idlessons_time).append( "<p><span class='wordbottom'>" + msg[i]['name']);                           
+                            if (msg[i]['cab'] != null)
+                                $("#"+iddays+idgroups+idlessons_time).append(" <span class='clr'>" + msg[i]['cab'] + "</span>");
+                            $("#"+iddays+idgroups+idlessons_time).append("</p>");
 
-                            break;
+                        break;
 
-                        }
-                    };                
-                }
-            });
+                    }
+                };                
+            }
+        });
     }
 </script>

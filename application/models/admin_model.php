@@ -173,12 +173,20 @@ class Admin_model extends CI_Model
         return $this->db->get('BindingSubjectGroup')->result_array();
     }
 
-    function get_event($data)
+    function get_event($from, $to)
     {
-        $this->db->where('idDay', $data['idDay']);
-        $this->db->where('idGroup', $data['idGroup']);
-        return $this->db->get('BindingDayGroupEvent')->result_array();
+        $this->db->select('
+            bindingdaygroupevent.idDay,
+            bindingdaygroupevent.idGroup,
+            bindingdaygroupevent.txtEvent
+        ');
 
+        $this->db->join('days', 'days.iddays = bindingdaygroupevent.idDay');
+
+        $this->db->where('days.date <=', $from);
+        $this->db->where('days.date >=', $to); 
+
+        return $this->db->get('BindingDayGroupEvent')->result_array();
     }
 
     function delete_from_bidning($data)
