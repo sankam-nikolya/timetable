@@ -43,13 +43,13 @@
                                 <?php foreach ($pars as $par):?>
                                     <?php if ($par['idgroups'] == $group['idgroups'] && $par['idlessons_time'] == $item_timing['idlessons_time']):?>
                                         <?php if ($par['type'] == 0):?>
-                                            <p><span title="Общая пара. Преподаватель: <?=$par['first_name']?> <?=$par['patronymic']?>"><?=$par['subject']?> <span class="clr"><?=$par['cabinet']?></span></span></p>
+                                            <p><span title="Общая пара. Преподаватель: <?=$par['last_name']?> <?=$par['first_name']?> <?=$par['patronymic']?>"><?=$par['subject']?> <span class="clr"><?=$par['cabinet']?></span></span></p>
                                         <?php endif?>    
                                         <?php if ($par['type'] == 1):?>
-                                            <p><span class="wordup" title="Верхняя подгруппа. Преподаватель: <?=$par['first_name']?> <?=$par['patronymic']?>"><?=$par['subject']?> <span class="clr"><?=$par['cabinet']?></span></span></p>
+                                            <p><span class="wordup" title="Верхняя подгруппа. Преподаватель: <?=$par['last_name']?> <?=$par['first_name']?> <?=$par['patronymic']?>"><?=$par['subject']?> <span class="clr"><?=$par['cabinet']?></span></span></p>
                                         <?php endif?>   
                                         <?php if ($par['type'] == 2):?>
-                                            <p><span class="wordbottom" title="Нижняя подгруппа. Преподаватель: <?=$par['first_name']?> <?=$par['patronymic']?>"><?=$par['subject']?> <span class="clr"><?=$par['cabinet']?></span></span></p>
+                                            <p><span class="wordbottom" title="Нижняя подгруппа. Преподаватель: <?=$par['last_name']?> <?=$par['first_name']?> <?=$par['patronymic']?>"><?=$par['subject']?> <span class="clr"><?=$par['cabinet']?></span></span></p>
                                         <?php endif?>   
                                     <?php endif?>    
                                 <?php endforeach?>

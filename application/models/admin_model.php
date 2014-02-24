@@ -176,12 +176,12 @@ class Admin_model extends CI_Model
     function get_event($from, $to)
     {
         $this->db->select('
-            bindingdaygroupevent.idDay,
-            bindingdaygroupevent.idGroup,
-            bindingdaygroupevent.txtEvent
+            BindingDayGroupEvent.idDay,
+            BindingDayGroupEvent.idGroup,
+            BindingDayGroupEvent.txtEvent
         ');
 
-        $this->db->join('days', 'days.iddays = bindingdaygroupevent.idDay');
+        $this->db->join('days', 'days.iddays = BindingDayGroupEvent.idDay');
 
         $this->db->where('days.date <=', $from);
         $this->db->where('days.date >=', $to); 
