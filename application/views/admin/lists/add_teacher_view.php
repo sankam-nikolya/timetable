@@ -1,14 +1,5 @@
 <script type="text/javascript" src="<?= base_url() ?>js/bootstrap-select.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/bootstrap-select.min.css">
-<script type="text/javascript">
-    $(document).ready(function () {
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
-            $('.selectpicker').selectpicker('mobile');
-        }
-        else
-            $('.selectpicker').selectpicker()
-    })
-</script>
 
 <div class="container">
     <a href="<?= base_url() ?>admin/teachers" class="btn btn-primary btn-sm">&larr; Вернуться</a>
