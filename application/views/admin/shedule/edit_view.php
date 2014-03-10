@@ -12,7 +12,8 @@
     {
         var x = 500;
         var y = 600;
-        window.open("<?=base_url()?>index.php/admin_shedule/popup_edit/?group="+group+"&day="+day+"&lt="+lesson_time, 'newwindow', config="height=140, width=400, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no, top="+x+", left="+y);
+        var win = window.open("<?=base_url()?>index.php/admin_shedule/popup_edit/?group="+group+"&day="+day+"&lt="+lesson_time, 'newwindow', config="height=140, width=400, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no, top="+x+", left="+y);
+        win.onunload = function() { win.RunCallbackFunction = refresh_td(day, group, lesson_time); };
     }
 </script>
 <div class="container">
@@ -63,7 +64,7 @@
                                                 <?php endif?>    
                                             <?php endforeach?>
                                         </div>
-                                        <span class="pull-right"><img id="img_repeat" src="<?=base_url()?>css/images/repeat.png" onclick="refresh_td(<?=$day['iddays']?>, <?=$group['idgroups']?>, <?=$item_timing['idlessons_time']?>)"> <img id="img_edit" src="<?=base_url()?>css/images/edit.png"  onclick="openWindow(<?=$group['idgroups']?>, <?=$day['iddays']?>, <?=$item_timing['idlessons_time']?>);"> <img id="img_delete" src="<?=base_url()?>css/images/delete.png" onclick="delete_binding(<?=$day['iddays']?>, <?=$group['idgroups']?>, <?=$item_timing['idlessons_time']?>)"></spam>
+                                        <span class="pull-right"><img id="img_repeat" src="<?=base_url()?>css/images/repeat.png" onclick="refresh_td(<?=$day['iddays']?>, <?=$group['idgroups']?>, <?=$item_timing['idlessons_time']?>)"> <img id="img_edit" src="<?=base_url()?>css/images/edit.png"  onclick="openWindow(<?=$group['idgroups']?>, <?=$day['iddays']?>, <?=$item_timing['idlessons_time']?>);"> <img id="img_delete" src="<?=base_url()?>css/images/delete.png" onclick="delete_binding(<?=$day['iddays']?>, <?=$group['idgroups']?>, <?=$item_timing['idlessons_time']?>)"></span>
                                     </td>
                                 <?php endforeach ?>
                             </tr>
@@ -154,6 +155,8 @@
                 type: 'POST',
                 data: data
             });
+
+            window.setTimeout(refresh_td(iddays, idgroups, idlessons_time), 700);
         }        
     }
 
@@ -176,23 +179,21 @@
                     switch (msg[i]['type'])
                     {
                         case '0': 
-                            $("#"+iddays+idgroups+idlessons_time).append( "<p>" + msg[i]['name']);                            
+                            $("#"+iddays+idgroups+idlessons_time).append(msg[i]['name']);
                             if (msg[i]['cab'] != null)
                                 $("#"+iddays+idgroups+idlessons_time).append(" <span class='clr'>" + msg[i]['cab'] + "</span>");
-                            $("#"+iddays+idgroups+idlessons_time).append("</p>");
                         break;
                         case '1': 
-                            $("#"+iddays+idgroups+idlessons_time).append( "<p><span class='wordup'>" + msg[i]['name']);                            
+                            $("#"+iddays+idgroups+idlessons_time).append( "<span class='wordup'>" + msg[i]['name']);
                             if (msg[i]['cab'] != null)
                                 $("#"+iddays+idgroups+idlessons_time).append(" <span class='clr'>" + msg[i]['cab'] + "</span>");
-                            $("#"+iddays+idgroups+idlessons_time).append("</p>");
+                            $("#"+iddays+idgroups+idlessons_time).append("<br>");
 
                         break;
                         case '2': 
-                            $("#"+iddays+idgroups+idlessons_time).append( "<p><span class='wordbottom'>" + msg[i]['name']);                           
+                            $("#"+iddays+idgroups+idlessons_time).append( "<span class='wordbottom'>" + msg[i]['name']);
                             if (msg[i]['cab'] != null)
                                 $("#"+iddays+idgroups+idlessons_time).append(" <span class='clr'>" + msg[i]['cab'] + "</span>");
-                            $("#"+iddays+idgroups+idlessons_time).append("</p>");
 
                         break;
 
