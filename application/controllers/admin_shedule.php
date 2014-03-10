@@ -113,6 +113,7 @@ class Admin_shedule extends CI_Controller
             {
                 $data['days'] = $this->admin_model->get($_GET['from'], $_GET['to']);
                 $data['pars'] = $this->admin_model->get_binding_info($_GET['from'], $_GET['to']);
+                $data['events'] = $this->admin_model->get_event($_GET['from'], $_GET['to']);
                 $this->load->view('admin/shedule/edit_view', $data);
             }
             $this->load->view('footer_view');

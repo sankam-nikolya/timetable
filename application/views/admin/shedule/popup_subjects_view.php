@@ -9,6 +9,7 @@
 	</style>
 	<script src="<?= base_url() ?>js/jquery.min.js"></script>
 	<script type="text/javascript">
+        var RunCallbackFunction = function() { };
 		
 		function click_apply() {
 

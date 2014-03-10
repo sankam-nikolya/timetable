@@ -16,6 +16,7 @@ class Shedule_model extends CI_Model
             binding.type,
             binding.idlessons_time,
             teachers.first_name, 
+            teachers.last_name, 
             teachers.patronymic,
             c.name as 'cabinet'
         ");
