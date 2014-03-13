@@ -41,7 +41,7 @@
                         </tr>
                         <tr>
                             <?php foreach ($timing as $item_timing): ?>
-                                <td><?= $item_timing['start_time'] ?> - <?= $item_timing['end_time'] ?></td>
+                                <td><p><?= $item_timing['start_time'] ?> - <?= $item_timing['end_time'] ?></p></td>
                             <?php endforeach ?>
                         </tr>
                         <?php foreach ($groups as $group): ?>
