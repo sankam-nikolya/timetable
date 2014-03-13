@@ -15,6 +15,10 @@
     word-wrap: normal;
 }
 
+.container {
+    min-width: 970px;
+}
+
 .table .rowdown td {
     height: 60px;
     vertical-align: middle;
