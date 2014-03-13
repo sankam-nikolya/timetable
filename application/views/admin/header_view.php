@@ -5,7 +5,7 @@
     <title>Админ-панель</title>
 
     <link rel="stylesheet" href="<?= base_url() ?>css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>css/style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>css/style.css?<?=CSS_VERSION?>">
     <script type="text/javascript" src="<?= base_url() ?>js/jquery-1.10.2.min.js"></script>
     <script src="<?= base_url() ?>js/bootstrap.min.js"></script>
     <link href="//fonts.googleapis.com/css?family=Ubuntu:400&subset=cyrillic,latin" rel="stylesheet" type="text/css" />

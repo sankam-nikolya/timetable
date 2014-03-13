@@ -20,7 +20,6 @@ class Shedule extends CI_Controller
         if (isset($_GET['from']) && isset($_GET['to'])) {
             $data['days'] = $this->shedule_model->get_days_f_t($_GET['from'], $_GET['to']);
         }
-
         $this->load->view('header_view');
         $this->load->view('menu_view');
         $this->load->view('type_view');

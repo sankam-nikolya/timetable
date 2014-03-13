@@ -7,7 +7,7 @@
     <meta name = "keywords" content = "расписание, ПФУРТК. какие пары завтра?, пары, уроки, преподаватели" />
     <link href="<?= base_url() ?>css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
-    <link href="<?= base_url() ?>css/style.css" rel="stylesheet">
+    <link href="<?= base_url() ?>css/style.css?<?=CSS_VERSION?>" rel="stylesheet">
 
     <script src="<?= base_url() ?>js/jquery.min.js"></script>
     <script src="<?= base_url() ?>js/bootstrap.js"></script>

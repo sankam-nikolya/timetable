@@ -11,7 +11,9 @@ class Admin_statistics extends CI_Controller
             $data['num_pars'] = $this->statistics_model->get_num_pars();
             $data['group_num_pars'] = $this->statistics_model->get_group_num_pars();
 
-            $this->load->view('admin/header_view');
+
+            $data['version'] = "2014-03-13";
+            $this->load->view('admin/header_view', $data);
             $this->load->view('admin/menu_view');
 
             $this->load->view('admin/statistics_view', $data);
