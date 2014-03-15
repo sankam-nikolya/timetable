@@ -153,10 +153,11 @@
             $.ajax({
                 url: "<?= base_url() ?>index.php/admin_shedule/delete_binding",
                 type: 'POST',
-                data: data
+                data: data,
+                success: function() {
+                    refresh_td(iddays, idgroups, idlessons_time);
+                }
             });
-
-            window.setTimeout(refresh_td(iddays, idgroups, idlessons_time), 700);
         }        
     }
 
