@@ -137,10 +137,6 @@ class Admin_shedule extends CI_Controller
                 'type'              => $_POST['type'],
                 'idcabinets'        => $_POST['idcabinets']
             );
-            if ($data['type'] != 0)
-                $this->admin_model->delete_from_bidning($data);
-            else
-                $this->admin_model->delete_from_bidning_0($data);
             $this->admin_model->insert_binding($data);  
         } else {
             header("Location: " . base_url() . 'auth/login');

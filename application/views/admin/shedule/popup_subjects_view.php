@@ -19,97 +19,93 @@
                 idlessons_time: gets['lt']
             };
 
-            db_delete_binding(data);
+            $.ajax({
+                url: "<?= base_url() ?>index.php/admin_shedule/delete_binding",
+                type: 'POST',
+                data: data,
+                success: function() {
+                    var select0 	= $("#select0").val();
+                    var cab0 		= $("#cab0").val();
 
-			var select0 	= $("#select0").val();
-			var cab0 		= $("#cab0").val();
+                    var select1 	= $("#select1").val();
+                    var cab1 		= $("#cab1").val();
 
-			var select1 	= $("#select1").val();
-			var cab1 		= $("#cab1").val();
-
-			var select2 	= $("#select2").val();
-			var cab2 		= $("#cab2").val();
+                    var select2 	= $("#select2").val();
+                    var cab2 		= $("#cab2").val();
 
 
 
-			if (select0 != 0)
-			{
-				gets = getURLParameters($(location).attr('href'));
+                    if (select0 != 0)
+                    {
+                        if (cab0 == 0)
+                            data = {
+                                iddays: gets['day'],
+                                idgroups: gets['group'],
+                                idlessons_time: gets['lt'],
+                                idsubjects: select0,
+                                type: 0
+                            };
+                        else
+                            data = {
+                                iddays: gets['day'],
+                                idgroups: gets['group'],
+                                idlessons_time: gets['lt'],
+                                idsubjects: select0,
+                                idcabinets: cab0,
+                                type: 0
+                            };
 
-				if (cab0 == 0)
-					data = {
-			            iddays: gets['day'],
-			            idgroups: gets['group'],
-			            idlessons_time: gets['lt'],
-			            idsubjects: select0,
-			            type: 0
-			        }; 
-				else
-					data = {
-			            iddays: gets['day'],
-			            idgroups: gets['group'],
-			            idlessons_time: gets['lt'],
-			            idsubjects: select0,
-			            idcabinets: cab0,
-			            type: 0
-			        }; 
+                        db_update_binding(data);
+                    }
+                    else
+                    {
+                        if (select1 != 0)
+                        {
+                            if (cab1 == 0)
+                                data = {
+                                    iddays: gets['day'],
+                                    idgroups: gets['group'],
+                                    idlessons_time: gets['lt'],
+                                    idsubjects: select1,
+                                    type: 1
+                                };
+                            else
+                                data = {
+                                    iddays: gets['day'],
+                                    idgroups: gets['group'],
+                                    idlessons_time: gets['lt'],
+                                    idsubjects: select1,
+                                    idcabinets: cab1,
+                                    type: 1
+                                };
 
-		        db_update_binding(data);
-			}
-			else
-			{
-				if (select1 != 0)
-				{
-					
-					gets = getURLParameters($(location).attr('href'));
+                            db_update_binding(data);
+                        }
+                        if (select2 != 0)
+                        {
+                            if (cab2 == 0)
+                                data = {
+                                    iddays: gets['day'],
+                                    idgroups: gets['group'],
+                                    idlessons_time: gets['lt'],
+                                    idsubjects: select2,
+                                    type: 2
+                                };
+                            else
+                                data = {
+                                    iddays: gets['day'],
+                                    idgroups: gets['group'],
+                                    idlessons_time: gets['lt'],
+                                    idsubjects: select2,
+                                    idcabinets: cab2,
+                                    type: 2
+                                };
 
-					if (cab1 == 0)
-						data = {
-				            iddays: gets['day'],
-				            idgroups: gets['group'],
-				            idlessons_time: gets['lt'],
-				            idsubjects: select1,
-				            type: 1
-				        }; 
-			        else
-			        	data = {
-				            iddays: gets['day'],
-				            idgroups: gets['group'],
-				            idlessons_time: gets['lt'],
-				            idsubjects: select1,
-				            idcabinets: cab1,
-				            type: 1
-				        }; 
-
-			        db_update_binding(data);
-				}
-				if (select2 != 0)
-				{
-					gets = getURLParameters($(location).attr('href'));
-
-					if (cab2 == 0)
-						data = {
-				            iddays: gets['day'],
-				            idgroups: gets['group'],
-				            idlessons_time: gets['lt'],
-				            idsubjects: select2,
-				            type: 2
-				        }; 
-				    else
-				       	data = {
-				            iddays: gets['day'],
-				            idgroups: gets['group'],
-				            idlessons_time: gets['lt'],
-				            idsubjects: select2,
-				            idcabinets: cab2,
-				            type: 2
-				        }; 
-
-			        db_update_binding(data);
-				}
-			}
-			window.setTimeout(exit, 400)
-
+                            db_update_binding(data);
+                        }
+                    }
+                }
+            });
 		}
 
 		function db_update_binding(data) {
