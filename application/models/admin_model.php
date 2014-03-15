@@ -184,7 +184,7 @@ class Admin_model extends CI_Model
         $this->db->join('days', 'days.iddays = BindingDayGroupEvent.idDay');
 
         $this->db->where('days.date <=', $from);
-        $this->db->where('days.date >=', $to); 
+        $this->db->where('days.date >=', $to);
 
         return $this->db->get('BindingDayGroupEvent')->result_array();
     }
@@ -195,12 +195,6 @@ class Admin_model extends CI_Model
         $this->db->where('idgroups', $data['idgroups']);
         $this->db->where('idlessons_time', $data['idlessons_time']);
         $this->db->where('type', $data['type']);
-        $this->db->delete('binding');
-
-        $this->db->where('iddays', $data['iddays']);
-        $this->db->where('idgroups', $data['idgroups']);
-        $this->db->where('idlessons_time', $data['idlessons_time']);
-        $this->db->where('type', 0);
         $this->db->delete('binding');
     }
 

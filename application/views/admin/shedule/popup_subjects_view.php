@@ -12,6 +12,14 @@
         var RunCallbackFunction = function() { };
 		
 		function click_apply() {
+            var gets = getURLParameters($(location).attr('href'));
+            var data = {
+                iddays: gets['day'],
+                idgroups: gets['group'],
+                idlessons_time: gets['lt']
+            };
+
+            db_delete_binding(data);
 
 			var select0 	= $("#select0").val();
 			var cab0 		= $("#cab0").val();
@@ -22,12 +30,14 @@
 			var select2 	= $("#select2").val();
 			var cab2 		= $("#cab2").val();
 
+
+
 			if (select0 != 0)
 			{
-				var gets = getURLParameters($(location).attr('href'));
+				gets = getURLParameters($(location).attr('href'));
 
 				if (cab0 == 0)
-					var data = {
+					data = {
 			            iddays: gets['day'],
 			            idgroups: gets['group'],
 			            idlessons_time: gets['lt'],
@@ -35,7 +45,7 @@
 			            type: 0
 			        }; 
 				else
-					var data = {
+					data = {
 			            iddays: gets['day'],
 			            idgroups: gets['group'],
 			            idlessons_time: gets['lt'],
@@ -51,10 +61,10 @@
 				if (select1 != 0)
 				{
 					
-					var gets = getURLParameters($(location).attr('href'));
+					gets = getURLParameters($(location).attr('href'));
 
 					if (cab1 == 0)
-						var data = {
+						data = {
 				            iddays: gets['day'],
 				            idgroups: gets['group'],
 				            idlessons_time: gets['lt'],
@@ -62,7 +72,7 @@
 				            type: 1
 				        }; 
 			        else
-			        	var data = {
+			        	data = {
 				            iddays: gets['day'],
 				            idgroups: gets['group'],
 				            idlessons_time: gets['lt'],
@@ -75,10 +85,10 @@
 				}
 				if (select2 != 0)
 				{
-					var gets = getURLParameters($(location).attr('href'));
+					gets = getURLParameters($(location).attr('href'));
 
 					if (cab2 == 0)
-						var data = {
+						data = {
 				            iddays: gets['day'],
 				            idgroups: gets['group'],
 				            idlessons_time: gets['lt'],
@@ -86,7 +96,7 @@
 				            type: 2
 				        }; 
 				    else
-				       	var data = {
+				       	data = {
 				            iddays: gets['day'],
 				            idgroups: gets['group'],
 				            idlessons_time: gets['lt'],
@@ -112,6 +122,14 @@
 	            }
 	        });
 		}
+
+        function db_delete_binding(data) {
+            $.ajax({
+                url: "<?= base_url() ?>index.php/admin_shedule/delete_binding",
+                type: 'POST',
+                data: data
+            });
+        }
 
 
 		function getURLParameters(url)
