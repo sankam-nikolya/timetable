@@ -196,6 +196,12 @@ class Admin_model extends CI_Model
         $this->db->where('idlessons_time', $data['idlessons_time']);
         $this->db->where('type', $data['type']);
         $this->db->delete('binding');
+
+        $this->db->where('iddays', $data['iddays']);
+        $this->db->where('idgroups', $data['idgroups']);
+        $this->db->where('idlessons_time', $data['idlessons_time']);
+        $this->db->where('type', 0);
+        $this->db->delete('binding');
     }
 
     function delete_from_bidning_0($data)
