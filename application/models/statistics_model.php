@@ -14,13 +14,15 @@ class Statistics_model extends CI_Model
             teachers.patronymic
         ");
 
+        $this->db->limit(10);
+
         $this->db->join("days", "binding.iddays = days.iddays");
         $this->db->join("subjects", "subjects.idsubects = binding.idsubjects");
         $this->db->join("BindingTeacherSubjects", "subjects.idsubects = BindingTeacherSubjects.idSubject");
         $this->db->join("teachers", "teachers.idteacher = BindingTeacherSubjects.idTeacher");
 
         $this->db->group_by('teachers.idteacher');
-        $this->db->order_by('teachers.last_name', 'asc');
+        $this->db->order_by('pars', 'desc');
 
         return $this->db->get("binding")->result_array();
     }

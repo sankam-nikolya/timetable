@@ -21,7 +21,7 @@
                 plotShadow: false
             },
             title: {
-                text: 'Доля уроков у преподавателей'
+                text: 'Топ 10 преподавателей'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.y}</b>'
