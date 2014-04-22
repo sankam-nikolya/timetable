@@ -33,9 +33,9 @@
                             ><a href="<?= base_url() ?>admin/subjects">Предметы</a></li>
                     </ul>
                 </li>
-                <!--<li <?php if ($this->uri->rsegment(2) == "announcements"): ?>class="active"<?php endif ?>>
+                <li <?php if ($this->uri->rsegment(1) == "admin_ads"): ?>class="active"<?php endif ?>>
                     <a href="<?= base_url() ?>admin/announcements">Объявления</a>
-                </li>!-->
+                </li>
                 <li <?php if ($this->uri->rsegment(1) == "admin_statistics" && $this->uri->rsegment(2) == "statistics"): ?>class="active"<?php endif ?>>
                     <a href="<?= base_url() ?>admin/statistics">Статистика</a>
                 </li>
