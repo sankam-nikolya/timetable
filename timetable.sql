@@ -1,18 +1,3 @@
-/*
-Navicat MySQL Data Transfer
-
-Source Server         : timeweb.ru
-Source Server Version : 50158
-Source Host           : 92.53.125.90:3306
-Source Database       : ednvg_timetable
-
-Target Server Type    : MYSQL
-Target Server Version : 50158
-File Encoding         : 65001
-
-Date: 2014-04-27 16:37:11
-*/
-
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
