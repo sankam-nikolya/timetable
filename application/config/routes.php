@@ -43,7 +43,16 @@ $route['fulltime'] = "shedule";
 $route['parttime'] = "shedulezao";
 $route['auth'] = "auth";
 $route['admin'] = "admin_shedule";
+
 $route['admin/announcements'] = "admin_ads";
+$route['admin/announcements/(:num)'] = 'admin_ads';
+$route['admin/announcements/add'] = "admin_ads/add_view";
+$route['admin/announcements/add_db'] = "admin_ads/add_db";
+$route['admin/announcements/edit/(:num)'] = "admin_ads/edit_view";
+$route['admin/announcements/edit_data_json'] = "admin_ads/edit_data_json";
+$route['admin/announcements/edit_data_json/(:num)'] = "admin_ads/edit_data_json/$1";
+$route['admin/announcements/update_db/(:num)'] = "admin_ads/update_db/$1";
+
 $route['admin/shedule'] = "admin_shedule";
 $route['admin/shedule/add'] = "admin_shedule/add_datepick_view";
 $route['admin/shedule/edit'] = "admin_shedule/edit_datepick_view";

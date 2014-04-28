@@ -14,7 +14,7 @@
                 <?php foreach($ads as $ad):?>
                 <tr style="text-align: left">
                     <td><?=$ad['idannouncements']?></td>
-                    <td><a href=""><?=$ad['title']?></a></td>
+                    <td><a href="<?=base_url()?>admin/announcements/edit/<?=$ad['idannouncements']?>"><?=$ad['title']?></a></td>
                     <td><?=$ad['start_datestamp']?></td>
                     <td><?=$ad['end_datestamp']?></td>
                 </tr>
@@ -27,7 +27,7 @@
             <div class="well sidebar-nav">
                 <ul class="nav">
                     <li>
-                        <a href="<?=base_url()?>index.php/admin_shedule/teacher_add_view"><span class="glyphicon glyphicon-plus"> Добавить</span></a>
+                        <a href="<?=base_url()?>admin/announcements/add"><span class="glyphicon glyphicon-plus"> Добавить</span></a>
                     </li>
                 </ul>
             </div>
