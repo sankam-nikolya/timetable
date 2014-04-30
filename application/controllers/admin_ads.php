@@ -112,4 +112,15 @@ class Admin_ads extends CI_Controller
             header("Location: " . base_url() . 'auth/login');
         }
     }
+
+    function delete_db($id)
+    {
+        if ($this->ion_auth->is_admin()) {
+            $this->load->model('admin_ads_model');
+
+            $this->admin_ads_model->delete_ad($id);
+        } else {
+            header("Location: " . base_url() . 'auth/login');
+        }
+    }
 }

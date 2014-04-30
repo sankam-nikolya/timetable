@@ -152,7 +152,10 @@ class Shedule_model extends CI_Model
         $timestamp = time();
         $this->db->order_by('idannouncements', 'desc');
         $this->db->where('start_datestamp <=', $timestamp);
-        $this->db->where('end_datestamp >=', $timestamp);
+        $this->db->where('end_datestamp >=', $timestamp);        
+        $this->db->where('active', 1);
+        $this->db->or_where('announcements.allTime', 1);        
+        $this->db->where('active', 1);
         return $this->db->get("announcements")->result_array();
     }
 }

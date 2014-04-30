@@ -52,6 +52,7 @@ $route['admin/announcements/edit/(:num)'] = "admin_ads/edit_view";
 $route['admin/announcements/edit_data_json'] = "admin_ads/edit_data_json";
 $route['admin/announcements/edit_data_json/(:num)'] = "admin_ads/edit_data_json/$1";
 $route['admin/announcements/update_db/(:num)'] = "admin_ads/update_db/$1";
+$route['admin/announcements/delete_db/(:num)'] = "admin_ads/delete_db/$1";
 
 $route['admin/shedule'] = "admin_shedule";
 $route['admin/shedule/add'] = "admin_shedule/add_datepick_view";

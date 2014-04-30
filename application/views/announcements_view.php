@@ -1,8 +1,8 @@
 <div class="container">
 	<?php foreach ($ads as $ad):?>
 	<div class="bs-callout-info">
-		<h4><?=$ad['title']?></h4>
-		<p><?=$ad['text']?></p>		
+		<h3><?=$ad['title']?></h3>
+		<?=$ad['text']?>	
 	</div>
 	<?php endforeach?>	
 </div>

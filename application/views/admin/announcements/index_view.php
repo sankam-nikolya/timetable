@@ -1,6 +1,7 @@
 <div class="container">
 	<div class="row">
         <div class="col-lg-9">
+            <?php if(count($ads) > 0):?>
             <table class="table table-bordered">
                 <thead>
                 <tr>
@@ -14,14 +15,31 @@
                 <?php foreach($ads as $ad):?>
                 <tr style="text-align: left">
                     <td><?=$ad['idannouncements']?></td>
-                    <td><a href="<?=base_url()?>admin/announcements/edit/<?=$ad['idannouncements']?>"><?=$ad['title']?></a></td>
-                    <td><?=$ad['start_datestamp']?></td>
-                    <td><?=$ad['end_datestamp']?></td>
+                    <td><?php if (trim($ad['title']) == ""):?>
+                        <a href="<?=base_url()?>admin/announcements/edit/<?=$ad['idannouncements']?>">//БЕЗ НАЗВАНИЯ</a>
+                    <?php else:?>
+                    <a href="<?=base_url()?>admin/announcements/edit/<?=$ad['idannouncements']?>"><?=$ad['title']?></a>
+                    <?php endif?></td>
+                    <td><?php if ($ad['allTime'] == "1"):?>
+                        Без ограничений по времени
+                    <?php else:?>
+                    <?=$ad['start_datestamp']?>
+                    <?php endif?></td>
+                    <td><?php if ($ad['allTime'] == "1"):?>
+                        Без ограничений по времени
+                    <?php else:?>
+                    <?=$ad['end_datestamp']?>
+                    <?php endif?></td>
                 </tr>
                 <?php endforeach?>
                 </tbody>
             </table>
             <?=$pagination?>
+            <?php else:?>
+            <div class="well">
+                <h3>Объявлений пока нет</h3>
+            </div>
+            <?php endif?>
         </div>
         <div class="col-lg-3">
             <div class="well sidebar-nav">
