@@ -3,7 +3,7 @@
 <div class="container">
 
   <div id="formAlert" class="alert alert-success hide">
-    <a class="close">×</a>
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <strong>Well done!</strong> You successfully update this ad.
   </div>
     <div class="form-horizontal" role="form">
@@ -63,13 +63,6 @@
               $("#formAlert").removeClass("hide");
             }
         });
-    });
-
-    $(".alert").find(".close").on("click", function (e) {
-        // Find all elements with the "alert" class, get all descendant elements with the class "close", and bind a "click" event handler
-        e.stopPropagation();    // Don't allow the click to bubble up the DOM
-        e.preventDefault();    // Don't let any default functionality occur (in case it's a link)
-        $(this).closest(".alert").slideUp(400);    // Hide this specific Alert
     });
 
     jQuery(function(){

@@ -146,4 +146,13 @@ class Shedule_model extends CI_Model
         $query = $this->db->get('groups');
         return $query->result_array();
     }
+
+    function get_ads()
+    {
+        $timestamp = time();
+        $this->db->order_by('idannouncements', 'desc');
+        $this->db->where('start_datestamp <=', $timestamp);
+        $this->db->where('end_datestamp >=', $timestamp);
+        return $this->db->get("announcements")->result_array();
+    }
 }

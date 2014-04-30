@@ -8,13 +8,27 @@ class Admin_ads extends CI_Controller
         	$this->load->view('admin/header_view');
             $this->load->view('admin/menu_view');
 
-			$config['per_page'] = 2;
+			$config['per_page'] = 10;
             $this->load->model('admin_ads_model');
             $data['ads'] = $this->admin_ads_model->get_ads($config['per_page'], $this->uri->segment(3));
 
             $this->load->library('pagination');
             $config['base_url'] = base_url().'admin/announcements';
-			$config['total_rows'] = 3;
+			$config['total_rows'] = $this->admin_ads_model->count_ads();
+            $config['full_tag_open'] = '<ul class="pagination">';
+            $config['full_tag_close'] = '</ul>';
+            $config['first_tag_open'] = '<li>';
+            $config['first_tag_close'] = '</li>';
+            $config['num_tag_open'] = '<li>';
+            $config['cur_tag_open'] = '<li><a style="background-color: #eeeeee">';
+            $config['cur_tag_close'] = '</li></a>';
+            $config['num_tag_close'] = '</li>';
+            $config['next_link'] = '&raquo;';
+            $config['next_tag_open'] = '<li>';
+            $config['next_tag_close'] = '</li>';
+            $config['prev_link'] = '&laquo;';
+            $config['prev_tag_open'] = '<li>';
+            $config['prev_tag_close'] = '</li>';
 			$this->pagination->initialize($config);
 			$data['pagination'] = $this->pagination->create_links();
 
@@ -49,12 +63,7 @@ class Admin_ads extends CI_Controller
         if ($this->ion_auth->is_admin()) {
             $this->load->model('admin_ads_model');
 
-            $data = array(
-                'title' => $_POST['title'],
-                'text'  => $_POST['text']
-            );
-
-            $this->admin_ads_model->add_ads($data);
+            $this->admin_ads_model->add_ads($this->input->post());
         } else {
             header("Location: " . base_url() . 'auth/login');
         }

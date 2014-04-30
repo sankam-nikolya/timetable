@@ -1,13 +1,8 @@
 <div class="container">
-	<p id="title"></p>
-	<p id="text"></p>
+	<?php foreach ($ads as $ad):?>
+	<div class="bs-callout-info">
+		<h4><?=$ad['title']?></h4>
+		<p><?=$ad['text']?></p>		
+	</div>
+	<?php endforeach?>	
 </div>
-
-<script type="text/javascript">
-    //$(document).ready(function(event) {
-    	$.getJSON('<?= base_url() ?>admin/announcements/edit_data_json/3', { get_param: 'value' }, function(data) {
-    		$('#title').text(data[0]['title']);
-    		$('#text').text(data[0]['text']);
-			});
-    //});
-</script>
