@@ -22,6 +22,28 @@ body {
     /*padding-bottom: 0;*/
 }
 
+.bs-callout-info {
+  word-break: break-all;
+  background-color: #F4F8FA;
+  border-color: #5BC0DE;
+  margin: 20px 0px;
+  padding: 20px;
+  border-left: 3px solid #5BC0DE;
+}
+
+.bs-callout-info h4 {
+  margin-top: 0;
+  color: #5BC0DE;
+}
+
+.bs-callout-info p {
+  margin: 0;
+}
+
+.bs-callout p:last-child {
+    margin-bottom: 0px;
+}
+
 .menu {
     padding-left: 0px;
     padding-right: 0px;
