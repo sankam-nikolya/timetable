@@ -792,32 +792,32 @@
                         $(this).siblings().removeClass('trSelected');
                     }
                 }).on('mousedown',function (e) {
-                        if (e.shiftKey) {
-                            $(this).toggleClass('trSelected');
-                            g.multisel = true;
-                            this.focus();
-                            $(g.gDiv).noSelect();
-                        }
-                        if (e.ctrlKey || e.metaKey) {
-                            $(this).toggleClass('trSelected');
-                            g.multisel = true;
-                            this.focus();
-                        }
-                    }).on('mouseup',function (e) {
-                        if (g.multisel && !(e.ctrlKey || e.metaKey)) {
-                            g.multisel = false;
-                            $(g.gDiv).noSelect(false);
-                        }
-                    }).on('dblclick',function () {
-                        if (p.onDoubleClick) {
-                            p.onDoubleClick(this, g, p);
-                        }
-                    }).hover(function (e) {
-                        if (g.multisel && e.shiftKey) {
-                            $(this).toggleClass('trSelected');
-                        }
-                    }, function () {
-                    });
+                    if (e.shiftKey) {
+                        $(this).toggleClass('trSelected');
+                        g.multisel = true;
+                        this.focus();
+                        $(g.gDiv).noSelect();
+                    }
+                    if (e.ctrlKey || e.metaKey) {
+                        $(this).toggleClass('trSelected');
+                        g.multisel = true;
+                        this.focus();
+                    }
+                }).on('mouseup',function (e) {
+                    if (g.multisel && !(e.ctrlKey || e.metaKey)) {
+                        g.multisel = false;
+                        $(g.gDiv).noSelect(false);
+                    }
+                }).on('dblclick',function () {
+                    if (p.onDoubleClick) {
+                        p.onDoubleClick(this, g, p);
+                    }
+                }).hover(function (e) {
+                    if (g.multisel && e.shiftKey) {
+                        $(this).toggleClass('trSelected');
+                    }
+                }, function () {
+                });
                 if (browser.msie && browser.version < 7.0) {
                     $(this).hover(function () {
                         $(this).addClass('trOver');
@@ -1117,66 +1117,66 @@
             $(this).empty().append(thdiv).removeAttr('width').mousedown(function (e) {
                 g.dragStart('colMove', e, this);
             }).hover(function () {
-                    if (!g.colresize && !$(this).hasClass('thMove') && !g.colCopy) {
-                        $(this).addClass('thOver');
+                if (!g.colresize && !$(this).hasClass('thMove') && !g.colCopy) {
+                    $(this).addClass('thOver');
+                }
+                if ($(this).attr('abbr') != p.sortname && !g.colCopy && !g.colresize && $(this).attr('abbr')) {
+                    $('div', this).addClass('s' + p.sortorder);
+                } else if ($(this).attr('abbr') == p.sortname && !g.colCopy && !g.colresize && $(this).attr('abbr')) {
+                    var no = (p.sortorder == 'asc') ? 'desc' : 'asc';
+                    $('div', this).removeClass('s' + p.sortorder).addClass('s' + no);
+                }
+                if (g.colCopy) {
+                    var n = $('th', g.hDiv).index(this);
+                    if (n == g.dcoln) {
+                        return false;
                     }
-                    if ($(this).attr('abbr') != p.sortname && !g.colCopy && !g.colresize && $(this).attr('abbr')) {
-                        $('div', this).addClass('s' + p.sortorder);
-                    } else if ($(this).attr('abbr') == p.sortname && !g.colCopy && !g.colresize && $(this).attr('abbr')) {
-                        var no = (p.sortorder == 'asc') ? 'desc' : 'asc';
-                        $('div', this).removeClass('s' + p.sortorder).addClass('s' + no);
+                    if (n < g.dcoln) {
+                        $(this).append(g.cdropleft);
+                    } else {
+                        $(this).append(g.cdropright);
                     }
-                    if (g.colCopy) {
-                        var n = $('th', g.hDiv).index(this);
-                        if (n == g.dcoln) {
-                            return false;
-                        }
-                        if (n < g.dcoln) {
-                            $(this).append(g.cdropleft);
-                        } else {
-                            $(this).append(g.cdropright);
-                        }
-                        g.dcolt = n;
-                    } else if (!g.colresize) {
-                        var nv = $('th:visible', g.hDiv).index(this);
-                        var onl = parseInt($('div:eq(' + nv + ')', g.cDrag).css('left'), 10);
-                        var nw = jQuery(g.nBtn).outerWidth();
-                        var nl = onl - nw + Math.floor(p.cgwidth / 2);
-                        $(g.nDiv).hide();
-                        $(g.nBtn).hide();
-                        $(g.nBtn).css({
-                            'left': nl,
-                            top: g.hDiv.offsetTop
-                        }).show();
-                        var ndw = parseInt($(g.nDiv).width(), 10);
-                        $(g.nDiv).css({
-                            top: g.bDiv.offsetTop
-                        });
-                        if ((nl + ndw) > $(g.gDiv).width()) {
-                            $(g.nDiv).css('left', onl - ndw + 1);
-                        } else {
-                            $(g.nDiv).css('left', nl);
-                        }
-                        if ($(this).hasClass('sorted')) {
-                            $(g.nBtn).addClass('srtd');
-                        } else {
-                            $(g.nBtn).removeClass('srtd');
-                        }
+                    g.dcolt = n;
+                } else if (!g.colresize) {
+                    var nv = $('th:visible', g.hDiv).index(this);
+                    var onl = parseInt($('div:eq(' + nv + ')', g.cDrag).css('left'), 10);
+                    var nw = jQuery(g.nBtn).outerWidth();
+                    var nl = onl - nw + Math.floor(p.cgwidth / 2);
+                    $(g.nDiv).hide();
+                    $(g.nBtn).hide();
+                    $(g.nBtn).css({
+                        'left': nl,
+                        top: g.hDiv.offsetTop
+                    }).show();
+                    var ndw = parseInt($(g.nDiv).width(), 10);
+                    $(g.nDiv).css({
+                        top: g.bDiv.offsetTop
+                    });
+                    if ((nl + ndw) > $(g.gDiv).width()) {
+                        $(g.nDiv).css('left', onl - ndw + 1);
+                    } else {
+                        $(g.nDiv).css('left', nl);
                     }
-                }, function () {
-                    $(this).removeClass('thOver');
-                    if ($(this).attr('abbr') != p.sortname) {
-                        $('div', this).removeClass('s' + p.sortorder);
-                    } else if ($(this).attr('abbr') == p.sortname) {
-                        var no = (p.sortorder == 'asc') ? 'desc' : 'asc';
-                        $('div', this).addClass('s' + p.sortorder).removeClass('s' + no);
+                    if ($(this).hasClass('sorted')) {
+                        $(g.nBtn).addClass('srtd');
+                    } else {
+                        $(g.nBtn).removeClass('srtd');
                     }
-                    if (g.colCopy) {
-                        $(g.cdropleft).remove();
-                        $(g.cdropright).remove();
-                        g.dcolt = null;
-                    }
-                }); //wrap content
+                }
+            }, function () {
+                $(this).removeClass('thOver');
+                if ($(this).attr('abbr') != p.sortname) {
+                    $('div', this).removeClass('s' + p.sortorder);
+                } else if ($(this).attr('abbr') == p.sortname) {
+                    var no = (p.sortorder == 'asc') ? 'desc' : 'asc';
+                    $('div', this).addClass('s' + p.sortorder).removeClass('s' + no);
+                }
+                if (g.colCopy) {
+                    $(g.cdropleft).remove();
+                    $(g.cdropright).remove();
+                    g.dcolt = null;
+                }
+            }); //wrap content
         });
         //set bDiv
         g.bDiv.className = 'bDiv';
@@ -1184,8 +1184,8 @@
         $(g.bDiv).css({
             height: (p.height == 'auto') ? 'auto' : p.height + "px"
         }).scroll(function (e) {
-                g.scroll()
-            }).append(t);
+            g.scroll()
+        }).append(t);
         if (p.height == 'auto') {
             $('table', g.bDiv).addClass('autoht');
         }
@@ -1221,10 +1221,10 @@
                     $(cgDiv).css({
                         height: cdheight + hdheight
                     }).mousedown(function (e) {
-                            g.dragStart('colresize', e, this);
-                        }).dblclick(function (e) {
-                            g.autoResizeColumn(this);
-                        });
+                        g.dragStart('colresize', e, this);
+                    }).dblclick(function (e) {
+                        g.autoResizeColumn(this);
+                    });
                     if (browser.msie && browser.version < 7.0) {
                         g.fixHeight($(g.gDiv).height());
                         $(cgDiv).hover(function () {
@@ -1463,11 +1463,11 @@
         $(document).mousemove(function (e) {
             g.dragMove(e);
         }).mouseup(function (e) {
-                g.dragEnd();
-            }).hover(function () {
-            }, function () {
-                g.dragEnd();
-            });
+            g.dragEnd();
+        }).hover(function () {
+        }, function () {
+            g.dragEnd();
+        });
         //browser adjustments
         if (browser.msie && browser.version < 7.0) {
             $('.hDiv,.bDiv,.mDiv,.pDiv,.vGrip,.tDiv, .sDiv', g.gDiv).css({

@@ -164,9 +164,9 @@ class CI_Javascript
      * Outputs a javascript library hover event
      *
      * @access    public
-     * @param    string    - element
-     * @param    string    - Javascript code for mouse over
-     * @param    string    - Javascript code for mouse out
+     * @param    string - element
+     * @param    string - Javascript code for mouse over
+     * @param    string - Javascript code for mouse out
      * @return    string
      */
     function hover($element = 'this', $over, $out)
@@ -388,8 +388,8 @@ class CI_Javascript
      * Outputs a javascript library addClass event
      *
      * @access    public
-     * @param    string    - element
-     * @param    string    - Class to add
+     * @param    string - element
+     * @param    string - Class to add
      * @return    string
      */
     function addClass($element = 'this', $class = '')
@@ -405,9 +405,9 @@ class CI_Javascript
      * Outputs a javascript library animate event
      *
      * @access    public
-     * @param    string    - element
-     * @param    string    - One of 'slow', 'normal', 'fast', or time in milliseconds
-     * @param    string    - Javascript callback function
+     * @param    string - element
+     * @param    string - One of 'slow', 'normal', 'fast', or time in milliseconds
+     * @param    string - Javascript callback function
      * @return    string
      */
     function animate($element = 'this', $params = array(), $speed = '', $extra = '')
@@ -423,9 +423,9 @@ class CI_Javascript
      * Outputs a javascript library hide event
      *
      * @access    public
-     * @param    string    - element
-     * @param    string    - One of 'slow', 'normal', 'fast', or time in milliseconds
-     * @param    string    - Javascript callback function
+     * @param    string - element
+     * @param    string - One of 'slow', 'normal', 'fast', or time in milliseconds
+     * @param    string - Javascript callback function
      * @return    string
      */
     function fadeIn($element = 'this', $speed = '', $callback = '')
@@ -441,9 +441,9 @@ class CI_Javascript
      * Outputs a javascript library hide event
      *
      * @access    public
-     * @param    string    - element
-     * @param    string    - One of 'slow', 'normal', 'fast', or time in milliseconds
-     * @param    string    - Javascript callback function
+     * @param    string - element
+     * @param    string - One of 'slow', 'normal', 'fast', or time in milliseconds
+     * @param    string - Javascript callback function
      * @return    string
      */
     function fadeOut($element = 'this', $speed = '', $callback = '')
@@ -459,9 +459,9 @@ class CI_Javascript
      * Outputs a javascript library slideUp event
      *
      * @access    public
-     * @param    string    - element
-     * @param    string    - One of 'slow', 'normal', 'fast', or time in milliseconds
-     * @param    string    - Javascript callback function
+     * @param    string - element
+     * @param    string - One of 'slow', 'normal', 'fast', or time in milliseconds
+     * @param    string - Javascript callback function
      * @return    string
      */
     function slideUp($element = 'this', $speed = '', $callback = '')
@@ -478,8 +478,8 @@ class CI_Javascript
      * Outputs a javascript library removeClass event
      *
      * @access    public
-     * @param    string    - element
-     * @param    string    - Class to add
+     * @param    string - element
+     * @param    string - Class to add
      * @return    string
      */
     function removeClass($element = 'this', $class = '')
@@ -495,9 +495,9 @@ class CI_Javascript
      * Outputs a javascript library slideDown event
      *
      * @access    public
-     * @param    string    - element
-     * @param    string    - One of 'slow', 'normal', 'fast', or time in milliseconds
-     * @param    string    - Javascript callback function
+     * @param    string - element
+     * @param    string - One of 'slow', 'normal', 'fast', or time in milliseconds
+     * @param    string - Javascript callback function
      * @return    string
      */
     function slideDown($element = 'this', $speed = '', $callback = '')
@@ -513,9 +513,9 @@ class CI_Javascript
      * Outputs a javascript library slideToggle event
      *
      * @access    public
-     * @param    string    - element
-     * @param    string    - One of 'slow', 'normal', 'fast', or time in milliseconds
-     * @param    string    - Javascript callback function
+     * @param    string - element
+     * @param    string - One of 'slow', 'normal', 'fast', or time in milliseconds
+     * @param    string - Javascript callback function
      * @return    string
      */
     function slideToggle($element = 'this', $speed = '', $callback = '')
@@ -532,9 +532,9 @@ class CI_Javascript
      * Outputs a javascript library hide action
      *
      * @access    public
-     * @param    string    - element
-     * @param    string    - One of 'slow', 'normal', 'fast', or time in milliseconds
-     * @param    string    - Javascript callback function
+     * @param    string - element
+     * @param    string - One of 'slow', 'normal', 'fast', or time in milliseconds
+     * @param    string - Javascript callback function
      * @return    string
      */
     function hide($element = 'this', $speed = '', $callback = '')
@@ -550,7 +550,7 @@ class CI_Javascript
      * Outputs a javascript library toggle event
      *
      * @access    public
-     * @param    string    - element
+     * @param    string - element
      * @return    string
      */
     function toggle($element = 'this')
@@ -567,7 +567,7 @@ class CI_Javascript
      * Outputs a javascript library toggle class event
      *
      * @access    public
-     * @param    string    - element
+     * @param    string - element
      * @return    string
      */
     function toggleClass($element = 'this', $class = '')
@@ -583,9 +583,9 @@ class CI_Javascript
      * Outputs a javascript library show event
      *
      * @access    public
-     * @param    string    - element
-     * @param    string    - One of 'slow', 'normal', 'fast', or time in milliseconds
-     * @param    string    - Javascript callback function
+     * @param    string - element
+     * @param    string - One of 'slow', 'normal', 'fast', or time in milliseconds
+     * @param    string - Javascript callback function
      * @return    string
      */
     function show($element = 'this', $speed = '', $callback = '')
@@ -724,9 +724,9 @@ class CI_Javascript
      * Outputs a javascript library slideDown event
      *
      * @access    public
-     * @param    string    - element
-     * @param    string    - One of 'slow', 'normal', 'fast', or time in milliseconds
-     * @param    string    - Javascript callback function
+     * @param    string - element
+     * @param    string - One of 'slow', 'normal', 'fast', or time in milliseconds
+     * @param    string - Javascript callback function
      * @return    string
      */
     function update($element = 'this', $speed = '', $callback = '')

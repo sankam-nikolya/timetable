@@ -97,7 +97,7 @@ class CI_Form_validation
         }
 
         // No fields? Nothing to do...
-        if (!is_string($field) OR  !is_string($rules) OR $field == '') {
+        if (!is_string($field) OR !is_string($rules) OR $field == '') {
             return $this;
         }
 

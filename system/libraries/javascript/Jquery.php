@@ -23,7 +23,6 @@
  * @category    Loader
  * @link        http://www.codeigniter.com/user_guide/libraries/javascript.html
  */
-
 class CI_Jquery extends CI_Javascript
 {
 
@@ -168,9 +167,9 @@ class CI_Jquery extends CI_Javascript
      * Outputs a jQuery hover event
      *
      * @access    private
-     * @param    string    - element
-     * @param    string    - Javascript code for mouse over
-     * @param    string    - Javascript code for mouse out
+     * @param    string - element
+     * @param    string - Javascript code for mouse over
+     * @param    string - Javascript code for mouse out
      * @return    string
      */
     function _hover($element = 'this', $over, $out)
@@ -385,7 +384,7 @@ class CI_Jquery extends CI_Javascript
      * Outputs a jQuery addClass event
      *
      * @access    private
-     * @param    string    - element
+     * @param    string - element
      * @return    string
      */
     function _addClass($element = 'this', $class = '')
@@ -403,9 +402,9 @@ class CI_Jquery extends CI_Javascript
      * Outputs a jQuery animate event
      *
      * @access    private
-     * @param    string    - element
-     * @param    string    - One of 'slow', 'normal', 'fast', or time in milliseconds
-     * @param    string    - Javascript callback function
+     * @param    string - element
+     * @param    string - One of 'slow', 'normal', 'fast', or time in milliseconds
+     * @param    string - Javascript callback function
      * @return    string
      */
     function _animate($element = 'this', $params = array(), $speed = '', $extra = '')
@@ -442,9 +441,9 @@ class CI_Jquery extends CI_Javascript
      * Outputs a jQuery hide event
      *
      * @access    private
-     * @param    string    - element
-     * @param    string    - One of 'slow', 'normal', 'fast', or time in milliseconds
-     * @param    string    - Javascript callback function
+     * @param    string - element
+     * @param    string - One of 'slow', 'normal', 'fast', or time in milliseconds
+     * @param    string - Javascript callback function
      * @return    string
      */
     function _fadeIn($element = 'this', $speed = '', $callback = '')
@@ -469,9 +468,9 @@ class CI_Jquery extends CI_Javascript
      * Outputs a jQuery hide event
      *
      * @access    private
-     * @param    string    - element
-     * @param    string    - One of 'slow', 'normal', 'fast', or time in milliseconds
-     * @param    string    - Javascript callback function
+     * @param    string - element
+     * @param    string - One of 'slow', 'normal', 'fast', or time in milliseconds
+     * @param    string - Javascript callback function
      * @return    string
      */
     function _fadeOut($element = 'this', $speed = '', $callback = '')
@@ -496,9 +495,9 @@ class CI_Jquery extends CI_Javascript
      * Outputs a jQuery hide action
      *
      * @access    private
-     * @param    string    - element
-     * @param    string    - One of 'slow', 'normal', 'fast', or time in milliseconds
-     * @param    string    - Javascript callback function
+     * @param    string - element
+     * @param    string - One of 'slow', 'normal', 'fast', or time in milliseconds
+     * @param    string - Javascript callback function
      * @return    string
      */
     function _hide($element = 'this', $speed = '', $callback = '')
@@ -523,7 +522,7 @@ class CI_Jquery extends CI_Javascript
      * Outputs a jQuery remove class event
      *
      * @access    private
-     * @param    string    - element
+     * @param    string - element
      * @return    string
      */
     function _removeClass($element = 'this', $class = '')
@@ -541,9 +540,9 @@ class CI_Jquery extends CI_Javascript
      * Outputs a jQuery slideUp event
      *
      * @access    private
-     * @param    string    - element
-     * @param    string    - One of 'slow', 'normal', 'fast', or time in milliseconds
-     * @param    string    - Javascript callback function
+     * @param    string - element
+     * @param    string - One of 'slow', 'normal', 'fast', or time in milliseconds
+     * @param    string - Javascript callback function
      * @return    string
      */
     function _slideUp($element = 'this', $speed = '', $callback = '')
@@ -568,9 +567,9 @@ class CI_Jquery extends CI_Javascript
      * Outputs a jQuery slideDown event
      *
      * @access    private
-     * @param    string    - element
-     * @param    string    - One of 'slow', 'normal', 'fast', or time in milliseconds
-     * @param    string    - Javascript callback function
+     * @param    string - element
+     * @param    string - One of 'slow', 'normal', 'fast', or time in milliseconds
+     * @param    string - Javascript callback function
      * @return    string
      */
     function _slideDown($element = 'this', $speed = '', $callback = '')
@@ -595,9 +594,9 @@ class CI_Jquery extends CI_Javascript
      * Outputs a jQuery slideToggle event
      *
      * @access    public
-     * @param    string    - element
-     * @param    string    - One of 'slow', 'normal', 'fast', or time in milliseconds
-     * @param    string    - Javascript callback function
+     * @param    string - element
+     * @param    string - One of 'slow', 'normal', 'fast', or time in milliseconds
+     * @param    string - Javascript callback function
      * @return    string
      */
     function _slideToggle($element = 'this', $speed = '', $callback = '')
@@ -622,7 +621,7 @@ class CI_Jquery extends CI_Javascript
      * Outputs a jQuery toggle event
      *
      * @access    private
-     * @param    string    - element
+     * @param    string - element
      * @return    string
      */
     function _toggle($element = 'this')
@@ -640,7 +639,7 @@ class CI_Jquery extends CI_Javascript
      * Outputs a jQuery toggle class event
      *
      * @access    private
-     * @param    string    - element
+     * @param    string - element
      * @return    string
      */
     function _toggleClass($element = 'this', $class = '')
@@ -658,9 +657,9 @@ class CI_Jquery extends CI_Javascript
      * Outputs a jQuery show event
      *
      * @access    private
-     * @param    string    - element
-     * @param    string    - One of 'slow', 'normal', 'fast', or time in milliseconds
-     * @param    string    - Javascript callback function
+     * @param    string - element
+     * @param    string - One of 'slow', 'normal', 'fast', or time in milliseconds
+     * @param    string - Javascript callback function
      * @return    string
      */
     function _show($element = 'this', $speed = '', $callback = '')

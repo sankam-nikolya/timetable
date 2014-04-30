@@ -93,7 +93,7 @@ class PasswordHash
     {
         $output = '$P$';
         $output .= $this->itoa64[min($this->iteration_count_log2 +
-        ((PHP_VERSION >= '5') ? 5 : 3), 30)];
+            ((PHP_VERSION >= '5') ? 5 : 3), 30)];
         $output .= $this->encode64($input, 6);
 
         return $output;

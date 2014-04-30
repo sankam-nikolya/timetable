@@ -127,7 +127,7 @@ class Admin_model extends CI_Model
 
         $this->db->group_by("binding.idbinding");
 
-        $this->db->order_by("binding.iddays, g.`order`, lt.num, binding.type",  "ASC");
+        $this->db->order_by("binding.iddays, g.`order`, lt.num, binding.type", "ASC");
 
         return $this->db->get("binding")->result_array();
     }
@@ -156,7 +156,7 @@ class Admin_model extends CI_Model
 
         $this->db->group_by("binding.idbinding");
 
-        $this->db->order_by("binding.iddays, g.`order`, lt.num, binding.type",  "ASC");
+        $this->db->order_by("binding.iddays, g.`order`, lt.num, binding.type", "ASC");
 
         return $this->db->get("binding")->result_array();
     }

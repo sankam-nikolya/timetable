@@ -930,7 +930,7 @@ class CI_Email
      */
     protected function _build_message()
     {
-        if ($this->wordwrap === TRUE  AND  $this->mailtype != 'html') {
+        if ($this->wordwrap === TRUE AND $this->mailtype != 'html') {
             $this->_body = $this->word_wrap($this->_body);
         }
 
@@ -1176,7 +1176,7 @@ class CI_Email
      *
      * @access    public
      * @param    str
-     * @param    bool    // set to TRUE for processing From: headers
+     * @param    bool // set to TRUE for processing From: headers
      * @return    str
      */
     protected function _prep_q_encoding($str, $from = FALSE)
@@ -1247,7 +1247,7 @@ class CI_Email
             $this->reply_to($this->_headers['From']);
         }
 
-        if ((!isset($this->_recipients) AND !isset($this->_headers['To']))  AND
+        if ((!isset($this->_recipients) AND !isset($this->_headers['To'])) AND
             (!isset($this->_bcc_array) AND !isset($this->_headers['Bcc'])) AND
             (!isset($this->_headers['Cc']))
         ) {
@@ -1257,7 +1257,7 @@ class CI_Email
 
         $this->_build_headers();
 
-        if ($this->bcc_batch_mode  AND  count($this->_bcc_array) > 0) {
+        if ($this->bcc_batch_mode AND count($this->_bcc_array) > 0) {
             if (count($this->_bcc_array) > $this->bcc_batch_size)
                 return $this->batch_bcc_send();
         }
@@ -1635,7 +1635,7 @@ class CI_Email
             return TRUE;
         }
 
-        if ($this->smtp_user == ""  AND  $this->smtp_pass == "") {
+        if ($this->smtp_user == "" AND $this->smtp_pass == "") {
             $this->_set_error_message('lang:email_no_smtp_unpw');
             return FALSE;
         }
@@ -1743,7 +1743,9 @@ class CI_Email
         $fip = (isset($_SERVER['HTTP_X_FORWARDED_FOR']) AND $_SERVER['HTTP_X_FORWARDED_FOR'] != "") ? $_SERVER['HTTP_X_FORWARDED_FOR'] : FALSE;
 
         if ($cip && $rip) $this->_IP = $cip;
-        elseif ($rip) $this->_IP = $rip; elseif ($cip) $this->_IP = $cip; elseif ($fip) $this->_IP = $fip;
+        elseif ($rip) $this->_IP = $rip;
+        elseif ($cip) $this->_IP = $cip;
+        elseif ($fip) $this->_IP = $fip;
 
         if (strpos($this->_IP, ',') !== FALSE) {
             $x = explode(',', $this->_IP);

@@ -29,15 +29,13 @@ class Shedule extends CI_Controller
 
         $this->load->view('type_view');
         $data['pars_timing'] = $this->shedule_model->get_time();
-        $data['groups']      = $this->shedule_model->get_groups();
+        $data['groups'] = $this->shedule_model->get_groups();
 
-        foreach ($data['days'] as $day)
-        {
-            $data['pars']               = $this->shedule_model->get_pars($day['iddays']);
-            $data['event']              = $this->shedule_model->get_event($day['iddays']);
-            if (count($data['pars']) > 0 || count($data['event']) > 0)
-            {
-                $data['day_for_now']    = $day;
+        foreach ($data['days'] as $day) {
+            $data['pars'] = $this->shedule_model->get_pars($day['iddays']);
+            $data['event'] = $this->shedule_model->get_event($day['iddays']);
+            if (count($data['pars']) > 0 || count($data['event']) > 0) {
+                $data['day_for_now'] = $day;
                 $this->load->view('shedule_view', $data);
             }
         }

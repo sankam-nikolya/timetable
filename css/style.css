@@ -1,20 +1,22 @@
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
+
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 80px;
-  border-radius: 0 !important;
+    /* Margin bottom by footer height */
+    margin-bottom: 80px;
+    border-radius: 0 !important;
 }
+
 #footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 80px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 80px;
 }
 
 #footer .well {
@@ -23,21 +25,21 @@ body {
 }
 
 .bs-callout-info {
-  word-break: break-all;
-  background-color: #F4F8FA;
-  border-color: #5BC0DE;
-  margin: 20px 0px;
-  padding: 20px;
-  border-left: 3px solid #5BC0DE;
+    word-break: break-all;
+    background-color: #F4F8FA;
+    border-color: #5BC0DE;
+    margin: 20px 0px;
+    padding: 20px;
+    border-left: 3px solid #5BC0DE;
 }
 
 .bs-callout-info h3 {
-  margin-top: 0;
-  color: #5BC0DE;
+    margin-top: 0;
+    color: #5BC0DE;
 }
 
 .bs-callout-info p {
-  margin: 0;
+    margin: 0;
 }
 
 .bs-callout p:last-child {
@@ -51,8 +53,8 @@ body {
 
 .front-table {
     text-align: center;
-    box-shadow: 0 0 8px rgba(82,168,236,.6);
-    -moz-box-shadow: 0 0 8px rgba(82,168,236,.6);
+    box-shadow: 0 0 8px rgba(82, 168, 236, .6);
+    -moz-box-shadow: 0 0 8px rgba(82, 168, 236, .6);
 }
 
 .table p {
@@ -83,15 +85,15 @@ body {
 }
 
 .navbar {
-  	-webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-	box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-	background-color: #f9f9f9;
-	border-color: #e8e8e8;
-	border: 1px solid transparent;
-  	border-radius: 0px;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    background-color: #f9f9f9;
+    border-color: #e8e8e8;
+    border: 1px solid transparent;
+    border-radius: 0px;
 }
 
-.table #bottom td{
+.table #bottom td {
     vertical-align: middle;
     text-align: center;
 }

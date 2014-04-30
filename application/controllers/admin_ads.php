@@ -2,19 +2,19 @@
 
 class Admin_ads extends CI_Controller
 {
-	function index()
+    function index()
     {
         if ($this->ion_auth->is_admin()) {
-        	$this->load->view('admin/header_view');
+            $this->load->view('admin/header_view');
             $this->load->view('admin/menu_view');
 
-			$config['per_page'] = 10;
+            $config['per_page'] = 10;
             $this->load->model('admin_ads_model');
             $data['ads'] = $this->admin_ads_model->get_ads($config['per_page'], $this->uri->segment(3));
 
             $this->load->library('pagination');
-            $config['base_url'] = base_url().'admin/announcements';
-			$config['total_rows'] = $this->admin_ads_model->count_ads();
+            $config['base_url'] = base_url() . 'admin/announcements';
+            $config['total_rows'] = $this->admin_ads_model->count_ads();
             $config['full_tag_open'] = '<ul class="pagination">';
             $config['full_tag_close'] = '</ul>';
             $config['first_tag_open'] = '<li>';
@@ -29,8 +29,8 @@ class Admin_ads extends CI_Controller
             $config['prev_link'] = '&laquo;';
             $config['prev_tag_open'] = '<li>';
             $config['prev_tag_close'] = '</li>';
-			$this->pagination->initialize($config);
-			$data['pagination'] = $this->pagination->create_links();
+            $this->pagination->initialize($config);
+            $data['pagination'] = $this->pagination->create_links();
 
 
             $this->load->view('admin/announcements/index_view', $data);
@@ -94,7 +94,6 @@ class Admin_ads extends CI_Controller
             $this->output
                 ->set_content_type('application/json')
                 ->set_output(json_encode($data));
-
 
 
         } else {

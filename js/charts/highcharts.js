@@ -3459,7 +3459,7 @@
         for (m = 0; m < k.length; m++)e = k[m], d.push("M", e.plotX - i, e.plotY, "L", e.plotX + i, e.plotY);
         j ? j.attr({d: d}) : (a.tracker = h.path(d).attr({"stroke-linejoin": "round", visibility: a.visible ? "visible" : "hidden", stroke: Qb, fill: c ? Qb : S, "stroke-width": b.lineWidth + (c ? 0 : 2 * i), zIndex: 2}).add(a.group), n([a.tracker, a.markerGroup], function (a) {
             a.addClass("highcharts-tracker").on("mouseover",
-                p).on("mouseout",function (a) {
+                    p).on("mouseout",function (a) {
                     g.onTrackerMouseOut(a)
                 }).css(l);
             if (ib)a.on("touchstart", p)

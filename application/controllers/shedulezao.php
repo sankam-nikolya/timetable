@@ -29,16 +29,14 @@ class Shedulezao extends CI_Controller
 
         $data['pars_timing'] = $this->shedule_model->get_time();
         $data['groups'] = $this->shedule_model->get_groups_zao();
-        
-        foreach ($data['days'] as $day) 
-        {
-            $data['pars']               = $this->shedule_model->get_pars_zao($day['iddays']);
-            $data['event']              = $this->shedule_model->get_event_zao($day['iddays']);
-            if (count($data['pars']) > 0 || count($data['event']) > 0)
-            {
-                $data['day_for_now']    = $day;
+
+        foreach ($data['days'] as $day) {
+            $data['pars'] = $this->shedule_model->get_pars_zao($day['iddays']);
+            $data['event'] = $this->shedule_model->get_event_zao($day['iddays']);
+            if (count($data['pars']) > 0 || count($data['event']) > 0) {
+                $data['day_for_now'] = $day;
                 $this->load->view('shedule_view', $data);
-            }    
+            }
         }
         $this->load->view('footer_view');
     }

@@ -112,7 +112,7 @@ class Statistics_model extends CI_Model
         $this->db->where('days.date BETWEEN', '"' . $monThis . '" AND "' . $sunThis . '"', FALSE);
         $this->db->where('binding.type', 0);
         $this->db->group_by('groups.idgroups');
-        $this->db->order_by('groups.`order`', 'asc'); 
+        $this->db->order_by('groups.`order`', 'asc');
 
         return $this->db->get("binding")->result_array();
     }
@@ -134,7 +134,7 @@ class Statistics_model extends CI_Model
         $this->db->where('days.date BETWEEN', '"' . $monThis . '" AND "' . $sunThis . '"', FALSE);
         $this->db->where('binding.type', 1);
         $this->db->group_by('groups.idgroups');
-        $this->db->order_by('groups.`order`', 'asc'); 
+        $this->db->order_by('groups.`order`', 'asc');
 
         return $this->db->get("binding")->result_array();
     }
@@ -156,7 +156,7 @@ class Statistics_model extends CI_Model
         $this->db->where('days.date BETWEEN', '"' . $monThis . '" AND "' . $sunThis . '"', FALSE);
         $this->db->where('binding.type', 2);
         $this->db->group_by('groups.idgroups');
-        $this->db->order_by('groups.`order`', 'asc'); 
+        $this->db->order_by('groups.`order`', 'asc');
 
         return $this->db->get("binding")->result_array();
     }
@@ -178,12 +178,12 @@ class Statistics_model extends CI_Model
         $this->db->where('days.date BETWEEN', '"' . $monNext . '" AND "' . $sunNext . '"', FALSE);
         $this->db->where('binding.type', 0);
         $this->db->group_by('groups.idgroups');
-        $this->db->order_by('groups.`order`', 'asc'); 
+        $this->db->order_by('groups.`order`', 'asc');
 
         return $this->db->get("binding")->result_array();
     }
 
-     function n_get_short_group_num_pars_1()
+    function n_get_short_group_num_pars_1()
     {
         $monNext = date("Y-m-d", time() - (-7 + date("N") - 1) * 24 * 60 * 60);
         $sunNext = date("Y-m-d", time() - (-13 + date("N") - 1) * 24 * 60 * 60);
@@ -200,12 +200,12 @@ class Statistics_model extends CI_Model
         $this->db->where('days.date BETWEEN', '"' . $monNext . '" AND "' . $sunNext . '"', FALSE);
         $this->db->where('binding.type', 1);
         $this->db->group_by('groups.idgroups');
-        $this->db->order_by('groups.`order`', 'asc'); 
+        $this->db->order_by('groups.`order`', 'asc');
 
         return $this->db->get("binding")->result_array();
     }
 
-     function n_get_short_group_num_pars_2()
+    function n_get_short_group_num_pars_2()
     {
         $monNext = date("Y-m-d", time() - (-7 + date("N") - 1) * 24 * 60 * 60);
         $sunNext = date("Y-m-d", time() - (-13 + date("N") - 1) * 24 * 60 * 60);
@@ -222,7 +222,7 @@ class Statistics_model extends CI_Model
         $this->db->where('days.date BETWEEN', '"' . $monNext . '" AND "' . $sunNext . '"', FALSE);
         $this->db->where('binding.type', 2);
         $this->db->group_by('groups.idgroups');
-        $this->db->order_by('groups.`order`', 'asc'); 
+        $this->db->order_by('groups.`order`', 'asc');
 
         return $this->db->get("binding")->result_array();
     }

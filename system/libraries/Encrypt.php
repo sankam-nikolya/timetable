@@ -171,7 +171,7 @@ class CI_Encrypt
      *
      * @access    public
      * @param    string
-     * @param    int        (mcrypt mode constant)
+     * @param    int (mcrypt mode constant)
      * @param    string
      * @return    string
      */
