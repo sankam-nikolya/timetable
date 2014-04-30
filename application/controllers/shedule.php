@@ -27,8 +27,8 @@ class Shedule extends CI_Controller
 
         $data['pars_timing'] = $this->shedule_model->get_time();
         $data['groups']      = $this->shedule_model->get_groups();
-        
-        foreach ($data['days'] as $day) 
+
+        foreach ($data['days'] as $day)
         {
             $data['pars']               = $this->shedule_model->get_pars($day['iddays']);
             $data['event']              = $this->shedule_model->get_event($day['iddays']);
@@ -36,8 +36,13 @@ class Shedule extends CI_Controller
             {
                 $data['day_for_now']    = $day;
                 $this->load->view('shedule_view', $data);
-            }            
+            }
         }
         $this->load->view('footer_view');
+    }
+
+    function ads()
+    {
+        
     }
 }

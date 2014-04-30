@@ -4,10 +4,10 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function(event) {
-    	$.getJSON('<?= base_url() ?>admin/announcements/edit_data_json/4', { get_param: 'value' }, function(data) {
+    //$(document).ready(function(event) {
+    	$.getJSON('<?= base_url() ?>admin/announcements/edit_data_json/3', { get_param: 'value' }, function(data) {
     		$('#title').text(data[0]['title']);
     		$('#text').text(data[0]['text']);
-		});
-    });
+			});
+    //});
 </script>

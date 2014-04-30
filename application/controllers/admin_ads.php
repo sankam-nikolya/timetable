@@ -11,7 +11,7 @@ class Admin_ads extends CI_Controller
 			$config['per_page'] = 2;
             $this->load->model('admin_ads_model');
             $data['ads'] = $this->admin_ads_model->get_ads($config['per_page'], $this->uri->segment(3));
-            
+
             $this->load->library('pagination');
             $config['base_url'] = base_url().'admin/announcements';
 			$config['total_rows'] = 3;
@@ -44,17 +44,17 @@ class Admin_ads extends CI_Controller
         }
     }
 
-    function add_db() 
+    function add_db()
     {
         if ($this->ion_auth->is_admin()) {
             $this->load->model('admin_ads_model');
-            
+
             $data = array(
                 'title' => $_POST['title'],
                 'text'  => $_POST['text']
             );
 
-            $this->admin_ads_model->add_ads($data);  
+            $this->admin_ads_model->add_ads($data);
         } else {
             header("Location: " . base_url() . 'auth/login');
         }
@@ -93,17 +93,12 @@ class Admin_ads extends CI_Controller
         }
     }
 
-    function update_db($id) 
+    function update_db($id)
     {
         if ($this->ion_auth->is_admin()) {
             $this->load->model('admin_ads_model');
-            
-            $data = array(
-                'title'           => $_POST['title'],
-                'text'            => $_POST['text']
-            );
 
-            $this->admin_ads_model->update_ad($id, $data);  
+            $this->admin_ads_model->update_ad($id, $this->input->post());
         } else {
             header("Location: " . base_url() . 'auth/login');
         }
