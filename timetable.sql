@@ -6,16 +6,21 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `announcements`;
 CREATE TABLE `announcements` (
   `idannouncements` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) DEFAULT NULL,
-  `text` text,
-  `start_datetime` datetime DEFAULT NULL,
-  `end_datetime` datetime DEFAULT NULL,
+  `title` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `start_datestamp` int(11) NOT NULL,
+  `end_datestamp` int(11) NOT NULL,
+  `created_datestamp` int(11) NOT NULL,
+  `allTime` tinyint(4) NOT NULL DEFAULT '0',
+  `ip_address` varbinary(16) NOT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`idannouncements`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of announcements
 -- ----------------------------
+
 
 -- ----------------------------
 -- Table structure for `binding`
@@ -46,12 +51,11 @@ CREATE TABLE `binding` (
 -- Records of binding
 -- ----------------------------
 
-
 -- ----------------------------
--- Table structure for `BindingDayGroupEvent`
+-- Table structure for `bindingdaygroupevent`
 -- ----------------------------
-DROP TABLE IF EXISTS `BindingDayGroupEvent`;
-CREATE TABLE `BindingDayGroupEvent` (
+DROP TABLE IF EXISTS `bindingdaygroupevent`;
+CREATE TABLE `bindingdaygroupevent` (
   `idBindingDayGroupEvent` int(11) NOT NULL AUTO_INCREMENT,
   `idDay` int(11) DEFAULT NULL,
   `idGroup` int(11) DEFAULT NULL,
@@ -65,15 +69,14 @@ CREATE TABLE `BindingDayGroupEvent` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of BindingDayGroupEvent
+-- Records of bindingdaygroupevent
 -- ----------------------------
 
-
 -- ----------------------------
--- Table structure for `BindingSubjectGroup`
+-- Table structure for `bindingsubjectgroup`
 -- ----------------------------
-DROP TABLE IF EXISTS `BindingSubjectGroup`;
-CREATE TABLE `BindingSubjectGroup` (
+DROP TABLE IF EXISTS `bindingsubjectgroup`;
+CREATE TABLE `bindingsubjectgroup` (
   `idBindingSubjectGroup` int(11) NOT NULL AUTO_INCREMENT,
   `idSubject` int(11) NOT NULL,
   `idGroup` int(11) NOT NULL,
@@ -85,15 +88,14 @@ CREATE TABLE `BindingSubjectGroup` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of BindingSubjectGroup
+-- Records of bindingsubjectgroup
 -- ----------------------------
 
-
 -- ----------------------------
--- Table structure for `BindingTeacherSubjects`
+-- Table structure for `bindingteachersubjects`
 -- ----------------------------
-DROP TABLE IF EXISTS `BindingTeacherSubjects`;
-CREATE TABLE `BindingTeacherSubjects` (
+DROP TABLE IF EXISTS `bindingteachersubjects`;
+CREATE TABLE `bindingteachersubjects` (
   `idBindingSubjectGroup` int(11) NOT NULL AUTO_INCREMENT,
   `idTeacher` int(11) NOT NULL,
   `idSubject` int(11) NOT NULL,
@@ -105,9 +107,8 @@ CREATE TABLE `BindingTeacherSubjects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
--- Records of BindingTeacherSubjects
+-- Records of bindingteachersubjects
 -- ----------------------------
-
 
 -- ----------------------------
 -- Table structure for `cabinets`
@@ -162,7 +163,7 @@ CREATE TABLE `days` (
   `date` date DEFAULT NULL,
   `visibility` tinyint(4) DEFAULT '1',
   PRIMARY KEY (`iddays`)
-) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of days
@@ -271,13 +272,11 @@ CREATE TABLE `ion_users_groups` (
   KEY `fk_users_groups_groups1_idx` (`group_id`),
   CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `ion_groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `fk_users_groups_users1` FOREIGN KEY (`user_id`) REFERENCES `ion_users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ion_users_groups
 -- ----------------------------
-INSERT INTO `ion_users_groups` VALUES ('7', '6', '1');
-INSERT INTO `ion_users_groups` VALUES ('8', '7', '1');
 
 -- ----------------------------
 -- Table structure for `lessons_time`
@@ -329,105 +328,11 @@ CREATE TABLE `subjects` (
   `name` varchar(255) DEFAULT NULL,
   `active` tinyint(4) DEFAULT '1',
   PRIMARY KEY (`idsubects`)
-) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of subjects
 -- ----------------------------
-INSERT INTO `subjects` VALUES ('1', 'Математика', 'Матем', '1');
-INSERT INTO `subjects` VALUES ('3', 'Английский язык', 'Англ.яз', '1');
-INSERT INTO `subjects` VALUES ('4', 'Физическая культура', 'Физ-ра', '1');
-INSERT INTO `subjects` VALUES ('5', 'Русский язык и литература', 'Русс.яз', '1');
-INSERT INTO `subjects` VALUES ('6', 'Литература', 'Литерат', '1');
-INSERT INTO `subjects` VALUES ('7', 'История', 'История', '1');
-INSERT INTO `subjects` VALUES ('8', 'Обществознание (обществознание)', 'Общест', '1');
-INSERT INTO `subjects` VALUES ('9', 'Обществознание (право)', 'Право', '1');
-INSERT INTO `subjects` VALUES ('10', 'Обществознание (экономика)', 'Эконом', '1');
-INSERT INTO `subjects` VALUES ('11', 'Химия', 'Химия', '1');
-INSERT INTO `subjects` VALUES ('12', 'Биология', 'Биология', '1');
-INSERT INTO `subjects` VALUES ('13', 'Основы безопасности жизнедеятельности', 'ОБЖ', '1');
-INSERT INTO `subjects` VALUES ('14', 'Физика', 'Физика', '1');
-INSERT INTO `subjects` VALUES ('15', 'Информатика и ИКТ', 'Информ', '1');
-INSERT INTO `subjects` VALUES ('16', 'Психология делового общения', 'Психол', '1');
-INSERT INTO `subjects` VALUES ('17', 'Основы проектной деятельности', 'Пр.деят', '1');
-INSERT INTO `subjects` VALUES ('18', 'География', 'Геогр', '1');
-INSERT INTO `subjects` VALUES ('19', 'Основы философии', 'Осн.филос', '1');
-INSERT INTO `subjects` VALUES ('20', 'Элементы высшей математики', 'Эл.высш.мат', '1');
-INSERT INTO `subjects` VALUES ('21', 'Финансовая математика', 'Финн.мат', '1');
-INSERT INTO `subjects` VALUES ('22', 'Информационные технологии в профессиональной деятельности', 'ИТвПД', '1');
-INSERT INTO `subjects` VALUES ('23', 'Экономика организации', 'Экон.орг', '1');
-INSERT INTO `subjects` VALUES ('24', 'Статистика', 'Статист', '1');
-INSERT INTO `subjects` VALUES ('25', 'Менеджмент', 'Менедж', '1');
-INSERT INTO `subjects` VALUES ('26', 'Документационное обеспечение управления', 'ДОУ', '1');
-INSERT INTO `subjects` VALUES ('27', 'Правовое обеспечение профессиональной деятельности', 'ПОПД', '1');
-INSERT INTO `subjects` VALUES ('28', 'Финансы, денежное обращение и кредит', 'Финансы', '1');
-INSERT INTO `subjects` VALUES ('29', 'Бухгалтерский учет', 'Бухучет', '1');
-INSERT INTO `subjects` VALUES ('30', 'Организация банковского учета в банке', 'Банк.учет', '1');
-INSERT INTO `subjects` VALUES ('31', 'Анализ финансово-хозяйственной деятельности', 'АФХД', '1');
-INSERT INTO `subjects` VALUES ('32', 'Основы экономической теории', 'Эк.теор', '1');
-INSERT INTO `subjects` VALUES ('33', 'Маркетинг', 'Маркет', '1');
-INSERT INTO `subjects` VALUES ('34', 'Безопасность банковской деятельности', 'ББД', '1');
-INSERT INTO `subjects` VALUES ('35', 'Трудовое право', 'Труд.пр.', '1');
-INSERT INTO `subjects` VALUES ('36', 'Страховая деятельность', 'Страх.деят.', '1');
-INSERT INTO `subjects` VALUES ('37', 'Дискретная математика', 'Дискр.матем.', '1');
-INSERT INTO `subjects` VALUES ('38', 'Теория вероятностей и математическая статистика', 'ТВиМС', '1');
-INSERT INTO `subjects` VALUES ('39', 'Основы теории информации', 'ОТИ', '1');
-INSERT INTO `subjects` VALUES ('40', 'Операционные системы и среды', 'Опер.сист.', '1');
-INSERT INTO `subjects` VALUES ('41', 'Архитектура ЭВМ и вычислительных систем', 'Архит.', '1');
-INSERT INTO `subjects` VALUES ('42', 'Психология и этика делового общения и профессиональной деятельности', 'Психол.', '1');
-INSERT INTO `subjects` VALUES ('43', 'Безопасность жизнедеятельности', 'БЖД', '1');
-INSERT INTO `subjects` VALUES ('44', 'Обработка отраслевой информации', 'ООИ', '1');
-INSERT INTO `subjects` VALUES ('45', 'Основы программирования', 'Осн.прогр.', '1');
-INSERT INTO `subjects` VALUES ('46', 'Учебная практика Технические средства информатизации', 'ТСИ(УП)', '1');
-INSERT INTO `subjects` VALUES ('47', 'Учебная практика Графика', 'Графика (УП)', '1');
-INSERT INTO `subjects` VALUES ('48', 'Основы электротехники и электроники (ДОУ)', 'Осн.электр.', '1');
-INSERT INTO `subjects` VALUES ('49', 'Компьютерные сети', 'К.сети', '1');
-INSERT INTO `subjects` VALUES ('50', 'Эксплуатация и модификация ИС', 'Эксп.ИС', '1');
-INSERT INTO `subjects` VALUES ('51', 'Методы и средства проектирования ИС', 'Мет.и ср.', '1');
-INSERT INTO `subjects` VALUES ('52', 'Сопровождение и продвижение ИС', 'Сопр.ИС', '1');
-INSERT INTO `subjects` VALUES ('53', 'Язык программирования С#', 'С#', '1');
-INSERT INTO `subjects` VALUES ('54', 'Пакеты прикладных программ для графики', 'Графика', '1');
-INSERT INTO `subjects` VALUES ('55', 'Web-ориентированное программирование', 'web', '1');
-INSERT INTO `subjects` VALUES ('56', 'Предметно-ориентированное программирование', 'ПОП', '1');
-INSERT INTO `subjects` VALUES ('57', 'Учебная практика Эксплуатация информационных систем', 'УП Эксп.ИС', '1');
-INSERT INTO `subjects` VALUES ('58', 'Учебная практика Программирование на С#', 'УП C#', '1');
-INSERT INTO `subjects` VALUES ('59', 'Учебная практика по базам данных', 'УП БД', '1');
-INSERT INTO `subjects` VALUES ('60', 'Электронные устройства и схемы', 'Эл.устр.', '1');
-INSERT INTO `subjects` VALUES ('61', 'Элементы и устройства цифровой техники', 'ЦТ', '1');
-INSERT INTO `subjects` VALUES ('62', 'Организация безналичного расчета', 'Безн.расч.', '1');
-INSERT INTO `subjects` VALUES ('63', 'Формирование клиентской базы', 'Форм.кл.базы', '1');
-INSERT INTO `subjects` VALUES ('64', 'Организация кредитной работы', 'Орг.кр.раб.', '1');
-INSERT INTO `subjects` VALUES ('65', 'Продвижение и продажа банковских продуктов и услуг', 'Продв.банк.усл.', '1');
-INSERT INTO `subjects` VALUES ('66', 'Учебная практика Организация безналичного расчета', 'УП Безн.расч.', '1');
-INSERT INTO `subjects` VALUES ('67', 'Учебная практика Организация кредитной работы', 'УП Орг.кр.раб.', '1');
-INSERT INTO `subjects` VALUES ('68', 'Информационные технологии и платформы разработки ИС', 'Пл.разр.ИС', '1');
-INSERT INTO `subjects` VALUES ('69', 'Управление проектами', 'Упр.пр.', '1');
-INSERT INTO `subjects` VALUES ('70', 'Технологии выполнения работ по профессии «Оператор ЭВМ и вычислительных систем»', 'Техн.вып.раб.', '1');
-INSERT INTO `subjects` VALUES ('71', 'Учебная практика Разработка информационных систем', 'УП РИС', '1');
-INSERT INTO `subjects` VALUES ('72', 'Системное администрирование', 'Сист.адм.', '1');
-INSERT INTO `subjects` VALUES ('73', 'Технологии разработки программных продуктов', 'Техн.разр.', '1');
-INSERT INTO `subjects` VALUES ('75', 'Управление качеством', 'Упр.кач.', '1');
-INSERT INTO `subjects` VALUES ('76', 'Основы исследовательской деятельности', 'Иссл.деят.', '1');
-INSERT INTO `subjects` VALUES ('77', 'Маркетинговые исследования', 'Марк.иссл.', '1');
-INSERT INTO `subjects` VALUES ('78', 'Государственное регулирование экономики', 'Гос.рег.экон.', '1');
-INSERT INTO `subjects` VALUES ('79', 'Экономическая статистика', 'Экон.стат.', '1');
-INSERT INTO `subjects` VALUES ('80', 'Система национальных счетов', 'Сист.нац.сч.', '1');
-INSERT INTO `subjects` VALUES ('81', 'Теория организации', 'Теор.орг.', '1');
-INSERT INTO `subjects` VALUES ('82', 'Кадровый менеджмент', 'Кадр.мен.', '1');
-INSERT INTO `subjects` VALUES ('83', 'Документационное обеспечение кадровой службы', 'ДОКС', '1');
-INSERT INTO `subjects` VALUES ('84', 'Конфликтология', 'Конфл.', '1');
-INSERT INTO `subjects` VALUES ('85', 'Организация защиты информации', 'Защ.инф.', '1');
-INSERT INTO `subjects` VALUES ('86', 'Разработка управленческого решения', 'Разр.упр.реш.', '1');
-INSERT INTO `subjects` VALUES ('87', 'Экономика уральского региона', 'Эк.ур.рег.', '1');
-INSERT INTO `subjects` VALUES ('88', 'Консультация', 'Консультация', '1');
-INSERT INTO `subjects` VALUES ('89', 'Кураторский час', 'Кур. час', '1');
-INSERT INTO `subjects` VALUES ('90', 'ФИКР', 'ФИКР', '1');
-INSERT INTO `subjects` VALUES ('91', 'Опт.пр.тр.', 'Опт.пр.тр.', '1');
-INSERT INTO `subjects` VALUES ('92', 'Налоги', 'Налоги', '1');
-INSERT INTO `subjects` VALUES ('93', 'Оц.рент.сист. ', 'Оц.рент.сист. ', '1');
-INSERT INTO `subjects` VALUES ('94', 'Осн.пл.лог.пр. ', 'Осн.пл.лог.пр. ', '1');
-INSERT INTO `subjects` VALUES ('95', 'Осн.упр.лог. проц.', 'Осн.упр.лог. проц.', '1');
-INSERT INTO `subjects` VALUES ('98', 'БУБ', 'БУБ', '1');
 
 -- ----------------------------
 -- Table structure for `teachers`
@@ -445,4 +350,3 @@ CREATE TABLE `teachers` (
 -- ----------------------------
 -- Records of teachers
 -- ----------------------------
-
