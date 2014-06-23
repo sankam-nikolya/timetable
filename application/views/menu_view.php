@@ -1,7 +1,7 @@
-<script type="text/javascript" src="<? base_url() ?>/js/datepicker/moment.js"></script>
-<script type="text/javascript" src="<? base_url() ?>/js/datepicker/daterangepicker.js"></script>
-<script type="text/javascript" src="<? base_url() ?>/js/datepicker/ui.datepicker-ru.js"></script>
-<link rel="stylesheet" type="text/css" media="all" href="<? base_url() ?>/css/datepicker/daterangepicker-bs3.css"/>
+<script type="text/javascript" src="<?=base_url() ?>/js/datepicker/moment.js"></script>
+<script type="text/javascript" src="<?=base_url() ?>/js/datepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="<?=base_url() ?>/js/datepicker/ui.datepicker-ru.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="<?=base_url() ?>/css/datepicker/daterangepicker-bs3.css"/>
 <script type="text/javascript">
     $(document).ready(function () {
         $('#reservation').daterangepicker(
