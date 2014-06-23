@@ -100,9 +100,9 @@
                     type: 'pie',
                     name: 'Всего уроков',
                     data: [
-                        <?foreach ($group_num_pars as $item):?>
+                        <?php foreach ($group_num_pars as $item):?>
                         ['<?=$item['name']?>', <?=$item['pars']?>],
-                        <?endforeach?>
+                        <?php endforeach?>
                     ]
                 }
             ]
