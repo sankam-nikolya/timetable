@@ -2,6 +2,10 @@
 
 class Admin_model extends CI_Model
 {
+    function __construct() 
+    {
+        $this->db->query("SET lc_time_names = 'ru_RU'");
+    }
 
     function get_teachers()
     {
@@ -36,7 +40,6 @@ class Admin_model extends CI_Model
 
     function get_subjects()
     {
-        $this->db->query("SET lc_time_names = 'ru_RU'");
         $this->db->order_by('name');
         $query = $this->db->get("subjects");
         return $query->result_array();
@@ -63,7 +66,6 @@ class Admin_model extends CI_Model
 
     function get($from, $to)
     {
-        $this->db->query("SET lc_time_names = 'ru_RU'");
         $this->db->distinct();
         $this->db->select("
             iddays,
