@@ -17,7 +17,7 @@
 
 <div class="container">
     <table <?php if ($this->ion_auth->is_admin()): ?> id="editable"
-        <?php endif ?>class="table table-bordered front-table" <?php if ($day_for_now['date'] < date('Y-m-d')): ?> style="opacity: 0.5;"<?php endif ?>
+        <?php endif ?>class="table table-bordered front-table" <?php if ($day_for_now['date'] < date('Y-m-d')): ?> style="opacity: 0.8;"<?php endif ?>
         <?php if ($day_for_now['date'] == date('Y-m-d')): ?>style="box-shadow: 0 0 8px #d98635; -moz-box-shadow: 0 0 8px #d98635;"<?php endif ?>>
         <tr>
             <td rowspan="3" style="vertical-align: middle">Группа</td>

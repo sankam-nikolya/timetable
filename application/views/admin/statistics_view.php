@@ -1,20 +1,4 @@
-<script src="<?= base_url() ?>js/charts/highcharts.js"></script>
-<script src="<?= base_url() ?>js/charts/modules/exporting.js"></script>
-
-<div class="container">
-    <a name="teachers"></a>
-
-    <div id="teachers"></div>
-    <a name="groups"></a>
-
-    <div id="groups"></div>
-    <br>
-
-    <div id="visitors" align="center" style="padding-bottom:80px">
-        <a href="http://www.liveinternet.ru/stat/%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5.%D0%BF%D1%84%D1%83%D1%80%D1%82%D0%BA.%D1%80%D1%84/index.html?"><img
-                src="http://www.liveinternet.ru/stat/%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5.%D0%BF%D1%84%D1%83%D1%80%D1%82%D0%BA.%D1%80%D1%84/index.gif?graph=yes"></a>
-    </div>
-</div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script type="text/javascript">
     $(function () {
 
@@ -100,12 +84,32 @@
                     type: 'pie',
                     name: 'Всего уроков',
                     data: [
-                        <?php foreach ($group_num_pars as $item):?>
+                        <?foreach ($group_num_pars as $item):?>
                         ['<?=$item['name']?>', <?=$item['pars']?>],
-                        <?php endforeach?>
+                        <?endforeach?>
                     ]
                 }
             ]
         });
     })
+
+
 </script>
+<script type="text/javascript" src="<?= base_url() ?>js/stats/swfobject.js"></script>
+<script src="<?= base_url() ?>js/charts/highcharts.js"></script>
+<script src="<?= base_url() ?>js/charts/modules/exporting.js"></script>
+
+<div class="container">
+    <a name="teachers"></a>
+
+    <div id="teachers"></div>
+    <a name="groups"></a>
+
+    <div id="groups"></div>
+    <br>
+
+    <div id="visitors" align="center" style="padding-bottom:80px">
+        <a href="http://www.liveinternet.ru/stat/%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5.%D0%BF%D1%84%D1%83%D1%80%D1%82%D0%BA.%D1%80%D1%84/index.html?"><img src="http://www.liveinternet.ru/stat/%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5.%D0%BF%D1%84%D1%83%D1%80%D1%82%D0%BA.%D1%80%D1%84/index.gif?graph=yes"></a>
+    </div>
+    </script>
+</div>

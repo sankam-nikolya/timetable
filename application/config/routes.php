@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "shedule";
+$route['default_controller'] = "statistics";
 $route['fulltime'] = "shedule";
 $route['parttime'] = "shedulezao";
 $route['auth'] = "auth";

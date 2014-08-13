@@ -1,5 +1,4 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
-
 /**
  * Name:  Ion Auth
  *
@@ -19,6 +18,7 @@
  * Requirements: PHP5 or above
  *
  */
+
 class Ion_auth
 {
     /**

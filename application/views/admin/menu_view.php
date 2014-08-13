@@ -34,12 +34,12 @@
                     </ul>
                 </li>
                 <li <?php if ($this->uri->rsegment(1) == "admin_ads"): ?>class="active"<?php endif ?>>
-                    <a href="<?= base_url() ?>admin/announcements">Объявления</a>
+                    <a href="<?= base_url() ?>admin/announcements">Объявления</a
                 </li>
                 <li <?php if ($this->uri->rsegment(1) == "admin_statistics" && $this->uri->rsegment(2) == "statistics"): ?>class="active"<?php endif ?>>
                     <a href="<?= base_url() ?>admin/statistics">Статистика</a>
                 </li>
-
+                <li><a href="https://github.com/Nazgard/timetable/wiki/_pages">Помощь</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">
                 <li>

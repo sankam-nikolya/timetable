@@ -46,7 +46,8 @@ define('FOPEN_READ_WRITE_CREATE_STRICT', 'x+b');
 |
 */
 
-define('CSS_VERSION', '2014-04-30');
+define('CSS_VERSION', '2014-06-24');
+define('TIMEZONE', '+06:00');
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

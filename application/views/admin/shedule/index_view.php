@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row">
+    <div class="row">        
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas pull-right" id="sidebar">
             <div class="well sidebar-nav">
                 <ul class="nav">
@@ -15,14 +15,13 @@
             <!--/.well -->
         </div>
         <div class="col-xs-12 col-sm-9">
-            <?php if (count($n_short_group_num_pars_0) > 0): ?>
+            <?php if (count($n_short_group_num_pars_0) > 0):?>
                 <h1>Информация на следующую неделю</h1>
 
                 <div class="well">
                     <div class="row">
                         <div class="col-6 col-sm-6 col-lg-4">
                             <h2>Нагрузка групп</h2>
-
                             <p><b>Общие пары</b></p>
                             <?php foreach ($n_short_group_num_pars_0 as $item): ?>
                                 <p><?= $item['name'] ?> - <?php if ($item['pars'] < 18): ?><span
@@ -63,9 +62,9 @@
                         </div>
                     </div>
                 </div>
-            <?php endif ?>
+            <?php endif?>
         </div>
-
+        
         <div class="col-xs-12 col-sm-9">
             <h1>Информация на текущую неделю</h1>
 
@@ -73,7 +72,6 @@
                 <div class="row">
                     <div class="col-6 col-sm-6 col-lg-4">
                         <h2>Нагрузка групп</h2>
-
                         <p><b>Общие пары</b></p>
                         <?php foreach ($short_group_num_pars_0 as $item): ?>
                             <p><?= $item['name'] ?> - <?php if ($item['pars'] < 18): ?><span

@@ -38,7 +38,7 @@ class Tank_auth
      * Login user on the site. Return TRUE if login is successful
      * (user exists and activated, password is correct), otherwise FALSE.
      *
-     * @param    string (username or email or both depending on settings in config file)
+     * @param    string    (username or email or both depending on settings in config file)
      * @param    string
      * @param    bool
      * @return    bool

@@ -41,7 +41,7 @@
                 <a class="navbar-brand" href="<?= base_url() ?>">Расписание</a>
                 <li><a href="http://xn--j1ajdidf.xn--p1ai/">ПФУРТК</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Фильтр<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Архив<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="<? base_url() ?>?filter=currently">Актуально</a></li>
                         <li class="divider"></li>
@@ -73,8 +73,11 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary" onclick="redirect($('#reservation').val())">Открыть
-                    расписание
+                <button type="button" class="btn btn-primary" onclick="redirect_fulltime($('#reservation').val())">Открыть
+                    очное расписание
+                </button>
+                <button type="button" class="btn btn-primary" onclick="redirect_parttime($('#reservation').val())">Открыть
+                    заочное расписание
                 </button>
             </div>
         </div>
@@ -83,7 +86,10 @@
     <!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <script type="text/javascript">
-    function redirect(range) {
-        window.location.href = '<?=base_url()?><?=$this->uri->rsegment(1)?>?from=' + range;
+    function redirect_fulltime(range) {
+        window.location.href = '<?=base_url()?>shedule?from=' + range;
+    }
+    function redirect_parttime(range) {
+        window.location.href = '<?=base_url()?>shedule?from=' + range;
     }
 </script>

@@ -2,10 +2,6 @@
 
 class Shedule_model extends CI_Model
 {
-    function __construct() 
-    {
-        $this->db->query("SET lc_time_names = 'ru_RU'");
-    }
 
     function get_pars($day)
     {
@@ -93,8 +89,9 @@ class Shedule_model extends CI_Model
         return $this->db->get("BindingDayGroupEvent")->result_array();
     }
 
-    function get_days($filter = 'currently')
+    function get_days($filter)
     {
+        $this->db->query("SET lc_time_names = 'ru_RU'");
         switch ($filter) {
             case 'currently' :
             {
@@ -104,12 +101,13 @@ class Shedule_model extends CI_Model
 
                 return $query->result_array();
             }
-                break;
+            break;
         }
     }
 
     function get_days_f_t($from, $to)
     {
+        $this->db->query("SET lc_time_names = 'ru_RU'");
         $query = $this->db->query("SELECT DISTINCT iddays, DATE_FORMAT(date, '%W %d.%m.%Y') AS 'formated_date', date, UNIX_TIMESTAMP(date) as 'unix_time' FROM days WHERE date BETWEEN '" . $from . "' AND '" . $to . "' ORDER BY date");
 
         return $query->result_array();
@@ -154,9 +152,9 @@ class Shedule_model extends CI_Model
         $timestamp = time();
         $this->db->order_by('idannouncements', 'desc');
         $this->db->where('start_datestamp <=', $timestamp);
-        $this->db->where('end_datestamp >=', $timestamp);
+        $this->db->where('end_datestamp >=', $timestamp);        
         $this->db->where('active', 1);
-        $this->db->or_where('announcements.allTime', 1);
+        $this->db->or_where('announcements.allTime', 1);        
         $this->db->where('active', 1);
         return $this->db->get("announcements")->result_array();
     }
