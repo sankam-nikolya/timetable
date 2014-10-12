@@ -7585,19 +7585,19 @@
                 data: params
             }).done(function (responseText) {
 
-                // Save response for use in complete callback
-                response = arguments;
+                    // Save response for use in complete callback
+                    response = arguments;
 
-                self.html(selector ?
+                    self.html(selector ?
 
-                    // If a selector was specified, locate the right elements in a dummy div
-                    // Exclude scripts to avoid IE 'Permission Denied' errors
-                    jQuery("<div>").append(jQuery.parseHTML(responseText)).find(selector) :
+                        // If a selector was specified, locate the right elements in a dummy div
+                        // Exclude scripts to avoid IE 'Permission Denied' errors
+                        jQuery("<div>").append(jQuery.parseHTML(responseText)).find(selector) :
 
-                    // Otherwise use the full result
-                    responseText);
+                        // Otherwise use the full result
+                        responseText);
 
-            }).complete(callback && function (jqXHR, status) {
+                }).complete(callback && function (jqXHR, status) {
                     self.each(callback, response || [ jqXHR.responseText, status, jqXHR ]);
                 });
         }

@@ -23,9 +23,9 @@ class Shedulezao extends CI_Controller
 
         $this->load->view('header_view');
         $this->load->view('menu_view');
-        //$ads['ads'] = $this->shedule_model->get_ads();
-        //$this->load->view('announcements_view', $ads);
-        //$this->load->view('type_view');
+        $ads['ads'] = $this->shedule_model->get_ads();
+        $this->load->view('announcements_view', $ads);
+        $this->load->view('type_view');
 
         $data['pars_timing'] = $this->shedule_model->get_time();
         $data['groups'] = $this->shedule_model->get_groups_zao();

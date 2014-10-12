@@ -25,12 +25,8 @@
         <div class="input-group" style="padding-bottom: 20px">
             <span class="input-group-addon">Активность</span>
             <select required class="form-control selectpicker" name="active">
-                <option value="1" <?php if (isset($info) && $info[0]['active'] == 1): ?>selected<?php endif ?>>
-                    Активный
-                </option>
-                <option value="0" <?php if (isset($info) && $info[0]['active'] == 0): ?>selected<?php endif ?>>Не
-                    активный
-                </option>
+                <option value="1">Активный</option>
+                <option value="0">Неактивный</option>
             </select>
         </div>
         <p><input type="submit" class="btn btn-primary" value="Добавить"></p>

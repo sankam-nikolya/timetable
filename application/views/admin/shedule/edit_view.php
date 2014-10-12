@@ -108,8 +108,8 @@
                                                     <?php foreach ($events as $event):?>
                                                         <?php if ($event['idDay'] == $day['iddays'] && $event['idGroup'] == $group['idgroups']):?>
                                                            value="<?=$event['txtEvent']?>" 
-                                                        <?php endif?>
-                                                    <?php endforeach ?>
+                                                        <?endif?>
+                                                    <?php endforeach?>
                                                     
                                                    >
                                         </div>

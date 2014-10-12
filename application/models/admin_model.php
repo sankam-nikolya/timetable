@@ -34,6 +34,13 @@ class Admin_model extends CI_Model
         return $query->result_array();
     }
 
+    function get_group($id)
+    {
+        $this->db->where('idgroups', $id);
+        $query = $this->db->get("groups");
+        return $query->result_array();
+    }
+
     function get_subjects()
     {
         $this->db->query("SET lc_time_names = 'ru_RU'");
@@ -85,6 +92,11 @@ class Admin_model extends CI_Model
     function get_audits()
     {
         $this->db->where('active', 1);
+        return $this->db->get('cabinets')->result_array();
+    }
+
+    function get_cabinet($id){
+        $this->db->where('idcabinets', $id);
         return $this->db->get('cabinets')->result_array();
     }
 
@@ -218,9 +230,31 @@ class Admin_model extends CI_Model
         $this->db->update('subjects', $data);
     }
 
+    function update_group($id, $data)
+    {
+        $this->db->where('idgroups', $id);
+        $this->db->update('groups', $data);
+    }
+
+    function update_cabinet($id, $data)
+    {
+        $this->db->where('idcabinets', $id);
+        $this->db->update('cabinets', $data);
+    }
+
     function insert_teacher($data)
     {
         $this->db->insert('teachers', $data);
+    }
+
+    function insert_group($data)
+    {
+        $this->db->insert('groups', $data);
+    }
+
+    function insert_cabinet($data)
+    {
+        $this->db->insert('cabinets', $data);
     }
 
     function insert_binding_TeacherSubject($idTeacher, $idSubject)
@@ -272,6 +306,18 @@ class Admin_model extends CI_Model
     {
         $this->db->where('idsubects', $id);
         $this->db->delete('subjects');
+    }
+
+    function delete_group($id)
+    {
+        $this->db->where('idgroups', $id);
+        $this->db->delete('groups');
+    }
+
+    function delete_cabinet($id)
+    {
+        $this->db->where('idcabinets', $id);
+        $this->db->delete('cabinets');
     }
 
     function delete_teacher($id)

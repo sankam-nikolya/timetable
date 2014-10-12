@@ -592,7 +592,7 @@ class CI_Upload
      */
     public function is_allowed_filesize()
     {
-        if ($this->max_size != 0 AND $this->file_size > $this->max_size) {
+        if ($this->max_size != 0  AND  $this->file_size > $this->max_size) {
             return FALSE;
         } else {
             return TRUE;

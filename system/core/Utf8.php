@@ -113,7 +113,7 @@ class CI_Utf8
      *
      * @access    public
      * @param    string
-     * @param    string - input encoding
+     * @param    string    - input encoding
      * @return    string
      */
     function convert_to_utf8($str, $encoding)

@@ -38,6 +38,7 @@
  * @author      Kelly McArdle
  *
  */
+
 class CI_DB_oci8_driver extends CI_DB
 {
 

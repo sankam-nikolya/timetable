@@ -4,10 +4,10 @@
         });
     });
 </script>
-<link rel="stylesheet" type="text/css" media="all" href="<?=base_url()?>/css/datepicker/daterangepicker-bs3.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="<? base_url() ?>/css/datepicker/daterangepicker-bs3.css"/>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-<script type="text/javascript" src="<?=base_url()?>/js/datepicker/moment.js"></script>
-<script type="text/javascript" src="<?=base_url()?>/js/datepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="<? base_url() ?>/js/datepicker/moment.js"></script>
+<script type="text/javascript" src="<? base_url() ?>/js/datepicker/daterangepicker.js"></script>
 
 <div class="container">
     <?php if (isset($_GET['response'])): ?>
@@ -28,7 +28,10 @@
 
                     <div class="input-group" style="width: 350px">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                        <input type="text" class="form-control" name="datepick" id="reservation">
+                        <input type="text" class="form-control" name="datepick"
+                               <? if (isset($_POST['datepick'])): ?>value="<?= $_POST['datepick'] ?>"<? endif ?>
+                               id="reservation"/>
+
                         <div class="input-group-btn">
                             <input type="submit" class="btn btn-default">
                         </div>

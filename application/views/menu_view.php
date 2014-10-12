@@ -90,6 +90,6 @@
         window.location.href = '<?=base_url()?>shedule?from=' + range;
     }
     function redirect_parttime(range) {
-        window.location.href = '<?=base_url()?>shedule?from=' + range;
+        window.location.href = '<?=base_url()?>shedulezao?from=' + range;
     }
 </script>

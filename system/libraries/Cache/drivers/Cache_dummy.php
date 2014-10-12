@@ -24,6 +24,7 @@
  * @author        ExpressionEngine Dev Team
  * @link
  */
+
 class CI_Cache_dummy extends CI_Driver
 {
 

@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "statistics";
+$route['default_controller'] = "shedule";
 $route['fulltime'] = "shedule";
 $route['parttime'] = "shedulezao";
 $route['auth'] = "auth";
@@ -60,6 +60,9 @@ $route['admin/shedule/edit'] = "admin_shedule/edit_datepick_view";
 $route['admin/audit/edit'] = "admin_shedule/edit_datepick_audit_view";
 $route['admin/teachers'] = "admin_shedule/teachers_list_view";
 $route['admin/subjects'] = "admin_shedule/subjects_list_view";
+$route['admin/groups'] = "admin_shedule/groups_list_view";
+$route['admin/cabinets'] = "admin_shedule/cabinets_list_view";
+$route['admin/times'] = "admin_shedule/times_list_view";
 $route['admin/statistics'] = "admin_statistics/statistics";
 //$route['404_override'] = '';
 

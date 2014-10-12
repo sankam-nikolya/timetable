@@ -321,7 +321,7 @@ class CI_DB_utility extends CI_DB_forge
         // Is the encoder supported?  If not, we'll either issue an
         // error or use plain text depending on the debug settings
         if (($prefs['format'] == 'gzip' AND !@function_exists('gzencode'))
-            OR ($prefs['format'] == 'zip' AND !@function_exists('gzcompress'))
+            OR ($prefs['format'] == 'zip'  AND !@function_exists('gzcompress'))
         ) {
             if ($this->db->db_debug) {
                 return $this->db->display_error('db_unsuported_compression');

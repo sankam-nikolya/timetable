@@ -9,3 +9,4 @@ my_models*
 application/config/config.php
 application/config/database.php
 nbproject
+cgi-bin

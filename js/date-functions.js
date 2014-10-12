@@ -10,22 +10,22 @@
  * FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more
  * details.
  */
-
+ 
 Date.parseFunctions = {
-    count: 0
+	count: 0
 };
 Date.parseRegexes = [];
 Date.formatFunctions = {
-    count: 0
+	count: 0
 };
 Date.prototype.dateFormat = function (format) {
-    if (format == 'unixtime')
-        return parseInt(this.getTime() / 1000);
-    if (Date.formatFunctions[format] == null) {
-        Date.createNewFormat(format)
-    }
-    var func = Date.formatFunctions[format];
-    return this[func]()
+	if( format=='unixtime' )
+		return parseInt(this.getTime()/1000);
+	if (Date.formatFunctions[format] == null) {
+			Date.createNewFormat(format)
+	}
+	var func = Date.formatFunctions[format];
+	return this[func]()
 };
 Date.createNewFormat = function (format) {
     var funcName = "format" + Date.formatFunctions.count++;
@@ -48,73 +48,73 @@ Date.createNewFormat = function (format) {
 };
 Date.getFormatCode = function (character) {
     switch (character) {
-        case "d":
-            return "String.leftPad(this.getDate(), 2, '0') + ";
-        case "D":
-            return "Date.dayNames[this.getDay()].substring(0, 3) + ";
-        case "j":
-            return "this.getDate() + ";
-        case "l":
-            return "Date.dayNames[this.getDay()] + ";
-        case "S":
-            return "this.getSuffix() + ";
-        case "w":
-            return "this.getDay() + ";
-        case "z":
-            return "this.getDayOfYear() + ";
-        case "W":
-            return "this.getWeekOfYear() + ";
-        case "F":
-            return "Date.monthNames[this.getMonth()] + ";
-        case "m":
-            return "String.leftPad(this.getMonth() + 1, 2, '0') + ";
-        case "M":
-            return "Date.monthNames[this.getMonth()].substring(0, 3) + ";
-        case "n":
-            return "(this.getMonth() + 1) + ";
-        case "t":
-            return "this.getDaysInMonth() + ";
-        case "L":
-            return "(this.isLeapYear() ? 1 : 0) + ";
-        case "Y":
-            return "this.getFullYear() + ";
-        case "y":
-            return "('' + this.getFullYear()).substring(2, 4) + ";
-        case "a":
-            return "(this.getHours() < 12 ? 'am' : 'pm') + ";
-        case "A":
-            return "(this.getHours() < 12 ? 'AM' : 'PM') + ";
-        case "g":
-            return "((this.getHours() %12) ? this.getHours() % 12 : 12) + ";
-        case "G":
-            return "this.getHours() + ";
-        case "h":
-            return "String.leftPad((this.getHours() %12) ? this.getHours() % 12 : 12, 2, '0') + ";
-        case "H":
-            return "String.leftPad(this.getHours(), 2, '0') + ";
-        case "i":
-            return "String.leftPad(this.getMinutes(), 2, '0') + ";
-        case "s":
-            return "String.leftPad(this.getSeconds(), 2, '0') + ";
-        case "O":
-            return "this.getGMTOffset() + ";
-        case "T":
-            return "this.getTimezone() + ";
-        case "Z":
-            return "(this.getTimezoneOffset() * -60) + ";
-        default:
-            return "'" + String.escape(character) + "' + "
+    case "d":
+        return "String.leftPad(this.getDate(), 2, '0') + ";
+    case "D":
+        return "Date.dayNames[this.getDay()].substring(0, 3) + ";
+    case "j":
+        return "this.getDate() + ";
+    case "l":
+        return "Date.dayNames[this.getDay()] + ";
+    case "S":
+        return "this.getSuffix() + ";
+    case "w":
+        return "this.getDay() + ";
+    case "z":
+        return "this.getDayOfYear() + ";
+    case "W":
+        return "this.getWeekOfYear() + ";
+    case "F":
+        return "Date.monthNames[this.getMonth()] + ";
+    case "m":
+        return "String.leftPad(this.getMonth() + 1, 2, '0') + ";
+    case "M":
+        return "Date.monthNames[this.getMonth()].substring(0, 3) + ";
+    case "n":
+        return "(this.getMonth() + 1) + ";
+    case "t":
+        return "this.getDaysInMonth() + ";
+    case "L":
+        return "(this.isLeapYear() ? 1 : 0) + ";
+    case "Y":
+        return "this.getFullYear() + ";
+    case "y":
+        return "('' + this.getFullYear()).substring(2, 4) + ";
+    case "a":
+        return "(this.getHours() < 12 ? 'am' : 'pm') + ";
+    case "A":
+        return "(this.getHours() < 12 ? 'AM' : 'PM') + ";
+    case "g":
+        return "((this.getHours() %12) ? this.getHours() % 12 : 12) + ";
+    case "G":
+        return "this.getHours() + ";
+    case "h":
+        return "String.leftPad((this.getHours() %12) ? this.getHours() % 12 : 12, 2, '0') + ";
+    case "H":
+        return "String.leftPad(this.getHours(), 2, '0') + ";
+    case "i":
+        return "String.leftPad(this.getMinutes(), 2, '0') + ";
+    case "s":
+        return "String.leftPad(this.getSeconds(), 2, '0') + ";
+    case "O":
+        return "this.getGMTOffset() + ";
+    case "T":
+        return "this.getTimezone() + ";
+    case "Z":
+        return "(this.getTimezoneOffset() * -60) + ";
+    default:
+        return "'" + String.escape(character) + "' + "
     }
 };
 Date.parseDate = function (input, format) {
-    if (format == 'unixtime')
-        return new Date(!isNaN(parseInt(input)) ? parseInt(input) * 1000 : 0);
-
-    if (Date.parseFunctions[format] == null) {
-        Date.createParser(format)
-    }
-    var func = Date.parseFunctions[format];
-    return Date[func](input)
+	if( format=='unixtime' )
+		return new Date( !isNaN(parseInt(input))?parseInt(input)*1000:0 );
+		
+	if (Date.parseFunctions[format] == null) {
+		Date.createParser(format)
+	}
+	var func = Date.parseFunctions[format];
+	return Date[func](input)
 };
 Date.createParser = function (format) {
     var funcName = "parse" + Date.parseFunctions.count++;
@@ -148,149 +148,149 @@ Date.createParser = function (format) {
 };
 Date.formatCodeToRegex = function (character, currentGroup) {
     switch (character) {
-        case "D":
-            return {
-                g: 0,
-                c: null,
-                s: "(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat)"
-            };
-        case "j":
-        case "d":
-            return {
-                g: 1,
-                c: "d = parseInt(results[" + currentGroup + "], 10);\n",
-                s: "(\\d{1,2})"
-            };
-        case "l":
-            return {
-                g: 0,
-                c: null,
-                s: "(?:" + Date.dayNames.join("|") + ")"
-            };
-        case "S":
-            return {
-                g: 0,
-                c: null,
-                s: "(?:st|nd|rd|th)"
-            };
-        case "w":
-            return {
-                g: 0,
-                c: null,
-                s: "\\d"
-            };
-        case "z":
-            return {
-                g: 1,
-                c: "z = parseInt(results[" + currentGroup + "], 10);\n",
-                s: "(\\d{1,3})"
-            };
-        case "W":
-            return {
-                g: 0,
-                c: null,
-                s: "(?:\\d{2})"
-            };
-        case "F":
-            return {
-                g: 1,
-                c: "m = parseInt(Date.monthNumbers[results[" + currentGroup + "].substring(0, 3)], 10);\n",
-                s: "(" + Date.monthNames.join("|") + ")"
-            };
-        case "M":
-            return {
-                g: 1,
-                c: "m = parseInt(Date.monthNumbers[results[" + currentGroup + "]], 10);\n",
-                s: "(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"
-            };
-        case "n":
-        case "m":
-            return {
-                g: 1,
-                c: "m = parseInt(results[" + currentGroup + "], 10) - 1;\n",
-                s: "(\\d{1,2})"
-            };
-        case "t":
-            return {
-                g: 0,
-                c: null,
-                s: "\\d{1,2}"
-            };
-        case "L":
-            return {
-                g: 0,
-                c: null,
-                s: "(?:1|0)"
-            };
-        case "Y":
-            return {
-                g: 1,
-                c: "y = parseInt(results[" + currentGroup + "], 10);\n",
-                s: "(\\d{4})"
-            };
-        case "y":
-            return {
-                g: 1,
-                c: "var ty = parseInt(results[" + currentGroup + "], 10);\n" + "y = ty > Date.y2kYear ? 1900 + ty : 2000 + ty;\n",
-                s: "(\\d{1,2})"
-            };
-        case "a":
-            return {
-                g: 1,
-                c: "if (results[" + currentGroup + "] == 'am') {\n" + "if (h == 12) { h = 0; }\n" + "} else { if (h < 12) { h += 12; }}",
-                s: "(am|pm)"
-            };
-        case "A":
-            return {
-                g: 1,
-                c: "if (results[" + currentGroup + "] == 'AM') {\n" + "if (h == 12) { h = 0; }\n" + "} else { if (h < 12) { h += 12; }}",
-                s: "(AM|PM)"
-            };
-        case "g":
-        case "G":
-        case "h":
-        case "H":
-            return {
-                g: 1,
-                c: "h = parseInt(results[" + currentGroup + "], 10);\n",
-                s: "(\\d{1,2})"
-            };
-        case "i":
-            return {
-                g: 1,
-                c: "i = parseInt(results[" + currentGroup + "], 10);\n",
-                s: "(\\d{2})"
-            };
-        case "s":
-            return {
-                g: 1,
-                c: "s = parseInt(results[" + currentGroup + "], 10);\n",
-                s: "(\\d{2})"
-            };
-        case "O":
-            return {
-                g: 0,
-                c: null,
-                s: "[+-]\\d{4}"
-            };
-        case "T":
-            return {
-                g: 0,
-                c: null,
-                s: "[A-Z]{3}"
-            };
-        case "Z":
-            return {
-                g: 0,
-                c: null,
-                s: "[+-]\\d{1,5}"
-            };
-        default:
-            return {
-                g: 0,
-                c: null,
-                s: String.escape(character)
-            }
+    case "D":
+        return {
+            g: 0,
+            c: null,
+            s: "(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat)"
+        };
+    case "j":
+    case "d":
+        return {
+            g: 1,
+            c: "d = parseInt(results[" + currentGroup + "], 10);\n",
+            s: "(\\d{1,2})"
+        };
+    case "l":
+        return {
+            g: 0,
+            c: null,
+            s: "(?:" + Date.dayNames.join("|") + ")"
+        };
+    case "S":
+        return {
+            g: 0,
+            c: null,
+            s: "(?:st|nd|rd|th)"
+        };
+    case "w":
+        return {
+            g: 0,
+            c: null,
+            s: "\\d"
+        };
+    case "z":
+        return {
+            g: 1,
+            c: "z = parseInt(results[" + currentGroup + "], 10);\n",
+            s: "(\\d{1,3})"
+        };
+    case "W":
+        return {
+            g: 0,
+            c: null,
+            s: "(?:\\d{2})"
+        };
+    case "F":
+        return {
+            g: 1,
+            c: "m = parseInt(Date.monthNumbers[results[" + currentGroup + "].substring(0, 3)], 10);\n",
+            s: "(" + Date.monthNames.join("|") + ")"
+        };
+    case "M":
+        return {
+            g: 1,
+            c: "m = parseInt(Date.monthNumbers[results[" + currentGroup + "]], 10);\n",
+            s: "(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"
+        };
+    case "n":
+    case "m":
+        return {
+            g: 1,
+            c: "m = parseInt(results[" + currentGroup + "], 10) - 1;\n",
+            s: "(\\d{1,2})"
+        };
+    case "t":
+        return {
+            g: 0,
+            c: null,
+            s: "\\d{1,2}"
+        };
+    case "L":
+        return {
+            g: 0,
+            c: null,
+            s: "(?:1|0)"
+        };
+    case "Y":
+        return {
+            g: 1,
+            c: "y = parseInt(results[" + currentGroup + "], 10);\n",
+            s: "(\\d{4})"
+        };
+    case "y":
+        return {
+            g: 1,
+            c: "var ty = parseInt(results[" + currentGroup + "], 10);\n" + "y = ty > Date.y2kYear ? 1900 + ty : 2000 + ty;\n",
+            s: "(\\d{1,2})"
+        };
+    case "a":
+        return {
+            g: 1,
+            c: "if (results[" + currentGroup + "] == 'am') {\n" + "if (h == 12) { h = 0; }\n" + "} else { if (h < 12) { h += 12; }}",
+            s: "(am|pm)"
+        };
+    case "A":
+        return {
+            g: 1,
+            c: "if (results[" + currentGroup + "] == 'AM') {\n" + "if (h == 12) { h = 0; }\n" + "} else { if (h < 12) { h += 12; }}",
+            s: "(AM|PM)"
+        };
+    case "g":
+    case "G":
+    case "h":
+    case "H":
+        return {
+            g: 1,
+            c: "h = parseInt(results[" + currentGroup + "], 10);\n",
+            s: "(\\d{1,2})"
+        };
+    case "i":
+        return {
+            g: 1,
+            c: "i = parseInt(results[" + currentGroup + "], 10);\n",
+            s: "(\\d{2})"
+        };
+    case "s":
+        return {
+            g: 1,
+            c: "s = parseInt(results[" + currentGroup + "], 10);\n",
+            s: "(\\d{2})"
+        };
+    case "O":
+        return {
+            g: 0,
+            c: null,
+            s: "[+-]\\d{4}"
+        };
+    case "T":
+        return {
+            g: 0,
+            c: null,
+            s: "[A-Z]{3}"
+        };
+    case "Z":
+        return {
+            g: 0,
+            c: null,
+            s: "[+-]\\d{1,5}"
+        };
+    default:
+        return {
+            g: 0,
+            c: null,
+            s: String.escape(character)
+        }
     }
 };
 Date.prototype.getTimezone = function () {
@@ -331,18 +331,18 @@ Date.prototype.getDaysInMonth = function () {
 };
 Date.prototype.getSuffix = function () {
     switch (this.getDate()) {
-        case 1:
-        case 21:
-        case 31:
-            return "st";
-        case 2:
-        case 22:
-            return "nd";
-        case 3:
-        case 23:
-            return "rd";
-        default:
-            return "th"
+    case 1:
+    case 21:
+    case 31:
+        return "st";
+    case 2:
+    case 22:
+        return "nd";
+    case 3:
+    case 23:
+        return "rd";
+    default:
+        return "th"
     }
 };
 String.escape = function (string) {

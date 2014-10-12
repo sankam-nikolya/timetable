@@ -31,6 +31,12 @@
                         <li
                             <?php if ($this->uri->rsegment(1) == "admin_shedule" && ($this->uri->rsegment(2) == "subjects_list_view" || $this->uri->rsegment(2) == "subject_edit_view" || $this->uri->rsegment(2) == "subject_add_view")): ?>class="active"<?php endif ?>
                             ><a href="<?= base_url() ?>admin/subjects">Предметы</a></li>
+                        <li
+                            <?php if ($this->uri->rsegment(1) == "admin_shedule" && ($this->uri->rsegment(2) == "groups_list_view" || $this->uri->rsegment(2) == "group_edit_view" || $this->uri->rsegment(2) == "group_add_view")): ?>class="active"<?php endif ?>
+                            ><a href="<?= base_url() ?>admin/groups">Группы</a></li>
+                        <li
+                            <?php if ($this->uri->rsegment(1) == "admin_shedule" && ($this->uri->rsegment(2) == "cabinets_list_view" || $this->uri->rsegment(2) == "cabinet_edit_view" || $this->uri->rsegment(2) == "cabinet_add_view")): ?>class="active"<?php endif ?>
+                            ><a href="<?= base_url() ?>admin/cabinets">Кабинеты</a></li>
                     </ul>
                 </li>
                 <li <?php if ($this->uri->rsegment(1) == "admin_ads"): ?>class="active"<?php endif ?>>

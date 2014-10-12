@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Admin_shedule extends CI_Controller
-{    
+{
     function index()
     {
         if ($this->ion_auth->is_admin()) {
@@ -346,6 +346,210 @@ class Admin_shedule extends CI_Controller
             header("Location: " . base_url() . 'auth/login');
         }
     }
+
+
+
+    //GROUP
+
+    function groups_list_view()
+    {
+        if ($this->ion_auth->is_admin()) {
+            $this->load->model('admin_model');
+            $data['groups'] = $this->admin_model->get_groups();
+
+            $this->load->view('admin/header_view');
+            $this->load->view('admin/menu_view');
+            $this->load->view('admin/lists/groups_list_view', $data);
+            $this->load->view('footer_view');
+        } else {
+            header("Location: " . base_url() . 'auth/login');
+        }
+    }
+
+    function group_edit_view()
+    {
+        if ($this->ion_auth->is_admin()) {
+            $this->load->model('admin_model');
+            $data['info'] = $this->admin_model->get_group($this->input->get('id'));
+
+            $this->load->view('admin/header_view');
+            $this->load->view('admin/menu_view');
+            $this->load->view('admin/lists/edit_group_view', $data);
+            $this->load->view('footer_view');
+        } else {
+            header("Location: " . base_url() . 'auth/login');
+        }
+    }
+
+    function group_add_view()
+    {
+        if ($this->ion_auth->is_admin()) {
+            $this->load->model('admin_model');
+
+            $this->load->view('admin/header_view');
+            $this->load->view('admin/menu_view');
+            $this->load->view('admin/lists/add_group_view', $data);
+            $this->load->view('footer_view');
+        } else {
+            header("Location: " . base_url() . 'auth/login');
+        }
+    }
+
+    function update_db_group()
+    {
+        if ($this->ion_auth->is_admin()) {
+            $this->load->model('admin_model');
+
+            $data = array(
+                'name' => $this->input->post('name'),
+                'active' => $this->input->post('active'),
+                'fulltime' => $this->input->post('fulltime')
+            );
+            $this->admin_model->update_group($this->input->get('id'), $data);
+            header("Location: " . base_url() . 'admin/groups/?response=success');
+        } else {
+            header("Location: " . base_url() . 'auth/login');
+        }
+    }
+
+    function add_db_group()
+    {
+        if ($this->ion_auth->is_admin()) {
+            $this->load->model('admin_model');
+
+            $data = array(
+                'name' => $this->input->post('name'),
+                'active' => $this->input->post('active'),
+                'fulltime' => $this->input->post('fulltime')
+            );
+            $this->admin_model->insert_group($data);
+            header("Location: " . base_url() . 'admin/groups/?response=success');
+        } else {
+            header("Location: " . base_url() . 'auth/login');
+        }
+    }
+
+    function delete_db_group()
+    {
+        if ($this->ion_auth->is_admin()) {
+            $this->load->model('admin_model');
+            $this->admin_model->delete_group($this->input->get('id'));
+            header("Location: " . base_url() . 'admin/groups/?response=delete_success');
+        } else {
+            header("Location: " . base_url() . 'auth/login');
+        }
+    }
+
+
+    /**
+     * CABINETS
+     */
+
+    function cabinets_list_view()
+    {
+        if ($this->ion_auth->is_admin()) {
+            $this->load->model('admin_model');
+            $data['cabinets'] = $this->admin_model->get_audits();
+
+            $this->load->view('admin/header_view');
+            $this->load->view('admin/menu_view');
+            $this->load->view('admin/lists/cabinets_list_view', $data);
+            $this->load->view('footer_view');
+        } else {
+            header("Location: " . base_url() . 'auth/login');
+        }
+    }
+
+    function cabinet_edit_view()
+    {
+        if ($this->ion_auth->is_admin()) {
+            $this->load->model('admin_model');
+            $data['info'] = $this->admin_model->get_cabinet($this->input->get('id'));
+
+            $this->load->view('admin/header_view');
+            $this->load->view('admin/menu_view');
+            $this->load->view('admin/lists/edit_cabinet_view', $data);
+            $this->load->view('footer_view');
+        } else {
+            header("Location: " . base_url() . 'auth/login');
+        }
+    }
+
+    function cabinet_add_view()
+    {
+        if ($this->ion_auth->is_admin()) {
+            $this->load->model('admin_model');
+
+            $this->load->view('admin/header_view');
+            $this->load->view('admin/menu_view');
+            $this->load->view('admin/lists/add_cabinet_view');
+            $this->load->view('footer_view');
+        } else {
+            header("Location: " . base_url() . 'auth/login');
+        }
+    }
+
+    function update_db_cabinet()
+    {
+        if ($this->ion_auth->is_admin()) {
+            $this->load->model('admin_model');
+
+            $data = array(
+                'name' => $this->input->post('name'),
+            );
+            $this->admin_model->update_cabinet($this->input->get('id'), $data);
+            header("Location: " . base_url() . 'admin/cabinets/?response=success');
+        } else {
+            header("Location: " . base_url() . 'auth/login');
+        }
+    }
+
+    function add_db_cabinet()
+    {
+        if ($this->ion_auth->is_admin()) {
+            $this->load->model('admin_model');
+
+            $data = array(
+                'name' => $this->input->post('name')
+            );
+            $this->admin_model->insert_cabinet($data);
+            header("Location: " . base_url() . 'admin/cabinets/?response=success');
+        } else {
+            header("Location: " . base_url() . 'auth/login');
+        }
+    }
+
+    function delete_db_cabinet()
+    {
+        if ($this->ion_auth->is_admin()) {
+            $this->load->model('admin_model');
+            $this->admin_model->delete_cabinet($this->input->get('id'));
+            header("Location: " . base_url() . 'admin/cabinets/?response=delete_success');
+        } else {
+            header("Location: " . base_url() . 'auth/login');
+        }
+    }
+
+
+
+    //TIMES
+
+    function times_list_view()
+    {
+        if ($this->ion_auth->is_admin()) {
+            $this->load->model('admin_model');
+            $data['times'] = $this->admin_model->get_time();
+
+            $this->load->view('admin/header_view');
+            $this->load->view('admin/menu_view');
+            $this->load->view('admin/lists/times_list_view', $data);
+            $this->load->view('footer_view');
+        } else {
+            header("Location: " . base_url() . 'auth/login');
+        }
+    }
+
+    //TEACHER
 
     function update_db_teacher()
     {
